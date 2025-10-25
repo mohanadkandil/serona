@@ -1,0 +1,23 @@
+{
+  "devFiles": [],
+  "ampDevFiles": [],
+  "polyfillFiles": [],
+  "lowPriorityFiles": [],
+  "rootMainFiles": [],
+  "pages": {
+    "/_app": [
+      "static/chunks/01eb8_next_dist_compiled_e3794f7f._.js",
+      "static/chunks/01eb8_next_dist_shared_lib_b23a60dd._.js",
+      "static/chunks/01eb8_next_dist_client_f54e6b8e._.js",
+      "static/chunks/01eb8_next_dist_0ba900a8._.js",
+      "static/chunks/01eb8_next_app_8b4b4b98.js",
+      "static/chunks/[next]_entry_page-loader_ts_6533c690._.js",
+      "static/chunks/01eb8_react-dom_b49466df._.js",
+      "static/chunks/01eb8_243473f1._.js",
+      "static/chunks/[root-of-the-server]__ae5784bc._.js",
+      "static/chunks/web_serona_web_pages__app_2da965e7._.js",
+      "static/chunks/turbopack-web_serona_web_pages__app_d2c27f8b._.js"
+    ]
+  },
+  "ampFirstPages": []
+}
