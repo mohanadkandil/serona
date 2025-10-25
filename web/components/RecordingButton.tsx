@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Mic, Square, Sparkles, FlaskConical, FileText } from "lucide-react";
+import { Mic, Square, Sparkles, FlaskConical, FileText, Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,6 +22,8 @@ const RecordingButton = ({ onRecordingComplete }: RecordingButtonProps) => {
   const [classification, setClassification] = useState<any>(null);
   const [researchIncluded, setResearchIncluded] = useState(false);
   const [researchData, setResearchData] = useState<string>("");
+  const [isResearching, setIsResearching] = useState(false);
+  const [patientInsights, setPatientInsights] = useState<string>("");
   const [manualMode, setManualMode] = useState(false);
   const [manualText, setManualText] = useState("");
 
@@ -128,10 +130,23 @@ const RecordingButton = ({ onRecordingComplete }: RecordingButtonProps) => {
               const data = await aiResponse.json();
               console.log("🚀 AI analysis received:", data);
 
-              setAiAnalysis(data.response);
+              // Set classification first (shows immediately)
               setClassification(data.classification);
-              setResearchIncluded(data.researchIncluded || false);
-              setResearchData(data.researchData || "");
+
+              // If research was included, show it
+              if (data.researchIncluded) {
+                setIsResearching(false);
+                setResearchIncluded(true);
+                setResearchData(data.researchData || "");
+              }
+
+              // Set patient insights if available
+              if (data.patientInsights) {
+                setPatientInsights(data.patientInsights);
+              }
+
+              // Finally set the analysis
+              setAiAnalysis(data.response);
               setIsAnalyzing(false);
 
               if (data.researchIncluded) {
@@ -223,10 +238,23 @@ const RecordingButton = ({ onRecordingComplete }: RecordingButtonProps) => {
       const data = await aiResponse.json();
       console.log("🚀 AI analysis received:", data);
 
-      setAiAnalysis(data.response);
+      // Set classification first (shows immediately)
       setClassification(data.classification);
-      setResearchIncluded(data.researchIncluded || false);
-      setResearchData(data.researchData || "");
+
+      // If research was included, show it
+      if (data.researchIncluded) {
+        setIsResearching(false);
+        setResearchIncluded(true);
+        setResearchData(data.researchData || "");
+      }
+
+      // Set patient insights if available
+      if (data.patientInsights) {
+        setPatientInsights(data.patientInsights);
+      }
+
+      // Finally set the analysis
+      setAiAnalysis(data.response);
       setIsAnalyzing(false);
 
       if (data.researchIncluded) {
@@ -356,24 +384,88 @@ const RecordingButton = ({ onRecordingComplete }: RecordingButtonProps) => {
         </Card>
       )}
 
-      {/* Research Data Display */}
-      {researchData && (
+      {/* Classification Display - Shows First */}
+      {classification && !isAnalyzing && (
+        <Card className="border-blue-600/20 bg-blue-50/50 dark:bg-blue-950/20">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-lg flex items-center gap-2">
+                <Sparkles className="h-5 w-5 text-blue-600" />
+                Case Classification
+              </CardTitle>
+              <div className="flex gap-2">
+                <Badge variant={classification.type === 'RESEARCH_AGENT' ? 'default' : 'secondary'}>
+                  {classification.type === 'RESEARCH_AGENT' ? 'Research Mode' : 'Normal Mode'}
+                </Badge>
+                <Badge variant={classification.complexity === 'complex' ? 'destructive' : 'outline'}>
+                  {classification.complexity}
+                </Badge>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm leading-relaxed">
+              <strong>Reasoning:</strong> {classification.reasoning}
+            </p>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Research Data Display - Shows Second (when research is done) */}
+      {(researchData || isResearching) && (
         <Card className="border-green-600/20 bg-green-50/50 dark:bg-green-950/20">
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
               <FlaskConical className="h-5 w-5 text-green-600" />
               Exa Research Findings
-              <Badge variant="default" className="bg-green-600">
-                Evidence-Based
-              </Badge>
+              {isResearching && (
+                <span className="text-sm font-normal text-muted-foreground">
+                  (Researching...)
+                </span>
+              )}
+              {researchData && (
+                <Badge variant="default" className="bg-green-600">
+                  Evidence-Based
+                </Badge>
+              )}
             </CardTitle>
             <p className="text-sm text-muted-foreground mt-2">
               Latest medical literature and clinical guidelines from web research
             </p>
           </CardHeader>
           <CardContent>
+            {researchData ? (
+              <div className="text-sm leading-relaxed whitespace-pre-wrap bg-white dark:bg-gray-900 p-4 rounded-md border">
+                {researchData}
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <div className="h-4 w-4 animate-spin rounded-full border-2 border-green-600 border-t-transparent"></div>
+                <span>Conducting medical research...</span>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Patient Insights Display */}
+      {patientInsights && (
+        <Card className="border-pink-600/20 bg-pink-50/50 dark:bg-pink-950/20">
+          <CardHeader>
+            <CardTitle className="text-lg flex items-center gap-2">
+              <Heart className="h-5 w-5 text-pink-600" />
+              Patient Communication Insights
+              <Badge variant="default" className="bg-pink-600">
+                Deep Analysis
+              </Badge>
+            </CardTitle>
+            <p className="text-sm text-muted-foreground mt-2">
+              Understanding patient concerns, emotions, and barriers to care
+            </p>
+          </CardHeader>
+          <CardContent>
             <div className="text-sm leading-relaxed whitespace-pre-wrap bg-white dark:bg-gray-900 p-4 rounded-md border">
-              {researchData}
+              {patientInsights}
             </div>
           </CardContent>
         </Card>
