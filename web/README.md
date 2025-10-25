@@ -1,73 +1,130 @@
-# Welcome to your Lovable project
+# Serona Web - Medical Assistant
 
-## Project info
+Next.js web application for recording and transcribing patient discussions with Deepgram AI.
 
-**URL**: https://lovable.dev/projects/4a4708db-0ad8-4464-b778-4c2968206ce6
+## Features
 
-## How can I edit this code?
+- **Audio Recording**: Browser-based audio recording using MediaRecorder API
+- **AI Transcription**: Automatic transcription with Deepgram Nova-2 model
+- **Session Management**: Track and verify patient discussion sessions
+- **Insights Dashboard**: Analytics and visualizations of patient data
+- **Modern UI**: Built with Next.js 15, React 19, and ShadCN UI components
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS + ShadCN UI
+- **State Management**: React Query (@tanstack/react-query)
+- **Transcription**: Deepgram API
+- **Icons**: Lucide React
+- **Charts**: Recharts
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/4a4708db-0ad8-4464-b778-4c2968206ce6) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js 18+
+- Deepgram API key
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-Follow these steps:
+2. **Configure environment variables:**
+   ```bash
+   cp .env.local.example .env.local
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+   Edit `.env.local` and add your Deepgram API key:
+   ```
+   DEEPGRAM_API_KEY=your_api_key_here
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+4. **Open your browser:**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+## Project Structure
+
+```
+web/
+├── app/
+│   ├── api/
+│   │   └── transcribe/
+│   │       └── route.ts        # Deepgram API endpoint
+│   ├── layout.tsx              # Root layout
+│   ├── page.tsx                # Home page
+│   └── globals.css             # Global styles
+├── components/
+│   ├── providers/
+│   │   └── query-provider.tsx  # React Query provider
+│   ├── ui/                     # ShadCN UI components
+│   ├── RecordingButton.tsx     # Audio recording component
+│   ├── SessionDashboard.tsx    # Session management
+│   ├── Dashboard.tsx           # Analytics dashboard
+│   └── NextSteps.tsx           # Recommendations
+├── lib/
+│   └── utils.ts                # Utility functions
+└── public/                     # Static assets
 ```
 
-**Edit a file directly in GitHub**
+## Key Components
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### RecordingButton
+Uses the Web MediaRecorder API to capture audio, then sends it to the Deepgram API via the Next.js API route for transcription.
 
-**Use GitHub Codespaces**
+### API Route (/api/transcribe)
+Server-side endpoint that securely handles Deepgram API calls, keeping your API key safe.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Session Dashboard
+Displays recorded sessions with transcriptions, allows verification and management of patient discussions.
 
-## What technologies are used for this project?
+## Browser Support
 
-This project is built with:
+The MediaRecorder API requires:
+- Modern browsers (Chrome, Firefox, Edge, Safari)
+- HTTPS or localhost (for microphone access)
+- User permission for microphone access
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Environment Variables
 
-## How can I deploy this project?
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `DEEPGRAM_API_KEY` | Your Deepgram API key | Yes |
 
-Simply open [Lovable](https://lovable.dev/projects/4a4708db-0ad8-4464-b778-4c2968206ce6) and click on Share -> Publish.
+## Build for Production
 
-## Can I connect a custom domain to my Lovable project?
+```bash
+npm run build
+npm start
+```
 
-Yes, you can!
+## Development
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```bash
+npm run dev       # Start dev server
+npm run lint      # Run ESLint
+npm run build     # Build for production
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Migration from Vite
+
+This app was migrated from Vite + React to Next.js 15:
+
+- Replaced React Router with Next.js App Router
+- Converted client components to use `'use client'` directive
+- Moved Deepgram API calls to server-side API routes
+- Updated build configuration and dependencies
+- Preserved all ShadCN UI components and styling
+
+## License
+
+Private - All rights reserved
