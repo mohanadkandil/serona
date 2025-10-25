@@ -158,6 +158,9 @@ Provide a structured, clear analysis that's helpful for medical record keeping.`
         response,
         classification,
         ...(researchId && { researchId }),
-        ...(researchData && { researchIncluded: true }),
+        ...(researchData && {
+          researchIncluded: true,
+          researchData: researchData
+        }),
       });
 }

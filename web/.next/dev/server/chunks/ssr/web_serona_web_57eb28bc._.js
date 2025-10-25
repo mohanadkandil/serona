@@ -144,6 +144,75 @@ const CardFooter = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f
 CardFooter.displayName = "CardFooter";
 ;
 }),
+"[project]/web/serona/web/components/ui/badge.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Badge",
+    ()=>Badge,
+    "badgeVariants",
+    ()=>badgeVariants
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/web/serona/web/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$class$2d$variance$2d$authority$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/web/serona/web/node_modules/class-variance-authority/dist/index.mjs [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/web/serona/web/lib/utils.ts [app-ssr] (ecmascript)");
+;
+;
+;
+const badgeVariants = (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$class$2d$variance$2d$authority$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cva"])("inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2", {
+    variants: {
+        variant: {
+            default: "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
+            secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+            destructive: "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
+            outline: "text-foreground"
+        }
+    },
+    defaultVariants: {
+        variant: "default"
+    }
+});
+function Badge({ className, variant, ...props }) {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])(badgeVariants({
+            variant
+        }), className),
+        ...props
+    }, void 0, false, {
+        fileName: "[project]/web/serona/web/components/ui/badge.tsx",
+        lineNumber: 26,
+        columnNumber: 10
+    }, this);
+}
+;
+}),
+"[project]/web/serona/web/components/ui/textarea.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Textarea",
+    ()=>Textarea
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/web/serona/web/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/web/serona/web/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/web/serona/web/lib/utils.ts [app-ssr] (ecmascript)");
+;
+;
+;
+const Textarea = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](({ className, ...props }, ref)=>{
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
+        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])("flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50", className),
+        ref: ref,
+        ...props
+    }, void 0, false, {
+        fileName: "[project]/web/serona/web/components/ui/textarea.tsx",
+        lineNumber: 9,
+        columnNumber: 5
+    }, ("TURBOPACK compile-time value", void 0));
+});
+Textarea.displayName = "Textarea";
+;
+}),
 "[project]/web/serona/web/components/RecordingButton.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
@@ -157,10 +226,16 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$comp
 var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$mic$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Mic$3e$__ = __turbopack_context__.i("[project]/web/serona/web/node_modules/lucide-react/dist/esm/icons/mic.js [app-ssr] (ecmascript) <export default as Mic>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$square$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Square$3e$__ = __turbopack_context__.i("[project]/web/serona/web/node_modules/lucide-react/dist/esm/icons/square.js [app-ssr] (ecmascript) <export default as Square>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__ = __turbopack_context__.i("[project]/web/serona/web/node_modules/lucide-react/dist/esm/icons/sparkles.js [app-ssr] (ecmascript) <export default as Sparkles>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$flask$2d$conical$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FlaskConical$3e$__ = __turbopack_context__.i("[project]/web/serona/web/node_modules/lucide-react/dist/esm/icons/flask-conical.js [app-ssr] (ecmascript) <export default as FlaskConical>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$text$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileText$3e$__ = __turbopack_context__.i("[project]/web/serona/web/node_modules/lucide-react/dist/esm/icons/file-text.js [app-ssr] (ecmascript) <export default as FileText>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/web/serona/web/lib/utils.ts [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/web/serona/web/node_modules/sonner/dist/index.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/web/serona/web/components/ui/card.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/web/serona/web/components/ui/badge.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/web/serona/web/components/ui/textarea.tsx [app-ssr] (ecmascript)");
 "use client";
+;
+;
 ;
 ;
 ;
@@ -176,6 +251,9 @@ const RecordingButton = ({ onRecordingComplete })=>{
     const [isAnalyzing, setIsAnalyzing] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [classification, setClassification] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [researchIncluded, setResearchIncluded] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [researchData, setResearchData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
+    const [manualMode, setManualMode] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [manualText, setManualText] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     const mediaRecorderRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
     const chunksRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])([]);
     const timerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
@@ -186,6 +264,7 @@ const RecordingButton = ({ onRecordingComplete })=>{
             setAiAnalysis("");
             setClassification(null);
             setResearchIncluded(false);
+            setResearchData("");
             const stream = await navigator.mediaDevices.getUserMedia({
                 audio: true
             });
@@ -262,6 +341,7 @@ const RecordingButton = ({ onRecordingComplete })=>{
                             setAiAnalysis(data.response);
                             setClassification(data.classification);
                             setResearchIncluded(data.researchIncluded || false);
+                            setResearchData(data.researchData || "");
                             setIsAnalyzing(false);
                             if (data.researchIncluded) {
                                 __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].success("AI analysis complete with research insights!");
@@ -305,6 +385,51 @@ const RecordingButton = ({ onRecordingComplete })=>{
             __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].success("Recording stopped");
         }
     };
+    const processManualText = async ()=>{
+        if (!manualText.trim()) {
+            __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].error("Please enter some text");
+            return;
+        }
+        try {
+            setTranscription(manualText);
+            onRecordingComplete(manualText);
+            __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].success("Processing manual transcription...");
+            // Step 2: Analyze with AI
+            setIsAnalyzing(true);
+            const aiResponse = await fetch("/api/agent/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    transcription: manualText
+                })
+            });
+            if (!aiResponse.ok) {
+                const errorData = await aiResponse.json().catch(()=>({
+                        error: "Unknown error"
+                    }));
+                console.error("AI API Error:", errorData);
+                throw new Error(errorData.error || "Failed to analyze transcription");
+            }
+            const data = await aiResponse.json();
+            console.log("🚀 AI analysis received:", data);
+            setAiAnalysis(data.response);
+            setClassification(data.classification);
+            setResearchIncluded(data.researchIncluded || false);
+            setResearchData(data.researchData || "");
+            setIsAnalyzing(false);
+            if (data.researchIncluded) {
+                __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].success("AI analysis complete with research insights!");
+            } else {
+                __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].success("AI analysis complete!");
+            }
+        } catch (error) {
+            console.error("Error processing manual text:", error);
+            __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$sonner$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["toast"].error(error instanceof Error ? error.message : "Failed to process text");
+            setIsAnalyzing(false);
+        }
+    };
     const formatDuration = (seconds)=>{
         const mins = Math.floor(seconds / 60);
         const secs = seconds % 60;
@@ -314,6 +439,53 @@ const RecordingButton = ({ onRecordingComplete })=>{
         className: "space-y-6",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "flex justify-center gap-2",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
+                        variant: !manualMode ? "default" : "outline",
+                        size: "sm",
+                        onClick: ()=>setManualMode(false),
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$mic$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Mic$3e$__["Mic"], {
+                                className: "h-4 w-4 mr-2"
+                            }, void 0, false, {
+                                fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                lineNumber: 263,
+                                columnNumber: 11
+                            }, ("TURBOPACK compile-time value", void 0)),
+                            "Record Audio"
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                        lineNumber: 258,
+                        columnNumber: 9
+                    }, ("TURBOPACK compile-time value", void 0)),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
+                        variant: manualMode ? "default" : "outline",
+                        size: "sm",
+                        onClick: ()=>setManualMode(true),
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$text$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FileText$3e$__["FileText"], {
+                                className: "h-4 w-4 mr-2"
+                            }, void 0, false, {
+                                fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                lineNumber: 271,
+                                columnNumber: 11
+                            }, ("TURBOPACK compile-time value", void 0)),
+                            "Manual Text"
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                        lineNumber: 266,
+                        columnNumber: 9
+                    }, ("TURBOPACK compile-time value", void 0))
+                ]
+            }, void 0, true, {
+                fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                lineNumber: 257,
+                columnNumber: 7
+            }, ("TURBOPACK compile-time value", void 0)),
+            !manualMode ? /* Audio Recording Mode */ /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex flex-col items-center justify-center gap-6",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -325,41 +497,93 @@ const RecordingButton = ({ onRecordingComplete })=>{
                             className: "h-12 w-12 text-primary-foreground"
                         }, void 0, false, {
                             fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                            lineNumber: 210,
-                            columnNumber: 13
+                            lineNumber: 291,
+                            columnNumber: 15
                         }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$mic$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Mic$3e$__["Mic"], {
                             className: "h-12 w-12 text-primary-foreground"
                         }, void 0, false, {
                             fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                            lineNumber: 212,
-                            columnNumber: 13
+                            lineNumber: 293,
+                            columnNumber: 15
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                        lineNumber: 198,
-                        columnNumber: 9
+                        lineNumber: 279,
+                        columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)),
                     isRecording && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "text-2xl font-semibold text-foreground animate-in fade-in",
                         children: formatDuration(duration)
                     }, void 0, false, {
                         fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                        lineNumber: 217,
-                        columnNumber: 11
+                        lineNumber: 298,
+                        columnNumber: 13
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "text-muted-foreground text-center max-w-md",
                         children: isRecording ? "Recording in progress... Click the button to stop" : isAnalyzing ? "Analyzing with AI..." : "Click the microphone to start recording the patient discussion"
                     }, void 0, false, {
                         fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                        lineNumber: 222,
-                        columnNumber: 9
+                        lineNumber: 303,
+                        columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                lineNumber: 197,
-                columnNumber: 7
+                lineNumber: 278,
+                columnNumber: 9
+            }, ("TURBOPACK compile-time value", void 0)) : /* Manual Text Mode */ /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "flex flex-col gap-4 max-w-2xl mx-auto",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Textarea"], {
+                        placeholder: "Paste your medical transcription here...",
+                        value: manualText,
+                        onChange: (e)=>setManualText(e.target.value),
+                        rows: 10,
+                        className: "resize-none",
+                        disabled: isAnalyzing
+                    }, void 0, false, {
+                        fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                        lineNumber: 314,
+                        columnNumber: 11
+                    }, ("TURBOPACK compile-time value", void 0)),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
+                        onClick: processManualText,
+                        disabled: isAnalyzing || !manualText.trim(),
+                        className: "w-full",
+                        children: isAnalyzing ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent mr-2"
+                                }, void 0, false, {
+                                    fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                    lineNumber: 329,
+                                    columnNumber: 17
+                                }, ("TURBOPACK compile-time value", void 0)),
+                                "Analyzing..."
+                            ]
+                        }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"], {
+                                    className: "h-4 w-4 mr-2"
+                                }, void 0, false, {
+                                    fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                    lineNumber: 334,
+                                    columnNumber: 17
+                                }, ("TURBOPACK compile-time value", void 0)),
+                                "Analyze Transcription"
+                            ]
+                        }, void 0, true)
+                    }, void 0, false, {
+                        fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                        lineNumber: 322,
+                        columnNumber: 11
+                    }, ("TURBOPACK compile-time value", void 0))
+                ]
+            }, void 0, true, {
+                fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                lineNumber: 313,
+                columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0)),
             transcription && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
                 className: "border-primary/20 bg-card",
@@ -372,19 +596,19 @@ const RecordingButton = ({ onRecordingComplete })=>{
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                                    lineNumber: 236,
+                                    lineNumber: 347,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 "Transcription"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                            lineNumber: 235,
+                            lineNumber: 346,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                        lineNumber: 234,
+                        lineNumber: 345,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -393,52 +617,189 @@ const RecordingButton = ({ onRecordingComplete })=>{
                             children: transcription
                         }, void 0, false, {
                             fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                            lineNumber: 241,
+                            lineNumber: 352,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                        lineNumber: 240,
+                        lineNumber: 351,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                lineNumber: 233,
+                lineNumber: 344,
+                columnNumber: 9
+            }, ("TURBOPACK compile-time value", void 0)),
+            researchData && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
+                className: "border-green-600/20 bg-green-50/50 dark:bg-green-950/20",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardHeader"], {
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardTitle"], {
+                                className: "text-lg flex items-center gap-2",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$flask$2d$conical$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FlaskConical$3e$__["FlaskConical"], {
+                                        className: "h-5 w-5 text-green-600"
+                                    }, void 0, false, {
+                                        fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                        lineNumber: 364,
+                                        columnNumber: 15
+                                    }, ("TURBOPACK compile-time value", void 0)),
+                                    "Exa Research Findings",
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
+                                        variant: "default",
+                                        className: "bg-green-600",
+                                        children: "Evidence-Based"
+                                    }, void 0, false, {
+                                        fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                        lineNumber: 366,
+                                        columnNumber: 15
+                                    }, ("TURBOPACK compile-time value", void 0))
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                lineNumber: 363,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0)),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-sm text-muted-foreground mt-2",
+                                children: "Latest medical literature and clinical guidelines from web research"
+                            }, void 0, false, {
+                                fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                lineNumber: 370,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0))
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                        lineNumber: 362,
+                        columnNumber: 11
+                    }, ("TURBOPACK compile-time value", void 0)),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "text-sm leading-relaxed whitespace-pre-wrap bg-white dark:bg-gray-900 p-4 rounded-md border",
+                            children: researchData
+                        }, void 0, false, {
+                            fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                            lineNumber: 375,
+                            columnNumber: 13
+                        }, ("TURBOPACK compile-time value", void 0))
+                    }, void 0, false, {
+                        fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                        lineNumber: 374,
+                        columnNumber: 11
+                    }, ("TURBOPACK compile-time value", void 0))
+                ]
+            }, void 0, true, {
+                fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                lineNumber: 361,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0)),
             (aiAnalysis || isAnalyzing) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
                 className: "border-primary/20 bg-primary/5",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardHeader"], {
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardTitle"], {
-                            className: "text-lg flex items-center gap-2",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"], {
-                                    className: "h-5 w-5 text-primary"
-                                }, void 0, false, {
-                                    fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                                    lineNumber: 253,
-                                    columnNumber: 15
-                                }, ("TURBOPACK compile-time value", void 0)),
-                                "AI Medical Analysis",
-                                isAnalyzing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "text-sm font-normal text-muted-foreground",
-                                    children: "(Analyzing...)"
-                                }, void 0, false, {
-                                    fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                                    lineNumber: 256,
-                                    columnNumber: 17
-                                }, ("TURBOPACK compile-time value", void 0))
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                            lineNumber: 252,
-                            columnNumber: 13
-                        }, ("TURBOPACK compile-time value", void 0))
-                    }, void 0, false, {
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex items-center justify-between",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardTitle"], {
+                                        className: "text-lg flex items-center gap-2",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"], {
+                                                className: "h-5 w-5 text-primary"
+                                            }, void 0, false, {
+                                                fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                                lineNumber: 388,
+                                                columnNumber: 17
+                                            }, ("TURBOPACK compile-time value", void 0)),
+                                            "AI Medical Analysis",
+                                            isAnalyzing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-sm font-normal text-muted-foreground",
+                                                children: "(Analyzing...)"
+                                            }, void 0, false, {
+                                                fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                                lineNumber: 391,
+                                                columnNumber: 19
+                                            }, ("TURBOPACK compile-time value", void 0))
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                        lineNumber: 387,
+                                        columnNumber: 15
+                                    }, ("TURBOPACK compile-time value", void 0)),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex gap-2",
+                                        children: [
+                                            classification && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
+                                                variant: classification.type === 'RESEARCH_AGENT' ? 'default' : 'secondary',
+                                                children: classification.type === 'RESEARCH_AGENT' ? 'Research Mode' : 'Normal Mode'
+                                            }, void 0, false, {
+                                                fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                                lineNumber: 398,
+                                                columnNumber: 19
+                                            }, ("TURBOPACK compile-time value", void 0)),
+                                            classification && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
+                                                variant: classification.complexity === 'complex' ? 'destructive' : 'outline',
+                                                children: classification.complexity
+                                            }, void 0, false, {
+                                                fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                                lineNumber: 403,
+                                                columnNumber: 19
+                                            }, ("TURBOPACK compile-time value", void 0)),
+                                            researchIncluded && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
+                                                variant: "default",
+                                                className: "bg-green-600",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$flask$2d$conical$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FlaskConical$3e$__["FlaskConical"], {
+                                                        className: "h-3 w-3 mr-1"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                                        lineNumber: 409,
+                                                        columnNumber: 21
+                                                    }, ("TURBOPACK compile-time value", void 0)),
+                                                    "Research Included"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                                lineNumber: 408,
+                                                columnNumber: 19
+                                            }, ("TURBOPACK compile-time value", void 0))
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                        lineNumber: 396,
+                                        columnNumber: 15
+                                    }, ("TURBOPACK compile-time value", void 0))
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                lineNumber: 386,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0)),
+                            classification?.reasoning && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-sm text-muted-foreground mt-2",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                        children: "Classification:"
+                                    }, void 0, false, {
+                                        fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                        lineNumber: 417,
+                                        columnNumber: 17
+                                    }, ("TURBOPACK compile-time value", void 0)),
+                                    " ",
+                                    classification.reasoning
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
+                                lineNumber: 416,
+                                columnNumber: 15
+                            }, ("TURBOPACK compile-time value", void 0))
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                        lineNumber: 251,
+                        lineNumber: 385,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -447,7 +808,7 @@ const RecordingButton = ({ onRecordingComplete })=>{
                             children: aiAnalysis
                         }, void 0, false, {
                             fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                            lineNumber: 264,
+                            lineNumber: 423,
                             columnNumber: 15
                         }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "flex items-center gap-2 text-muted-foreground",
@@ -456,110 +817,41 @@ const RecordingButton = ({ onRecordingComplete })=>{
                                     className: "h-4 w-4 animate-spin rounded-full border-2 border-primary border-t-transparent"
                                 }, void 0, false, {
                                     fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                                    lineNumber: 269,
+                                    lineNumber: 428,
                                     columnNumber: 17
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    children: "AI is analyzing the transcription..."
+                                    children: classification?.type === 'RESEARCH_AGENT' ? 'AI is researching and analyzing the transcription...' : 'AI is analyzing the transcription...'
                                 }, void 0, false, {
                                     fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                                    lineNumber: 270,
+                                    lineNumber: 429,
                                     columnNumber: 17
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                            lineNumber: 268,
+                            lineNumber: 427,
                             columnNumber: 15
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                        lineNumber: 262,
+                        lineNumber: 421,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-                lineNumber: 250,
+                lineNumber: 384,
                 columnNumber: 9
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/web/serona/web/components/RecordingButton.tsx",
-        lineNumber: 196,
+        lineNumber: 255,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
 const __TURBOPACK__default__export__ = RecordingButton;
-}),
-"[project]/web/serona/web/components/ui/badge.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
-
-__turbopack_context__.s([
-    "Badge",
-    ()=>Badge,
-    "badgeVariants",
-    ()=>badgeVariants
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/web/serona/web/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$class$2d$variance$2d$authority$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/web/serona/web/node_modules/class-variance-authority/dist/index.mjs [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/web/serona/web/lib/utils.ts [app-ssr] (ecmascript)");
-;
-;
-;
-const badgeVariants = (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$class$2d$variance$2d$authority$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cva"])("inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2", {
-    variants: {
-        variant: {
-            default: "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
-            secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
-            destructive: "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
-            outline: "text-foreground"
-        }
-    },
-    defaultVariants: {
-        variant: "default"
-    }
-});
-function Badge({ className, variant, ...props }) {
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])(badgeVariants({
-            variant
-        }), className),
-        ...props
-    }, void 0, false, {
-        fileName: "[project]/web/serona/web/components/ui/badge.tsx",
-        lineNumber: 26,
-        columnNumber: 10
-    }, this);
-}
-;
-}),
-"[project]/web/serona/web/components/ui/textarea.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
-
-__turbopack_context__.s([
-    "Textarea",
-    ()=>Textarea
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/web/serona/web/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/web/serona/web/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/web/serona/web/lib/utils.ts [app-ssr] (ecmascript)");
-;
-;
-;
-const Textarea = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](({ className, ...props }, ref)=>{
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
-        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$web$2f$serona$2f$web$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])("flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50", className),
-        ref: ref,
-        ...props
-    }, void 0, false, {
-        fileName: "[project]/web/serona/web/components/ui/textarea.tsx",
-        lineNumber: 9,
-        columnNumber: 5
-    }, ("TURBOPACK compile-time value", void 0));
-});
-Textarea.displayName = "Textarea";
-;
 }),
 "[project]/web/serona/web/components/SessionDashboard.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
@@ -2694,4 +2986,4 @@ function Home() {
 }),
 ];
 
-//# sourceMappingURL=web_serona_web_cd0875f3._.js.map
+//# sourceMappingURL=web_serona_web_57eb28bc._.js.map

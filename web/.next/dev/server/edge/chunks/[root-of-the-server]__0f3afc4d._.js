@@ -65,7 +65,7 @@ Guidelines:
     // Step 2: If RESEARCH_AGENT, create Exa research task
     let researchId = null;
     let researchData = null;
-    if (classification.type === 'NORMAL') {
+    if (classification.type === 'RESEARCH_AGENT') {
         console.log("🔬 Creating Exa research task for complex medical case...");
         const exaApiKey = process.env.EXA_API_KEY;
         if (!exaApiKey) {
@@ -166,7 +166,8 @@ Provide a structured, clear analysis that's helpful for medical record keeping.`
             researchId
         },
         ...researchData && {
-            researchIncluded: true
+            researchIncluded: true,
+            researchData: researchData
         }
     });
 }
