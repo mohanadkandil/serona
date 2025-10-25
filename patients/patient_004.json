@@ -1,0 +1,327 @@
+{
+  "patient_id": "P-2024-004",
+  "personal_info": {
+    "first_name": "Helga",
+    "last_name": "Schmidt",
+    "date_of_birth": "1955-04-03",
+    "gender": "female",
+    "insurance_type": "gesetzlich",
+    "insurance_provider": "DAK Gesundheit"
+  },
+  
+  "appointments": [
+    {
+      "appointment_id": "APT-001",
+      "date": "2023-07-10",
+      "time": "09:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Praxis Dr. Weber",
+        "address": "Leopoldstraße 88, 80802 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin"
+      },
+      "chief_complaint": "Progressive lower back pain with leg weakness and walking difficulty for 6 months",
+      "clinical_notes": {
+        "subjective": "68-year-old patient reports gradual onset of lower back pain over 6 months. Pain 7/10, constant, worse with walking. Can only walk 100 meters before leg weakness and numbness force her to stop. Legs feel heavy and weak. Pain improves with sitting and bending forward. No trauma.",
+        "objective": "Antalgic gait. Positive Romberg test. Reduced sensation in both feet. Weakness in ankle dorsiflexion bilaterally 4/5. Hyperreflexia in both legs. Positive Babinski sign bilaterally. No saddle anesthesia.",
+        "assessment": "Lumbar spinal stenosis with neurogenic claudication",
+        "plan": "Urgent referral to neurosurgeon. Order lumbar MRI. Consider surgical intervention given severity of symptoms."
+      },
+      "diagnosis_codes": ["M48.06", "M54.16"],
+      "prescriptions": [
+        {
+          "medication": "Pregabalin",
+          "dosage": "150mg",
+          "frequency": "2x daily",
+          "duration": "30 days"
+        },
+        {
+          "medication": "Diclofenac",
+          "dosage": "75mg",
+          "frequency": "2x daily",
+          "duration": "21 days"
+        }
+      ],
+      "referral_to": "Prof. Dr. Wagner - Neurochirurgie (urgent)",
+      "referred_from": null
+    },
+    
+    {
+      "appointment_id": "APT-002",
+      "date": "2023-07-12",
+      "time": "10:30",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Chirurgie München",
+        "address": "Maximilianstraße 15, 80539 München",
+        "type": "hospital"
+      },
+      "doctor": {
+        "doctor_id": "DOC-007",
+        "name": "Prof. Dr. med. Stefan Wagner",
+        "specialty": "Neurochirurgie"
+      },
+      "chief_complaint": "Urgent referral for lumbar spinal stenosis with neurogenic claudication",
+      "clinical_notes": {
+        "subjective": "6-month history of progressive lower back pain with severe walking limitation. Patient can only walk 100 meters before leg weakness forces her to stop. Legs feel heavy and weak. Pain improves with sitting and forward bending. Significantly impacts daily activities.",
+        "objective": "Severe antalgic gait. Positive Romberg test. Reduced sensation in both feet. Weakness in ankle dorsiflexion bilaterally 4/5. Hyperreflexia in both legs. Positive Babinski sign bilaterally. No saddle anesthesia or bowel/bladder dysfunction.",
+        "assessment": "Severe lumbar spinal stenosis with neurogenic claudication and myelopathic signs",
+        "plan": "Urgent lumbar MRI to confirm diagnosis and assess severity. Consider surgical decompression if significant stenosis confirmed. This is a surgical emergency given myelopathic signs."
+      },
+      "diagnosis_codes": ["M48.06", "M54.16", "G95.2"],
+      "prescriptions": [
+        {
+          "medication": "Pregabalin",
+          "dosage": "225mg",
+          "frequency": "2x daily",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Radiologie am Sendlinger Tor - urgent lumbar MRI",
+      "referred_from": "Dr. med. Andreas Weber"
+    },
+
+    {
+      "appointment_id": "APT-003",
+      "date": "2023-07-12",
+      "time": "15:30",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Radiologie am Sendlinger Tor",
+        "address": "Sendlinger Straße 45, 80331 München",
+        "type": "imaging_center"
+      },
+      "doctor": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie"
+      },
+      "chief_complaint": "Urgent MRI for lumbar spinal stenosis",
+      "clinical_notes": {
+        "subjective": "MRI performed urgently for suspected lumbar spinal stenosis with myelopathic signs.",
+        "objective": "MRI shows severe central canal stenosis at L3-L4 and L4-L5 with significant spinal cord compression. Facet joint hypertrophy and ligamentum flavum hypertrophy contributing to stenosis.",
+        "assessment": "Severe lumbar spinal stenosis with spinal cord compression",
+        "plan": "Urgent surgical decompression required. Conservative treatment not appropriate given severity of stenosis and myelopathic signs."
+      },
+      "diagnosis_codes": ["M48.06"],
+      "prescriptions": [],
+      "referral_to": "Prof. Dr. Wagner - urgent surgical consultation",
+      "referred_from": "Prof. Dr. med. Stefan Wagner"
+    },
+
+    {
+      "appointment_id": "APT-004",
+      "date": "2023-07-15",
+      "time": "08:30",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Chirurgie München",
+        "address": "Maximilianstraße 15, 80539 München",
+        "type": "hospital"
+      },
+      "doctor": {
+        "doctor_id": "DOC-007",
+        "name": "Prof. Dr. med. Stefan Wagner",
+        "specialty": "Neurochirurgie"
+      },
+      "chief_complaint": "MRI results review and surgical planning",
+      "clinical_notes": {
+        "subjective": "Patient reports continued severe walking limitation. Can only walk 50 meters now. Leg weakness worsening. Pain constant 8/10.",
+        "objective": "MRI confirms severe central canal stenosis at L3-L4 and L4-L5 with spinal cord compression. Myelopathic signs present. No improvement with conservative treatment.",
+        "assessment": "Severe lumbar spinal stenosis requiring urgent surgical decompression",
+        "plan": "Recommend L3-L5 laminectomy with decompression. Surgery scheduled for next week. Pre-operative evaluation completed. Patient understands risks and benefits."
+      },
+      "diagnosis_codes": ["M48.06", "G95.2"],
+      "prescriptions": [
+        {
+          "medication": "Morphine",
+          "dosage": "10mg",
+          "frequency": "4x daily",
+          "duration": "7 days"
+        }
+      ],
+      "referral_to": null,
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-005",
+      "date": "2023-07-22",
+      "time": "07:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Chirurgie München",
+        "address": "Maximilianstraße 15, 80539 München",
+        "type": "hospital"
+      },
+      "doctor": {
+        "doctor_id": "DOC-007",
+        "name": "Prof. Dr. med. Stefan Wagner",
+        "specialty": "Neurochirurgie"
+      },
+      "chief_complaint": "L3-L5 laminectomy for spinal stenosis",
+      "clinical_notes": {
+        "subjective": "Pre-operative assessment for planned laminectomy. Patient understands procedure and risks.",
+        "objective": "L3-L5 laminectomy with decompression performed successfully. Spinal cord decompressed. No complications during surgery.",
+        "assessment": "Successful surgical decompression",
+        "plan": "Post-operative care. Gradual mobilization. Physical therapy to begin in 2 weeks. Follow-up in 2 weeks."
+      },
+      "diagnosis_codes": ["M48.06"],
+      "prescriptions": [
+        {
+          "medication": "Morphine",
+          "dosage": "15mg",
+          "frequency": "4x daily",
+          "duration": "5 days"
+        },
+        {
+          "medication": "Ibuprofen",
+          "dosage": "600mg",
+          "frequency": "3x daily",
+          "duration": "14 days"
+        }
+      ],
+      "referral_to": null,
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-006",
+      "date": "2023-08-05",
+      "time": "11:00",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Chirurgie München",
+        "address": "Maximilianstraße 15, 80539 München",
+        "type": "hospital"
+      },
+      "doctor": {
+        "doctor_id": "DOC-007",
+        "name": "Prof. Dr. med. Stefan Wagner",
+        "specialty": "Neurochirurgie"
+      },
+      "chief_complaint": "2-week post-operative follow-up",
+      "clinical_notes": {
+        "subjective": "Patient reports dramatic improvement. Can now walk 500 meters without stopping. Leg weakness much improved. Back pain reduced to 3/10. Very satisfied with surgery.",
+        "objective": "Surgical wound healing well. Neurological examination shows significant improvement. Walking distance increased. No myelopathic signs. Reflexes normalizing.",
+        "assessment": "Excellent post-operative recovery",
+        "plan": "Continue gradual mobilization. Start physical therapy next week. Return to normal activities in 6 weeks. Follow-up in 6 weeks."
+      },
+      "diagnosis_codes": ["M48.06"],
+      "prescriptions": [
+        {
+          "medication": "Ibuprofen",
+          "dosage": "400mg",
+          "frequency": "3x daily",
+          "duration": "14 days"
+        }
+      ],
+      "referral_to": "Physiotherapie Schwabing - post-surgical rehabilitation",
+      "referred_from": null
+    }
+  ],
+  
+  "scans": [
+    {
+      "scan_id": "SCAN-001",
+      "date": "2023-07-12",
+      "time": "15:30",
+      "scan_type": "MRI",
+      "body_region": "Lumbar Spine (L1-S1)",
+      "facility": {
+        "name": "Radiologie am Sendlinger Tor",
+        "address": "Sendlinger Straße 45, 80331 München",
+        "type": "imaging_center"
+      },
+      "radiologist": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie"
+      },
+      "modality": "MRI 3.0 Tesla",
+      "sequences": ["T1-weighted", "T2-weighted", "STIR sagittal and axial"],
+      "contrast": false,
+      "indication": "Severe lumbar spinal stenosis with neurogenic claudication and myelopathic signs. Rule out spinal cord compression.",
+      "technique": "Multi-sequence MRI of lumbar spine performed without intravenous contrast.",
+      "findings": [
+        "Severe central canal stenosis at L3-L4 and L4-L5",
+        "Significant spinal cord compression at both levels",
+        "Facet joint hypertrophy contributing to stenosis",
+        "Ligamentum flavum hypertrophy",
+        "No disc herniations",
+        "Mild degenerative changes throughout lumbar spine",
+        "Paraspinal muscles show moderate atrophy",
+        "No abnormal bone marrow signal"
+      ],
+      "impression": "Severe lumbar spinal stenosis with spinal cord compression at L3-L4 and L4-L5. Surgical decompression required.",
+      "recommendation": "Urgent surgical consultation for laminectomy and decompression. Conservative treatment not appropriate given severity of stenosis.",
+      "file_reference": "/scans/2023/07/P-2024-004_MRI_lumbar_20230712.dcm",
+      "file_size": "252MB",
+      "dicom_series": "1.2.840.113619.2.80.123456789.20230712153045"
+    }
+  ],
+  
+  "doctor_comments": [
+    {
+      "comment_id": "CMT-001",
+      "date": "2023-07-12",
+      "timestamp": "2023-07-12T16:30:00Z",
+      "doctor": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie",
+        "facility": "Radiologie am Sendlinger Tor"
+      },
+      "related_to_appointment": null,
+      "related_to_scan": "SCAN-001",
+      "comment_type": "radiology_report_addendum",
+      "priority": "high",
+      "content": "Urgent MRI findings discussed with Prof. Wagner immediately. Severe lumbar spinal stenosis with spinal cord compression at L3-L4 and L4-L5. This is a surgical emergency given the myelopathic signs and severe stenosis. Conservative treatment is not appropriate. Patient requires urgent surgical decompression to prevent permanent neurological damage. Risk of paralysis if surgery delayed.",
+      "tags": ["spinal_stenosis", "surgical_emergency", "spinal_cord_compression"],
+      "is_critical": true
+    },
+    
+    {
+      "comment_id": "CMT-002",
+      "date": "2023-07-15",
+      "timestamp": "2023-07-15T09:30:00Z",
+      "doctor": {
+        "doctor_id": "DOC-007",
+        "name": "Prof. Dr. med. Stefan Wagner",
+        "specialty": "Neurochirurgie",
+        "facility": "Chirurgie München"
+      },
+      "related_to_appointment": "APT-004",
+      "related_to_scan": "SCAN-001",
+      "comment_type": "surgical_consultation",
+      "priority": "high",
+      "content": "Patient presents with severe lumbar spinal stenosis and myelopathic signs. MRI shows significant spinal cord compression at L3-L4 and L4-L5. Given the severity of symptoms and myelopathic signs, surgical decompression is the only appropriate treatment. Patient is elderly (68) but otherwise healthy. L3-L5 laminectomy planned. This case demonstrates the importance of timely surgical intervention for severe spinal stenosis with myelopathy.",
+      "tags": ["spinal_stenosis", "surgical_consultation", "myelopathy"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-003",
+      "date": "2023-08-05",
+      "timestamp": "2023-08-05T12:00:00Z",
+      "doctor": {
+        "doctor_id": "DOC-007",
+        "name": "Prof. Dr. med. Stefan Wagner",
+        "specialty": "Neurochirurgie",
+        "facility": "Chirurgie München"
+      },
+      "related_to_appointment": "APT-006",
+      "related_to_scan": null,
+      "comment_type": "surgical_notes",
+      "priority": "normal",
+      "content": "Excellent post-operative recovery after L3-L5 laminectomy. Patient's walking distance increased from 100 meters to 500 meters. Leg weakness significantly improved. This case demonstrates the dramatic improvement possible with surgical decompression for severe spinal stenosis. Patient is very satisfied with outcome. Physical therapy will help with further recovery and strengthening.",
+      "tags": ["surgical_success", "laminectomy", "neurological_recovery"],
+      "is_critical": false
+    }
+  ]
+}

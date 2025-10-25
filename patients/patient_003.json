@@ -1,0 +1,320 @@
+{
+  "patient_id": "P-2024-003",
+  "personal_info": {
+    "first_name": "Thomas",
+    "last_name": "Müller",
+    "date_of_birth": "1972-11-08",
+    "gender": "male",
+    "insurance_type": "gesetzlich",
+    "insurance_provider": "Barmer"
+  },
+  
+  "appointments": [
+    {
+      "appointment_id": "APT-001",
+      "date": "2023-08-15",
+      "time": "10:30",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Praxis Dr. Weber",
+        "address": "Leopoldstraße 88, 80802 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin"
+      },
+      "chief_complaint": "Neck pain with left arm numbness and weakness for 3 weeks",
+      "clinical_notes": {
+        "subjective": "Patient reports neck pain 6/10, constant, worse with neck movement. Left arm numbness and tingling, especially in thumb and index finger. Weakness in left hand grip. Pain started after car accident 3 weeks ago. Difficulty sleeping due to pain.",
+        "objective": "Limited cervical ROM. Positive Spurling test on left. Reduced sensation in C6-C7 dermatomes left arm. Weakness in left triceps 4/5. Diminished triceps reflex left. No myelopathic signs.",
+        "assessment": "Cervical radiculopathy, likely C6-C7 disc herniation",
+        "plan": "Referral to neurologist for evaluation. Prescribe NSAIDs and muscle relaxants. Consider cervical MRI if symptoms persist."
+      },
+      "diagnosis_codes": ["M50.20", "M54.2"],
+      "prescriptions": [
+        {
+          "medication": "Ibuprofen",
+          "dosage": "600mg",
+          "frequency": "3x daily",
+          "duration": "14 days"
+        },
+        {
+          "medication": "Methocarbamol",
+          "dosage": "750mg",
+          "frequency": "3x daily",
+          "duration": "10 days"
+        }
+      ],
+      "referral_to": "Dr. med. Christine Müller - Neurologie",
+      "referred_from": null
+    },
+    
+    {
+      "appointment_id": "APT-002",
+      "date": "2023-08-22",
+      "time": "14:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Neurologische Gemeinschaftspraxis Bogenhausen",
+        "address": "Prinzregentenstraße 71, 81675 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-004",
+        "name": "Dr. med. Christine Müller",
+        "specialty": "Neurologie"
+      },
+      "chief_complaint": "Cervical radiculopathy with left arm symptoms",
+      "clinical_notes": {
+        "subjective": "3-week history of neck pain with left arm radiculopathy following car accident. Patient works as office manager, pain affects computer work. Left arm numbness and weakness persistent. No improvement with NSAIDs.",
+        "objective": "Cervical ROM limited in all directions. Positive Spurling test left. Reduced sensation C6-C7 dermatomes. Weakness in left triceps 4/5 and finger extensors 4+/5. Diminished triceps reflex left. No myelopathic signs. Normal cranial nerves.",
+        "assessment": "C6-C7 cervical radiculopathy, likely disc herniation",
+        "plan": "Order cervical MRI to confirm diagnosis. Consider EMG/NCS if MRI inconclusive. Conservative treatment with physical therapy and pain management."
+      },
+      "diagnosis_codes": ["M50.20", "M54.2", "G57.10"],
+      "prescriptions": [
+        {
+          "medication": "Gabapentin",
+          "dosage": "300mg",
+          "frequency": "3x daily",
+          "duration": "30 days"
+        },
+        {
+          "medication": "Diclofenac",
+          "dosage": "75mg",
+          "frequency": "2x daily",
+          "duration": "21 days"
+        }
+      ],
+      "referral_to": "Radiologie am Sendlinger Tor - cervical MRI",
+      "referred_from": "Dr. med. Andreas Weber"
+    },
+
+    {
+      "appointment_id": "APT-003",
+      "date": "2023-08-25",
+      "time": "11:15",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Radiologie am Sendlinger Tor",
+        "address": "Sendlinger Straße 45, 80331 München",
+        "type": "imaging_center"
+      },
+      "doctor": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie"
+      },
+      "chief_complaint": "Cervical MRI for radiculopathy",
+      "clinical_notes": {
+        "subjective": "MRI performed for cervical radiculopathy evaluation.",
+        "objective": "MRI shows C6-C7 disc herniation with moderate left foraminal stenosis and C7 nerve root compression. No spinal cord compression.",
+        "assessment": "C6-C7 disc herniation with C7 radiculopathy",
+        "plan": "Conservative treatment appropriate. Physical therapy recommended. Surgical consultation if symptoms worsen."
+      },
+      "diagnosis_codes": ["M50.20"],
+      "prescriptions": [],
+      "referral_to": "Dr. med. Christine Müller - MRI results",
+      "referred_from": "Dr. med. Christine Müller"
+    },
+
+    {
+      "appointment_id": "APT-004",
+      "date": "2023-09-05",
+      "time": "15:30",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Neurologische Gemeinschaftspraxis Bogenhausen",
+        "address": "Prinzregentenstraße 71, 81675 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-004",
+        "name": "Dr. med. Christine Müller",
+        "specialty": "Neurologie"
+      },
+      "chief_complaint": "MRI results review and treatment plan",
+      "clinical_notes": {
+        "subjective": "Patient reports some improvement with gabapentin. Neck pain reduced to 4/10. Left arm symptoms persist but less severe. Still has weakness in left hand.",
+        "objective": "MRI confirms C6-C7 disc herniation with C7 nerve root compression. Neurological examination shows mild improvement in left arm strength. Reflexes still diminished.",
+        "assessment": "C6-C7 disc herniation with improving C7 radiculopathy",
+        "plan": "Continue conservative treatment. Increase gabapentin to 600mg TID. Refer to physical therapy for cervical traction and exercises. Consider epidural steroid injection if no further improvement in 4 weeks."
+      },
+      "diagnosis_codes": ["M50.20", "G57.10"],
+      "prescriptions": [
+        {
+          "medication": "Gabapentin",
+          "dosage": "600mg",
+          "frequency": "3x daily",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Physiotherapie Schwabing - cervical therapy",
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-005",
+      "date": "2023-09-12",
+      "time": "16:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Physiotherapie Schwabing",
+        "address": "Belgradstraße 22, 80796 München",
+        "type": "therapy_center"
+      },
+      "doctor": {
+        "doctor_id": "DOC-003",
+        "name": "Julia Schneider",
+        "specialty": "Physiotherapie"
+      },
+      "chief_complaint": "Cervical therapy for C6-C7 disc herniation",
+      "clinical_notes": {
+        "subjective": "Patient motivated for therapy. Reports neck pain 4/10, left arm numbness and weakness. Works at computer, pain worse with prolonged sitting.",
+        "objective": "Cervical ROM limited. Poor posture with forward head position. Tight upper trapezius and levator scapulae. Weak deep neck flexors.",
+        "assessment": "Cervical disc herniation with postural dysfunction",
+        "plan": "6-week program: cervical traction, manual therapy, postural correction, deep neck flexor strengthening, nerve gliding exercises. Sessions 2x/week."
+      },
+      "diagnosis_codes": ["M50.20"],
+      "prescriptions": [],
+      "referral_to": null,
+      "referred_from": "Dr. med. Christine Müller"
+    },
+
+    {
+      "appointment_id": "APT-006",
+      "date": "2023-10-10",
+      "time": "14:30",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Neurologische Gemeinschaftspraxis Bogenhausen",
+        "address": "Prinzregentenstraße 71, 81675 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-004",
+        "name": "Dr. med. Christine Müller",
+        "specialty": "Neurologie"
+      },
+      "chief_complaint": "4-week follow-up on cervical radiculopathy",
+      "clinical_notes": {
+        "subjective": "Patient reports good improvement with therapy and medication. Neck pain now 2/10. Left arm numbness much less frequent. Hand strength improving. Able to work normally.",
+        "objective": "Improved cervical ROM. Left arm strength 5/5. Reflexes normalizing. No myelopathic signs.",
+        "assessment": "Significant improvement in C7 radiculopathy",
+        "plan": "Continue current treatment. Taper gabapentin over 2 weeks. Continue physical therapy for 2 more weeks. Follow-up in 6 weeks."
+      },
+      "diagnosis_codes": ["M50.20"],
+      "prescriptions": [
+        {
+          "medication": "Gabapentin",
+          "dosage": "300mg",
+          "frequency": "2x daily for 1 week, then 1x daily for 1 week, then stop",
+          "duration": "14 days"
+        }
+      ],
+      "referral_to": null,
+      "referred_from": null
+    }
+  ],
+  
+  "scans": [
+    {
+      "scan_id": "SCAN-001",
+      "date": "2023-08-25",
+      "time": "11:15",
+      "scan_type": "MRI",
+      "body_region": "Cervical Spine (C1-T1)",
+      "facility": {
+        "name": "Radiologie am Sendlinger Tor",
+        "address": "Sendlinger Straße 45, 80331 München",
+        "type": "imaging_center"
+      },
+      "radiologist": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie"
+      },
+      "modality": "MRI 3.0 Tesla",
+      "sequences": ["T1-weighted", "T2-weighted", "STIR sagittal and axial"],
+      "contrast": false,
+      "indication": "Cervical radiculopathy with left arm symptoms. Rule out disc herniation.",
+      "technique": "Multi-sequence MRI of cervical spine performed without intravenous contrast.",
+      "findings": [
+        "Normal vertebral body height and alignment",
+        "C6-C7: Posterior disc herniation with moderate left foraminal stenosis. Left C7 nerve root compression evident.",
+        "C5-C6: Mild disc desiccation, no significant herniation",
+        "No spinal cord compression",
+        "Facet joints show mild degenerative changes at C6-C7",
+        "Paraspinal muscles show mild spasm",
+        "No abnormal bone marrow signal",
+        "Spinal cord signal normal"
+      ],
+      "impression": "C6-C7 disc herniation with left foraminal stenosis and C7 nerve root compression. No spinal cord compression.",
+      "recommendation": "Conservative treatment appropriate. Physical therapy recommended. Surgical consultation if symptoms worsen or fail to improve.",
+      "file_reference": "/scans/2023/08/P-2024-003_MRI_cervical_20230825.dcm",
+      "file_size": "198MB",
+      "dicom_series": "1.2.840.113619.2.80.123456789.20230825111530"
+    }
+  ],
+  
+  "doctor_comments": [
+    {
+      "comment_id": "CMT-001",
+      "date": "2023-08-25",
+      "timestamp": "2023-08-25T12:00:00Z",
+      "doctor": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie",
+        "facility": "Radiologie am Sendlinger Tor"
+      },
+      "related_to_appointment": null,
+      "related_to_scan": "SCAN-001",
+      "comment_type": "radiology_report_addendum",
+      "priority": "normal",
+      "content": "Cervical MRI shows C6-C7 disc herniation with C7 nerve root compression. This is a moderate herniation without spinal cord compression, making it suitable for conservative treatment. Patient should respond well to physical therapy and medication. No urgent surgical intervention needed. Follow-up imaging in 3-6 months if symptoms persist.",
+      "tags": ["cervical_disc", "nerve_compression", "conservative_treatment"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-002",
+      "date": "2023-09-05",
+      "timestamp": "2023-09-05T16:00:00Z",
+      "doctor": {
+        "doctor_id": "DOC-004",
+        "name": "Dr. med. Christine Müller",
+        "specialty": "Neurologie",
+        "facility": "Neurologische Gemeinschaftspraxis Bogenhausen"
+      },
+      "related_to_appointment": "APT-004",
+      "related_to_scan": "SCAN-001",
+      "comment_type": "treatment_plan",
+      "priority": "normal",
+      "content": "Patient shows good response to initial treatment with gabapentin. MRI confirms C6-C7 disc herniation with C7 radiculopathy. Given the moderate size of herniation and absence of myelopathy, conservative treatment is appropriate. Patient is motivated and compliant. Plan: increase gabapentin dose, physical therapy for cervical traction and postural correction, consider epidural injection if no improvement. This case demonstrates the effectiveness of conservative management for cervical disc herniations without spinal cord compression.",
+      "tags": ["cervical_radiculopathy", "conservative_treatment", "patient_motivation"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-003",
+      "date": "2023-10-10",
+      "timestamp": "2023-10-10T15:00:00Z",
+      "doctor": {
+        "doctor_id": "DOC-004",
+        "name": "Dr. med. Christine Müller",
+        "specialty": "Neurologie",
+        "facility": "Neurologische Gemeinschaftspraxis Bogenhausen"
+      },
+      "related_to_appointment": "APT-006",
+      "related_to_scan": null,
+      "comment_type": "progress_note",
+      "priority": "normal",
+      "content": "Excellent progress after 4 weeks of treatment. Patient's C7 radiculopathy has significantly improved with combination of gabapentin and physical therapy. Neck pain reduced from 6/10 to 2/10. Left arm strength normalized. This case demonstrates the effectiveness of multidisciplinary approach (neurology + physical therapy) for cervical disc herniation. Patient can return to normal activities. Continue monitoring.",
+      "tags": ["treatment_success", "multidisciplinary_approach", "cervical_recovery"],
+      "is_critical": false
+    }
+  ]
+}

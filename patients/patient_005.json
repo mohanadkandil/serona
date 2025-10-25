@@ -1,0 +1,437 @@
+{
+  "patient_id": "P-2024-005",
+  "personal_info": {
+    "first_name": "Klaus",
+    "last_name": "Fischer",
+    "date_of_birth": "1968-12-15",
+    "gender": "male",
+    "insurance_type": "gesetzlich",
+    "insurance_provider": "AOK Bayern"
+  },
+  
+  "appointments": [
+    {
+      "appointment_id": "APT-001",
+      "date": "2023-03-20",
+      "time": "14:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Praxis Dr. Weber",
+        "address": "Leopoldstraße 88, 80802 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin"
+      },
+      "chief_complaint": "Lower back pain with right leg pain for 4 weeks",
+      "clinical_notes": {
+        "subjective": "54-year-old patient reports lower back pain 5/10, constant, with right leg pain. Pain started after lifting heavy furniture. Leg pain intermittent, shooting down right leg. No numbness or weakness. Pain affects sleep and work as carpenter.",
+        "objective": "Limited lumbar flexion. Positive straight leg raise test on right at 50°. No motor weakness. Reflexes intact. BMI 32 (overweight).",
+        "assessment": "Lumbar radiculopathy, likely L4-L5 disc herniation",
+        "plan": "Prescribe NSAIDs and muscle relaxants. Advise rest and heat therapy. Referral to orthopedist if no improvement in 2 weeks."
+      },
+      "diagnosis_codes": ["M54.16", "M54.5"],
+      "prescriptions": [
+        {
+          "medication": "Ibuprofen",
+          "dosage": "600mg",
+          "frequency": "3x daily with food",
+          "duration": "14 days"
+        },
+        {
+          "medication": "Methocarbamol",
+          "dosage": "750mg",
+          "frequency": "3x daily",
+          "duration": "10 days"
+        }
+      ],
+      "referral_to": "Orthopedics - if symptoms persist",
+      "referred_from": null
+    },
+    
+    {
+      "appointment_id": "APT-002",
+      "date": "2023-04-05",
+      "time": "11:30",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Praxis Dr. Weber",
+        "address": "Leopoldstraße 88, 80802 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin"
+      },
+      "chief_complaint": "Follow-up for lower back pain - minimal improvement",
+      "clinical_notes": {
+        "subjective": "Patient reports only slight improvement. Back pain still 4/10. Right leg pain persists, especially with standing and walking. Ibuprofen provides temporary relief only. Unable to return to work as carpenter.",
+        "objective": "Still limited ROM in lumbar spine. Positive SLR right side. No neurological deficits.",
+        "assessment": "Persistent lumbar radiculopathy, inadequate response to conservative treatment",
+        "plan": "Referral to orthopedic specialist. Continue pain management. Consider imaging."
+      },
+      "diagnosis_codes": ["M54.16"],
+      "prescriptions": [
+        {
+          "medication": "Diclofenac",
+          "dosage": "75mg",
+          "frequency": "2x daily",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Dr. Braun - Orthopädie",
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-003",
+      "date": "2023-04-12",
+      "time": "09:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Orthopädische Praxis am Marienplatz",
+        "address": "Marienplatz 15, 80331 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-002",
+        "name": "Dr. med. Michael Braun",
+        "specialty": "Orthopädie und Unfallchirurgie"
+      },
+      "chief_complaint": "Referred for persistent lower back and right leg pain",
+      "clinical_notes": {
+        "subjective": "6-week history of lower back pain with right leg radiculopathy. Conservative treatment with NSAIDs minimally effective. Pain impacts daily activities and work as carpenter. Patient motivated for recovery.",
+        "objective": "Antalgic gait noted. Positive Lasègue sign right at 45°. Reduced sensation L5 dermatome. Motor strength 4+/5 in right foot dorsiflexion. Lumbar paraspinal muscle spasm present.",
+        "assessment": "Clinical presentation consistent with L4-L5 disc herniation with nerve root involvement",
+        "plan": "Order MRI lumbar spine. Consider physiotherapy. Discuss surgical options if imaging confirms significant herniation."
+      },
+      "diagnosis_codes": ["M51.16", "M54.16"],
+      "prescriptions": [],
+      "referral_to": "Radiologie am Sendlinger Tor - MRI lumbar spine",
+      "referred_from": "Dr. med. Andreas Weber"
+    },
+
+    {
+      "appointment_id": "APT-004",
+      "date": "2023-04-19",
+      "time": "10:15",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Orthopädische Praxis am Marienplatz",
+        "address": "Marienplatz 15, 80331 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-002",
+        "name": "Dr. med. Michael Braun",
+        "specialty": "Orthopädie und Unfallchirurgie"
+      },
+      "chief_complaint": "MRI results review",
+      "clinical_notes": {
+        "subjective": "Patient reports continued pain, awaiting MRI results discussion. Concerned about diagnosis and treatment options.",
+        "objective": "MRI shows L4-L5 disc protrusion with moderate right foraminal stenosis and L5 nerve root compression. No signs of cauda equina syndrome.",
+        "assessment": "Confirmed L4-L5 disc herniation with radiculopathy",
+        "plan": "Conservative approach: intensive physiotherapy 3x/week for 6 weeks, continue NSAIDs, add pregabalin for neuropathic pain. Re-evaluate in 6 weeks. Surgery remains option if conservative fails."
+      },
+      "diagnosis_codes": ["M51.16", "M54.16", "M99.53"],
+      "prescriptions": [
+        {
+          "medication": "Pregabalin",
+          "dosage": "75mg",
+          "frequency": "2x daily, increase to 150mg after 1 week",
+          "duration": "30 days"
+        },
+        {
+          "medication": "Diclofenac",
+          "dosage": "75mg",
+          "frequency": "2x daily",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Physiotherapie Schwabing",
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-005",
+      "date": "2023-04-26",
+      "time": "16:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Physiotherapie Schwabing",
+        "address": "Belgradstraße 22, 80796 München",
+        "type": "therapy_center"
+      },
+      "doctor": {
+        "doctor_id": "DOC-003",
+        "name": "Julia Schneider",
+        "specialty": "Physiotherapie"
+      },
+      "chief_complaint": "Initial physiotherapy assessment for L4-L5 disc herniation",
+      "clinical_notes": {
+        "subjective": "Patient motivated for therapy. Reports pain 5-6/10, worse in mornings and after prolonged standing. Currently unable to work as carpenter due to pain.",
+        "objective": "Lumbar ROM: Flexion 35° (limited), Extension 10° (limited). Core strength weak. Poor posture noted. Tight hamstrings bilaterally. Right leg pain with flexion movements.",
+        "assessment": "Lumbar disc herniation with radiculopathy, poor core stability, postural dysfunction",
+        "plan": "6-week program: manual therapy, McKenzie exercises, core strengthening, posture correction, nerve gliding exercises. Sessions 3x/week initially."
+      },
+      "diagnosis_codes": ["M51.16"],
+      "prescriptions": [],
+      "referral_to": null,
+      "referred_from": "Dr. med. Michael Braun"
+    },
+
+    {
+      "appointment_id": "APT-006",
+      "date": "2023-06-14",
+      "time": "10:30",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Orthopädische Praxis am Marienplatz",
+        "address": "Marienplatz 15, 80331 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-002",
+        "name": "Dr. med. Michael Braun",
+        "specialty": "Orthopädie und Unfallchirurgie"
+      },
+      "chief_complaint": "6-week follow-up post physiotherapy initiation",
+      "clinical_notes": {
+        "subjective": "Patient reports minimal improvement with physiotherapy. Pain still 4-5/10. Right leg pain persists. Unable to return to work as carpenter. Very frustrated with lack of progress.",
+        "objective": "Still limited lumbar ROM. Positive SLR right side. No significant improvement in neurological examination. Poor compliance with home exercises.",
+        "assessment": "Inadequate response to conservative treatment. Disc herniation not improving.",
+        "plan": "Consider surgical consultation. Patient frustrated with conservative approach. Discuss microdiscectomy as next step. Continue pain management."
+      },
+      "diagnosis_codes": ["M51.16", "M54.16"],
+      "prescriptions": [
+        {
+          "medication": "Pregabalin",
+          "dosage": "150mg",
+          "frequency": "2x daily",
+          "duration": "30 days"
+        },
+        {
+          "medication": "Tramadol",
+          "dosage": "50mg",
+          "frequency": "3x daily",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Prof. Dr. Wagner - Neurochirurgie (surgical consultation)",
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-007",
+      "date": "2023-06-28",
+      "time": "14:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Chirurgie München",
+        "address": "Maximilianstraße 15, 80539 München",
+        "type": "hospital"
+      },
+      "doctor": {
+        "doctor_id": "DOC-007",
+        "name": "Prof. Dr. med. Stefan Wagner",
+        "specialty": "Neurochirurgie"
+      },
+      "chief_complaint": "Surgical consultation for failed conservative treatment",
+      "clinical_notes": {
+        "subjective": "Patient reports 3-month history of persistent lower back and right leg pain despite conservative treatment. Pain affects work as carpenter. Motivated for surgical intervention.",
+        "objective": "MRI shows L4-L5 disc protrusion with nerve root compression. Neurological examination shows persistent radiculopathy. No improvement with physiotherapy.",
+        "assessment": "L4-L5 disc herniation with failed conservative treatment",
+        "plan": "Recommend microdiscectomy L4-L5. Patient agrees to surgery. Pre-operative evaluation scheduled. Surgery planned for next week."
+      },
+      "diagnosis_codes": ["M51.16", "M54.16"],
+      "prescriptions": [
+        {
+          "medication": "Tramadol",
+          "dosage": "75mg",
+          "frequency": "3x daily",
+          "duration": "7 days"
+        }
+      ],
+      "referral_to": null,
+      "referred_from": "Dr. med. Michael Braun"
+    },
+
+    {
+      "appointment_id": "APT-008",
+      "date": "2023-07-05",
+      "time": "08:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Chirurgie München",
+        "address": "Maximilianstraße 15, 80539 München",
+        "type": "hospital"
+      },
+      "doctor": {
+        "doctor_id": "DOC-007",
+        "name": "Prof. Dr. med. Stefan Wagner",
+        "specialty": "Neurochirurgie"
+      },
+      "chief_complaint": "Microdiscectomy L4-L5 for disc herniation",
+      "clinical_notes": {
+        "subjective": "Pre-operative assessment for planned microdiscectomy. Patient understands risks and benefits. Motivated for surgery due to persistent pain and inability to work.",
+        "objective": "Pre-operative evaluation completed. Patient medically fit for surgery. Neurological deficits documented. Informed consent obtained.",
+        "assessment": "Ready for microdiscectomy L4-L5",
+        "plan": "Microdiscectomy L4-L5 performed successfully. Disc fragment removed. L5 nerve root decompressed. Patient stable post-operatively."
+      },
+      "diagnosis_codes": ["M51.16"],
+      "prescriptions": [
+        {
+          "medication": "Morphine",
+          "dosage": "10mg",
+          "frequency": "4x daily",
+          "duration": "3 days"
+        },
+        {
+          "medication": "Ibuprofen",
+          "dosage": "600mg",
+          "frequency": "3x daily",
+          "duration": "14 days"
+        }
+      ],
+      "referral_to": null,
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-009",
+      "date": "2023-07-19",
+      "time": "11:30",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Chirurgie München",
+        "address": "Maximilianstraße 15, 80539 München",
+        "type": "hospital"
+      },
+      "doctor": {
+        "doctor_id": "DOC-007",
+        "name": "Prof. Dr. med. Stefan Wagner",
+        "specialty": "Neurochirurgie"
+      },
+      "chief_complaint": "2-week post-operative follow-up",
+      "clinical_notes": {
+        "subjective": "Patient reports significant improvement. Back pain reduced to 2/10. Right leg pain much better. Able to walk without assistance. Very satisfied with surgery.",
+        "objective": "Surgical wound healing well. Neurological examination shows improvement in L5 function. Motor strength improving. Reduced sensory loss.",
+        "assessment": "Excellent post-operative recovery",
+        "plan": "Continue gradual mobilization. Start physiotherapy in 2 weeks. Return to light work duties in 6 weeks. Follow-up in 6 weeks."
+      },
+      "diagnosis_codes": ["M51.16"],
+      "prescriptions": [
+        {
+          "medication": "Ibuprofen",
+          "dosage": "400mg",
+          "frequency": "3x daily",
+          "duration": "14 days"
+        }
+      ],
+      "referral_to": "Physiotherapie Schwabing - post-surgical rehabilitation",
+      "referred_from": null
+    }
+  ],
+  
+  "scans": [
+    {
+      "scan_id": "SCAN-001",
+      "date": "2023-04-15",
+      "time": "14:30",
+      "scan_type": "MRI",
+      "body_region": "Lumbar Spine (L1-S1)",
+      "facility": {
+        "name": "Radiologie am Sendlinger Tor",
+        "address": "Sendlinger Straße 45, 80331 München",
+        "type": "imaging_center"
+      },
+      "radiologist": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie"
+      },
+      "modality": "MRI 3.0 Tesla",
+      "sequences": ["T1-weighted", "T2-weighted", "STIR sagittal and axial"],
+      "contrast": false,
+      "indication": "Persistent lower back pain with right leg radiculopathy. Rule out disc herniation.",
+      "technique": "Multi-sequence MRI of lumbar spine performed without intravenous contrast.",
+      "findings": [
+        "Normal vertebral body height and alignment",
+        "L4-L5: Posterior disc protrusion measuring approximately 6mm with moderate right foraminal stenosis. Right L5 nerve root compression evident.",
+        "L5-S1: Mild disc desiccation, no significant herniation",
+        "No spinal canal stenosis",
+        "Facet joints show mild degenerative changes at L4-L5 and L5-S1",
+        "Paraspinal muscles show mild fatty infiltration",
+        "No abnormal bone marrow signal",
+        "Conus medullaris terminates normally at L1-L2"
+      ],
+      "impression": "L4-L5 disc protrusion with right foraminal stenosis and L5 nerve root impingement. Mild degenerative changes. No central canal stenosis.",
+      "recommendation": "Clinical correlation recommended. Consider conservative management initially. Follow-up imaging in 3-6 months if symptoms persist or worsen.",
+      "file_reference": "/scans/2023/04/P-2024-005_MRI_lumbar_20230415.dcm",
+      "file_size": "247MB",
+      "dicom_series": "1.2.840.113619.2.80.123456789.20230415143045"
+    }
+  ],
+  
+  "doctor_comments": [
+    {
+      "comment_id": "CMT-001",
+      "date": "2023-04-15",
+      "timestamp": "2023-04-15T15:30:00Z",
+      "doctor": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie",
+        "facility": "Radiologie am Sendlinger Tor"
+      },
+      "related_to_appointment": null,
+      "related_to_scan": "SCAN-001",
+      "comment_type": "radiology_report_addendum",
+      "priority": "normal",
+      "content": "MRI findings discussed with Dr. Braun. Confirmed L4-L5 disc protrusion with nerve root compression. Conservative management appropriate initially. Patient should respond well to physiotherapy and pain management. Surgical consultation if conservative treatment fails.",
+      "tags": ["disc_herniation", "nerve_compression", "conservative_treatment"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-002",
+      "date": "2023-06-14",
+      "timestamp": "2023-06-14T11:30:00Z",
+      "doctor": {
+        "doctor_id": "DOC-002",
+        "name": "Dr. med. Michael Braun",
+        "specialty": "Orthopädie und Unfallchirurgie",
+        "facility": "Orthopädische Praxis am Marienplatz"
+      },
+      "related_to_appointment": "APT-006",
+      "related_to_scan": "SCAN-001",
+      "comment_type": "treatment_failure",
+      "priority": "normal",
+      "content": "Patient shows inadequate response to conservative treatment after 6 weeks of physiotherapy and medication. Pain persists at 4-5/10. Unable to return to work as carpenter. Patient frustrated with lack of progress. This case demonstrates the importance of timely surgical consultation when conservative treatment fails. Patient motivated for surgical intervention.",
+      "tags": ["treatment_failure", "surgical_consultation", "patient_frustration"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-003",
+      "date": "2023-07-19",
+      "timestamp": "2023-07-19T12:30:00Z",
+      "doctor": {
+        "doctor_id": "DOC-007",
+        "name": "Prof. Dr. med. Stefan Wagner",
+        "specialty": "Neurochirurgie",
+        "facility": "Chirurgie München"
+      },
+      "related_to_appointment": "APT-009",
+      "related_to_scan": null,
+      "comment_type": "surgical_success",
+      "priority": "normal",
+      "content": "Excellent post-operative recovery after microdiscectomy L4-L5. Patient's pain reduced from 5/10 to 2/10. Right leg symptoms significantly improved. This case demonstrates the effectiveness of surgical intervention when conservative treatment fails. Patient very satisfied with outcome and can return to work. This highlights the importance of not delaying surgery when conservative treatment is clearly failing.",
+      "tags": ["surgical_success", "microdiscectomy", "treatment_effectiveness"],
+      "is_critical": false
+    }
+  ]
+}

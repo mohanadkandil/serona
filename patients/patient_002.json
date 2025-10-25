@@ -1,0 +1,333 @@
+{
+  "patient_id": "P-2024-002",
+  "personal_info": {
+    "first_name": "Sarah",
+    "last_name": "Klein",
+    "date_of_birth": "1985-03-14",
+    "gender": "female",
+    "insurance_type": "gesetzlich",
+    "insurance_provider": "AOK Bayern"
+  },
+  
+  "appointments": [
+    {
+      "appointment_id": "APT-001",
+      "date": "2023-06-10",
+      "time": "14:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Praxis Dr. Weber",
+        "address": "Leopoldstraße 88, 80802 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin"
+      },
+      "chief_complaint": "Severe lower back pain with right leg numbness, started 2 weeks ago",
+      "clinical_notes": {
+        "subjective": "Patient reports sudden onset of severe lower back pain 2 weeks ago while lifting heavy boxes. Pain 8/10, constant, radiates to right buttock and posterior thigh. Numbness in right foot, especially big toe. Difficulty walking, pain worse with sitting and standing.",
+        "objective": "Antalgic gait. Positive straight leg raise test on right at 30°. Reduced sensation in L5 and S1 dermatomes right foot. Weakness in right foot plantar flexion 4/5. Positive Lasègue sign. Reflexes diminished on right ankle.",
+        "assessment": "L5-S1 disc herniation with S1 radiculopathy",
+        "plan": "Immediate referral to orthopedist. Prescribe strong pain medication. Consider emergency MRI if cauda equina symptoms develop."
+      },
+      "diagnosis_codes": ["M51.17", "M54.17"],
+      "prescriptions": [
+        {
+          "medication": "Tramadol",
+          "dosage": "50mg",
+          "frequency": "3x daily",
+          "duration": "7 days"
+        },
+        {
+          "medication": "Diclofenac",
+          "dosage": "75mg",
+          "frequency": "2x daily",
+          "duration": "14 days"
+        }
+      ],
+      "referral_to": "Dr. Braun - Orthopädie (urgent)",
+      "referred_from": null
+    },
+    
+    {
+      "appointment_id": "APT-002",
+      "date": "2023-06-12",
+      "time": "09:30",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Orthopädische Praxis am Marienplatz",
+        "address": "Marienplatz 15, 80331 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-002",
+        "name": "Dr. med. Michael Braun",
+        "specialty": "Orthopädie und Unfallchirurgie"
+      },
+      "chief_complaint": "Urgent referral for L5-S1 disc herniation with neurological deficits",
+      "clinical_notes": {
+        "subjective": "2-week history of severe lower back pain with right leg radiculopathy. Patient works as nurse, unable to work due to pain. Numbness in right foot affecting balance. Pain constant 7-8/10, no relief with NSAIDs.",
+        "objective": "Severe antalgic gait. Positive SLR right at 25°. Significant weakness in right foot plantar flexion 3/5. Reduced sensation L5 and S1 dermatomes. Diminished ankle reflex right. No saddle anesthesia or bowel/bladder dysfunction.",
+        "assessment": "L5-S1 disc herniation with S1 radiculopathy and motor weakness",
+        "plan": "Urgent MRI lumbar spine today. Consider surgical consultation if significant herniation confirmed. Strong pain management. Patient advised to avoid heavy lifting and prolonged sitting."
+      },
+      "diagnosis_codes": ["M51.17", "M54.17", "G57.31"],
+      "prescriptions": [
+        {
+          "medication": "Oxycodone",
+          "dosage": "10mg",
+          "frequency": "3x daily",
+          "duration": "7 days"
+        },
+        {
+          "medication": "Pregabalin",
+          "dosage": "150mg",
+          "frequency": "2x daily",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Radiologie am Sendlinger Tor - urgent MRI",
+      "referred_from": "Dr. med. Andreas Weber"
+    },
+
+    {
+      "appointment_id": "APT-003",
+      "date": "2023-06-12",
+      "time": "16:45",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Radiologie am Sendlinger Tor",
+        "address": "Sendlinger Straße 45, 80331 München",
+        "type": "imaging_center"
+      },
+      "doctor": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie"
+      },
+      "chief_complaint": "Urgent MRI for L5-S1 disc herniation with neurological deficits",
+      "clinical_notes": {
+        "subjective": "Patient reports severe pain and neurological symptoms. MRI performed urgently due to motor weakness.",
+        "objective": "MRI shows large L5-S1 disc extrusion with severe right foraminal stenosis and S1 nerve root compression. Significant mass effect on thecal sac.",
+        "assessment": "Large L5-S1 disc extrusion with severe S1 radiculopathy",
+        "plan": "Urgent surgical consultation recommended. Conservative treatment unlikely to resolve given size of herniation and neurological deficits."
+      },
+      "diagnosis_codes": ["M51.17"],
+      "prescriptions": [],
+      "referral_to": "Dr. med. Michael Braun - urgent surgical consultation",
+      "referred_from": "Dr. med. Michael Braun"
+    },
+
+    {
+      "appointment_id": "APT-004",
+      "date": "2023-06-15",
+      "time": "11:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Orthopädische Praxis am Marienplatz",
+        "address": "Marienplatz 15, 80331 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-002",
+        "name": "Dr. med. Michael Braun",
+        "specialty": "Orthopädie und Unfallchirurgie"
+      },
+      "chief_complaint": "MRI results review and surgical consultation",
+      "clinical_notes": {
+        "subjective": "Patient reports continued severe pain despite medication. Neurological deficits persist. Unable to work as nurse due to pain and weakness.",
+        "objective": "MRI confirms large L5-S1 disc extrusion with severe S1 nerve root compression. Persistent motor weakness and sensory loss. No improvement with conservative treatment.",
+        "assessment": "Large L5-S1 disc herniation requiring surgical intervention",
+        "plan": "Recommend microdiscectomy L5-S1. Patient agrees to surgery. Pre-operative evaluation scheduled. Surgery planned for next week. Continue pain management until surgery."
+      },
+      "diagnosis_codes": ["M51.17", "M54.17", "G57.31"],
+      "prescriptions": [
+        {
+          "medication": "Oxycodone",
+          "dosage": "15mg",
+          "frequency": "3x daily",
+          "duration": "7 days"
+        }
+      ],
+      "referral_to": "Chirurgie München - microdiscectomy L5-S1",
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-005",
+      "date": "2023-06-22",
+      "time": "08:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Chirurgie München",
+        "address": "Maximilianstraße 15, 80539 München",
+        "type": "hospital"
+      },
+      "doctor": {
+        "doctor_id": "DOC-007",
+        "name": "Prof. Dr. med. Stefan Wagner",
+        "specialty": "Neurochirurgie"
+      },
+      "chief_complaint": "Microdiscectomy L5-S1 for disc herniation",
+      "clinical_notes": {
+        "subjective": "Pre-operative assessment for planned microdiscectomy. Patient understands risks and benefits. Motivated for surgery due to persistent pain and neurological deficits.",
+        "objective": "Pre-operative evaluation completed. Patient medically fit for surgery. Neurological deficits documented. Informed consent obtained.",
+        "assessment": "Ready for microdiscectomy L5-S1",
+        "plan": "Microdiscectomy L5-S1 performed successfully. Large disc fragment removed. S1 nerve root decompressed. Patient stable post-operatively."
+      },
+      "diagnosis_codes": ["M51.17"],
+      "prescriptions": [
+        {
+          "medication": "Morphine",
+          "dosage": "10mg",
+          "frequency": "4x daily",
+          "duration": "3 days"
+        },
+        {
+          "medication": "Ibuprofen",
+          "dosage": "600mg",
+          "frequency": "3x daily",
+          "duration": "14 days"
+        }
+      ],
+      "referral_to": null,
+      "referred_from": "Dr. med. Michael Braun"
+    },
+
+    {
+      "appointment_id": "APT-006",
+      "date": "2023-07-05",
+      "time": "10:30",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Chirurgie München",
+        "address": "Maximilianstraße 15, 80539 München",
+        "type": "hospital"
+      },
+      "doctor": {
+        "doctor_id": "DOC-007",
+        "name": "Prof. Dr. med. Stefan Wagner",
+        "specialty": "Neurochirurgie"
+      },
+      "chief_complaint": "2-week post-operative follow-up",
+      "clinical_notes": {
+        "subjective": "Patient reports significant improvement. Back pain reduced to 2/10. Leg pain much better. Numbness in foot improving. Able to walk without assistance.",
+        "objective": "Surgical wound healing well. Neurological examination shows improvement in S1 function. Motor strength improving. Reduced sensory loss.",
+        "assessment": "Excellent post-operative recovery",
+        "plan": "Continue gradual mobilization. Start physiotherapy in 2 weeks. Return to light work duties in 4 weeks. Follow-up in 6 weeks."
+      },
+      "diagnosis_codes": ["M51.17"],
+      "prescriptions": [
+        {
+          "medication": "Ibuprofen",
+          "dosage": "400mg",
+          "frequency": "3x daily",
+          "duration": "14 days"
+        }
+      ],
+      "referral_to": "Physiotherapie Schwabing - post-surgical rehabilitation",
+      "referred_from": null
+    }
+  ],
+  
+  "scans": [
+    {
+      "scan_id": "SCAN-001",
+      "date": "2023-06-12",
+      "time": "16:45",
+      "scan_type": "MRI",
+      "body_region": "Lumbar Spine (L1-S1)",
+      "facility": {
+        "name": "Radiologie am Sendlinger Tor",
+        "address": "Sendlinger Straße 45, 80331 München",
+        "type": "imaging_center"
+      },
+      "radiologist": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie"
+      },
+      "modality": "MRI 3.0 Tesla",
+      "sequences": ["T1-weighted", "T2-weighted", "STIR sagittal and axial"],
+      "contrast": false,
+      "indication": "Severe lower back pain with right leg radiculopathy and neurological deficits. Rule out disc herniation.",
+      "technique": "Multi-sequence MRI of lumbar spine performed without intravenous contrast.",
+      "findings": [
+        "Normal vertebral body height and alignment",
+        "L5-S1: Large posterior disc extrusion measuring approximately 8mm with severe right foraminal stenosis. Right S1 nerve root compression with significant mass effect.",
+        "L4-L5: Mild disc desiccation, no significant herniation",
+        "No spinal canal stenosis",
+        "Facet joints show mild degenerative changes at L5-S1",
+        "Paraspinal muscles show moderate spasm and edema",
+        "No abnormal bone marrow signal",
+        "Conus medullaris terminates normally at L1-L2"
+      ],
+      "impression": "Large L5-S1 disc extrusion with severe right foraminal stenosis and S1 nerve root compression. Significant mass effect on thecal sac.",
+      "recommendation": "Urgent surgical consultation recommended. Conservative treatment unlikely to resolve given size of herniation and neurological deficits.",
+      "file_reference": "/scans/2023/06/P-2024-002_MRI_lumbar_20230612.dcm",
+      "file_size": "248MB",
+      "dicom_series": "1.2.840.113619.2.80.123456789.20230612164530"
+    }
+  ],
+  
+  "doctor_comments": [
+    {
+      "comment_id": "CMT-001",
+      "date": "2023-06-12",
+      "timestamp": "2023-06-12T17:30:00Z",
+      "doctor": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie",
+        "facility": "Radiologie am Sendlinger Tor"
+      },
+      "related_to_appointment": null,
+      "related_to_scan": "SCAN-001",
+      "comment_type": "radiology_report_addendum",
+      "priority": "high",
+      "content": "Urgent MRI findings discussed with Dr. Braun immediately. Large L5-S1 disc extrusion with severe neurological compression. This is a surgical emergency given the size of herniation and neurological deficits. Patient requires immediate surgical consultation. Conservative treatment not appropriate for this case. Risk of permanent neurological damage if surgery delayed.",
+      "tags": ["disc_extrusion", "surgical_emergency", "neurological_compression"],
+      "is_critical": true
+    },
+    
+    {
+      "comment_id": "CMT-002",
+      "date": "2023-06-15",
+      "timestamp": "2023-06-15T12:00:00Z",
+      "doctor": {
+        "doctor_id": "DOC-002",
+        "name": "Dr. med. Michael Braun",
+        "specialty": "Orthopädie und Unfallchirurgie",
+        "facility": "Orthopädische Praxis am Marienplatz"
+      },
+      "related_to_appointment": "APT-004",
+      "related_to_scan": "SCAN-001",
+      "comment_type": "surgical_consultation",
+      "priority": "high",
+      "content": "Patient presents with large L5-S1 disc extrusion causing severe S1 radiculopathy with motor weakness. MRI shows 8mm disc extrusion with significant nerve root compression. Given the neurological deficits and size of herniation, conservative treatment is not appropriate. Patient is young (38), otherwise healthy, and motivated for surgery. Microdiscectomy recommended as gold standard treatment. Patient understands risks and benefits. Surgery scheduled for next week. This case demonstrates the importance of timely surgical intervention for large disc herniations with neurological deficits.",
+      "tags": ["surgical_consultation", "disc_extrusion", "neurological_deficits"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-003",
+      "date": "2023-06-22",
+      "timestamp": "2023-06-22T10:00:00Z",
+      "doctor": {
+        "doctor_id": "DOC-007",
+        "name": "Prof. Dr. med. Stefan Wagner",
+        "specialty": "Neurochirurgie",
+        "facility": "Chirurgie München"
+      },
+      "related_to_appointment": "APT-005",
+      "related_to_scan": "SCAN-001",
+      "comment_type": "surgical_notes",
+      "priority": "normal",
+      "content": "Microdiscectomy L5-S1 performed successfully. Large disc fragment (approximately 8mm) removed from right side. S1 nerve root fully decompressed. No complications during surgery. Patient stable post-operatively. Neurological function expected to improve over coming weeks. This case highlights the effectiveness of microdiscectomy for large disc herniations with neurological deficits. Patient should have excellent recovery given young age and otherwise good health.",
+      "tags": ["surgical_success", "microdiscectomy", "nerve_decompression"],
+      "is_critical": false
+    }
+  ]
+}

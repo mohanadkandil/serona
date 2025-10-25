@@ -1,0 +1,262 @@
+{
+  "patient_id": "P-2024-006",
+  "personal_info": {
+    "first_name": "Anna",
+    "last_name": "Wagner",
+    "date_of_birth": "1980-07-22",
+    "gender": "female",
+    "insurance_type": "gesetzlich",
+    "insurance_provider": "Techniker Krankenkasse"
+  },
+  
+  "appointments": [
+    {
+      "appointment_id": "APT-001",
+      "date": "2023-09-05",
+      "time": "15:30",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Praxis Dr. Weber",
+        "address": "Leopoldstraße 88, 80802 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin"
+      },
+      "chief_complaint": "Chronic lower back pain for 2 years, recent flare-up",
+      "clinical_notes": {
+        "subjective": "43-year-old patient reports chronic lower back pain for 2 years. Pain 6/10, constant, worse with prolonged sitting and standing. Recent flare-up after gardening. No leg pain or numbness. Pain affects sleep and daily activities. Works as office manager.",
+        "objective": "Limited lumbar flexion. No neurological deficits. No straight leg raise test positive. Muscle tension in lumbar paraspinal muscles. BMI 26.",
+        "assessment": "Chronic mechanical lower back pain, likely muscular/ligamentous",
+        "plan": "Prescribe NSAIDs and muscle relaxants. Advise heat therapy and stretching. Consider physiotherapy if no improvement."
+      },
+      "diagnosis_codes": ["M54.5", "M79.3"],
+      "prescriptions": [
+        {
+          "medication": "Ibuprofen",
+          "dosage": "600mg",
+          "frequency": "3x daily with food",
+          "duration": "14 days"
+        },
+        {
+          "medication": "Methocarbamol",
+          "dosage": "750mg",
+          "frequency": "3x daily",
+          "duration": "10 days"
+        }
+      ],
+      "referral_to": "Physiotherapy - if symptoms persist",
+      "referred_from": null
+    },
+    
+    {
+      "appointment_id": "APT-002",
+      "date": "2023-09-19",
+      "time": "10:00",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Praxis Dr. Weber",
+        "address": "Leopoldstraße 88, 80802 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin"
+      },
+      "chief_complaint": "Follow-up for chronic back pain - minimal improvement",
+      "clinical_notes": {
+        "subjective": "Patient reports slight improvement with medication. Pain reduced to 4/10 but still constant. Still affects work and sleep. Interested in physiotherapy.",
+        "objective": "Still limited lumbar ROM. Muscle tension persists. No neurological deficits.",
+        "assessment": "Chronic mechanical lower back pain, partial response to medication",
+        "plan": "Referral to physiotherapy for chronic pain management. Continue NSAIDs as needed."
+      },
+      "diagnosis_codes": ["M54.5", "M79.3"],
+      "prescriptions": [
+        {
+          "medication": "Ibuprofen",
+          "dosage": "400mg",
+          "frequency": "3x daily as needed",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Physiotherapie Schwabing - chronic pain management",
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-003",
+      "date": "2023-09-26",
+      "time": "16:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Physiotherapie Schwabing",
+        "address": "Belgradstraße 22, 80796 München",
+        "type": "therapy_center"
+      },
+      "doctor": {
+        "doctor_id": "DOC-003",
+        "name": "Julia Schneider",
+        "specialty": "Physiotherapie"
+      },
+      "chief_complaint": "Initial physiotherapy assessment for chronic lower back pain",
+      "clinical_notes": {
+        "subjective": "Patient reports chronic lower back pain for 2 years. Pain 4/10, constant, worse with prolonged sitting. Works at computer all day. No leg symptoms. Motivated for therapy.",
+        "objective": "Lumbar ROM: Flexion 50° (limited), Extension 20° (limited). Core strength weak. Poor posture with forward head position. Tight hip flexors and hamstrings. Muscle tension in lumbar paraspinal muscles.",
+        "assessment": "Chronic mechanical lower back pain with postural dysfunction and muscle imbalance",
+        "plan": "12-week program: manual therapy, postural correction, core strengthening, flexibility exercises, ergonomic education. Sessions 2x/week initially."
+      },
+      "diagnosis_codes": ["M54.5"],
+      "prescriptions": [],
+      "referral_to": null,
+      "referred_from": "Dr. med. Andreas Weber"
+    },
+
+    {
+      "appointment_id": "APT-004",
+      "date": "2023-11-07",
+      "time": "16:00",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Physiotherapie Schwabing",
+        "address": "Belgradstraße 22, 80796 München",
+        "type": "therapy_center"
+      },
+      "doctor": {
+        "doctor_id": "DOC-003",
+        "name": "Julia Schneider",
+        "specialty": "Physiotherapie"
+      },
+      "chief_complaint": "6-week progress check for chronic back pain",
+      "clinical_notes": {
+        "subjective": "Patient reports good progress. Pain reduced to 2-3/10. Better posture awareness. Sleeping better. Able to sit longer at work with ergonomic adjustments.",
+        "objective": "Improved lumbar ROM: Flexion 70°, Extension 35°. Core strength improving. Better posture. Reduced muscle tension.",
+        "assessment": "Good response to physiotherapy for chronic mechanical back pain",
+        "plan": "Continue program for 6 more weeks. Introduce advanced core exercises. Home exercise program compliance excellent."
+      },
+      "diagnosis_codes": ["M54.5"],
+      "prescriptions": [],
+      "referral_to": null,
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-005",
+      "date": "2023-12-19",
+      "time": "16:00",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Physiotherapie Schwabing",
+        "address": "Belgradstraße 22, 80796 München",
+        "type": "therapy_center"
+      },
+      "doctor": {
+        "doctor_id": "DOC-003",
+        "name": "Julia Schneider",
+        "specialty": "Physiotherapie"
+      },
+      "chief_complaint": "Final session of 12-week program",
+      "clinical_notes": {
+        "subjective": "Patient reports excellent progress. Pain reduced to 1/10, only occasional. Much better posture and body awareness. Can work full day without pain. Very satisfied with therapy.",
+        "objective": "Full lumbar ROM. Good core strength. Excellent posture. No muscle tension. Patient demonstrates proper body mechanics.",
+        "assessment": "Successful completion of physiotherapy program for chronic mechanical back pain",
+        "plan": "Discharge from active therapy. Continue home exercise program. Return PRN if symptoms recur. Annual check-up recommended."
+      },
+      "diagnosis_codes": ["M54.5"],
+      "prescriptions": [],
+      "referral_to": null,
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-006",
+      "date": "2024-01-15",
+      "time": "14:30",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Praxis Dr. Weber",
+        "address": "Leopoldstraße 88, 80802 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin"
+      },
+      "chief_complaint": "Follow-up for chronic back pain management",
+      "clinical_notes": {
+        "subjective": "Patient reports excellent improvement with physiotherapy. Pain now 1/10, only occasional. Maintaining exercise program. No medications needed. Very satisfied with outcome.",
+        "objective": "Full lumbar ROM. No muscle tension. Good posture. No neurological deficits. Overall health excellent.",
+        "assessment": "Successful management of chronic mechanical lower back pain",
+        "plan": "Continue current exercise program. Maintain good ergonomics. No further treatment needed unless symptoms recur. Annual check-up recommended."
+      },
+      "diagnosis_codes": ["M54.5"],
+      "prescriptions": [],
+      "referral_to": null,
+      "referred_from": null
+    }
+  ],
+  
+  "scans": [],
+  
+  "doctor_comments": [
+    {
+      "comment_id": "CMT-001",
+      "date": "2023-09-26",
+      "timestamp": "2023-09-26T16:45:00Z",
+      "doctor": {
+        "doctor_id": "DOC-003",
+        "name": "Julia Schneider",
+        "specialty": "Physiotherapie",
+        "facility": "Physiotherapie Schwabing"
+      },
+      "related_to_appointment": "APT-003",
+      "related_to_scan": null,
+      "comment_type": "initial_assessment",
+      "priority": "normal",
+      "content": "Initial PT assessment for chronic mechanical lower back pain. Patient demonstrates poor posture and muscle imbalance typical of office workers. Core strength weak, hip flexors and hamstrings tight. This is a classic case of postural dysfunction causing chronic pain. Patient motivated and compliant. 12-week program planned focusing on postural correction and core strengthening.",
+      "tags": ["chronic_pain", "postural_dysfunction", "muscle_imbalance"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-002",
+      "date": "2023-11-07",
+      "timestamp": "2023-11-07T16:30:00Z",
+      "doctor": {
+        "doctor_id": "DOC-003",
+        "name": "Julia Schneider",
+        "specialty": "Physiotherapie",
+        "facility": "Physiotherapie Schwabing"
+      },
+      "related_to_appointment": "APT-004",
+      "related_to_scan": null,
+      "comment_type": "progress_note",
+      "priority": "normal",
+      "content": "Excellent progress after 6 weeks of physiotherapy. Patient's pain reduced from 4/10 to 2-3/10. Posture significantly improved. Core strength building well. Patient very compliant with home exercises. This case demonstrates the effectiveness of physiotherapy for chronic mechanical back pain when combined with patient education and ergonomic modifications.",
+      "tags": ["progress_note", "postural_improvement", "compliance"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-003",
+      "date": "2023-12-19",
+      "timestamp": "2023-12-19T16:15:00Z",
+      "doctor": {
+        "doctor_id": "DOC-003",
+        "name": "Julia Schneider",
+        "specialty": "Physiotherapie",
+        "facility": "Physiotherapie Schwabing"
+      },
+      "related_to_appointment": "APT-005",
+      "related_to_scan": null,
+      "comment_type": "discharge_summary",
+      "priority": "normal",
+      "content": "Successful completion of 12-week physiotherapy program for chronic mechanical lower back pain. Patient's pain reduced from 6/10 to 1/10. Full lumbar ROM restored. Excellent posture and body mechanics. Patient educated on long-term self-management. This case demonstrates the importance of comprehensive physiotherapy approach for chronic pain management. Patient can return to normal activities with continued home exercise program.",
+      "tags": ["discharge_summary", "treatment_success", "self_management"],
+      "is_critical": false
+    }
+  ]
+}

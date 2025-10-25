@@ -1,0 +1,351 @@
+{
+  "patient_id": "P-2024-008",
+  "personal_info": {
+    "first_name": "Maria",
+    "last_name": "Schneider",
+    "date_of_birth": "1958-09-12",
+    "gender": "female",
+    "insurance_type": "gesetzlich",
+    "insurance_provider": "Barmer"
+  },
+  
+  "appointments": [
+    {
+      "appointment_id": "APT-001",
+      "date": "2023-02-15",
+      "time": "10:30",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Praxis Dr. Weber",
+        "address": "Leopoldstraße 88, 80802 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin"
+      },
+      "chief_complaint": "Chest pain and shortness of breath for 2 weeks",
+      "clinical_notes": {
+        "subjective": "65-year-old patient reports chest pain 6/10, pressure-like, worse with exertion. Shortness of breath with minimal activity. No radiation to arms. Pain started 2 weeks ago. No previous cardiac history. Family history of heart disease.",
+        "objective": "Vital signs: BP 150/95, HR 88, Weight 78kg, BMI 29. Heart sounds normal. No murmurs. No peripheral edema. Lungs clear. No signs of heart failure.",
+        "assessment": "Chest pain, rule out coronary artery disease",
+        "plan": "Urgent referral to cardiologist. Order ECG and cardiac enzymes. Consider stress test. Start aspirin and statin."
+      },
+      "diagnosis_codes": ["R06.02", "R50.9"],
+      "prescriptions": [
+        {
+          "medication": "Aspirin",
+          "dosage": "100mg",
+          "frequency": "1x daily",
+          "duration": "30 days"
+        },
+        {
+          "medication": "Atorvastatin",
+          "dosage": "20mg",
+          "frequency": "1x daily",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Dr. med. Robert Müller - Kardiologie (urgent)",
+      "referred_from": null
+    },
+    
+    {
+      "appointment_id": "APT-002",
+      "date": "2023-02-16",
+      "time": "14:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Kardiologische Praxis München",
+        "address": "Maximilianstraße 35, 80539 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-009",
+        "name": "Dr. med. Robert Müller",
+        "specialty": "Kardiologie"
+      },
+      "chief_complaint": "Urgent referral for chest pain and shortness of breath",
+      "clinical_notes": {
+        "subjective": "2-week history of chest pain and shortness of breath. Pain pressure-like, worse with exertion. Patient concerned about heart disease. Family history of myocardial infarction in father.",
+        "objective": "Vital signs: BP 148/92, HR 85. Heart sounds normal. No murmurs. Lungs clear. No signs of heart failure. ECG shows normal sinus rhythm, no acute changes.",
+        "assessment": "Chest pain, rule out coronary artery disease",
+        "plan": "Order cardiac enzymes, echocardiogram, and stress test. Continue aspirin and statin. Consider cardiac catheterization if stress test positive."
+      },
+      "diagnosis_codes": ["R06.02", "R50.9"],
+      "prescriptions": [
+        {
+          "medication": "Aspirin",
+          "dosage": "100mg",
+          "frequency": "1x daily",
+          "duration": "30 days"
+        },
+        {
+          "medication": "Atorvastatin",
+          "dosage": "40mg",
+          "frequency": "1x daily",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Labor München - cardiac enzymes and lipid profile",
+      "referred_from": "Dr. med. Andreas Weber"
+    },
+
+    {
+      "appointment_id": "APT-003",
+      "date": "2023-02-17",
+      "time": "09:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Labor München",
+        "address": "Maximilianstraße 25, 80539 München",
+        "type": "laboratory"
+      },
+      "doctor": {
+        "doctor_id": "DOC-008",
+        "name": "Dr. med. Petra Klein",
+        "specialty": "Laboratoriumsmedizin"
+      },
+      "chief_complaint": "Cardiac enzymes and lipid profile",
+      "clinical_notes": {
+        "subjective": "Blood draw for cardiac evaluation including troponin, CK-MB, and lipid profile.",
+        "objective": "Troponin I: 0.02 ng/mL (normal), CK-MB: 2.1 ng/mL (normal), Total cholesterol: 5.8 mmol/L (elevated), LDL: 3.9 mmol/L (elevated), HDL: 1.2 mmol/L, Triglycerides: 2.1 mmol/L (elevated)",
+        "assessment": "No acute myocardial infarction, elevated lipids",
+        "plan": "Results sent to cardiologist. No acute cardiac event."
+      },
+      "diagnosis_codes": ["E78.5"],
+      "prescriptions": [],
+      "referral_to": "Dr. med. Robert Müller - lab results",
+      "referred_from": "Dr. med. Robert Müller"
+    },
+
+    {
+      "appointment_id": "APT-004",
+      "date": "2023-02-20",
+      "time": "11:30",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Kardiologische Praxis München",
+        "address": "Maximilianstraße 35, 80539 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-009",
+        "name": "Dr. med. Robert Müller",
+        "specialty": "Kardiologie"
+      },
+      "chief_complaint": "Echocardiogram and stress test",
+      "clinical_notes": {
+        "subjective": "Patient reports continued chest pain with exertion. Awaiting cardiac evaluation results.",
+        "objective": "Echocardiogram shows normal left ventricular function, EF 65%. No wall motion abnormalities. Stress test positive for ischemia at 85% maximum heart rate. ST depression in leads V4-V6.",
+        "assessment": "Positive stress test for myocardial ischemia",
+        "plan": "Recommend cardiac catheterization for definitive diagnosis. Continue medical therapy. Consider PCI if significant coronary artery disease found."
+      },
+      "diagnosis_codes": ["I25.9", "R06.02"],
+      "prescriptions": [
+        {
+          "medication": "Metoprolol",
+          "dosage": "50mg",
+          "frequency": "2x daily",
+          "duration": "30 days"
+        },
+        {
+          "medication": "Nitroglycerin",
+          "dosage": "0.4mg",
+          "frequency": "as needed for chest pain",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Herzzentrum München - cardiac catheterization",
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-005",
+      "date": "2023-02-25",
+      "time": "08:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Herzzentrum München",
+        "address": "Lazarettstraße 36, 80636 München",
+        "type": "hospital"
+      },
+      "doctor": {
+        "doctor_id": "DOC-010",
+        "name": "Prof. Dr. med. Thomas Schmidt",
+        "specialty": "Kardiologie"
+      },
+      "chief_complaint": "Cardiac catheterization for coronary artery disease",
+      "clinical_notes": {
+        "subjective": "Pre-procedure assessment for cardiac catheterization. Patient understands risks and benefits. Motivated for definitive diagnosis.",
+        "objective": "Cardiac catheterization shows 70% stenosis in LAD, 50% stenosis in RCA. No acute lesions. Left ventricular function normal.",
+        "assessment": "Coronary artery disease with significant LAD stenosis",
+        "plan": "Recommend PCI to LAD. Patient agrees to procedure. PCI performed successfully with drug-eluting stent. No complications."
+      },
+      "diagnosis_codes": ["I25.10", "I25.9"],
+      "prescriptions": [
+        {
+          "medication": "Clopidogrel",
+          "dosage": "75mg",
+          "frequency": "1x daily",
+          "duration": "365 days"
+        },
+        {
+          "medication": "Aspirin",
+          "dosage": "100mg",
+          "frequency": "1x daily",
+          "duration": "365 days"
+        }
+      ],
+      "referral_to": null,
+      "referred_from": "Dr. med. Robert Müller"
+    },
+
+    {
+      "appointment_id": "APT-006",
+      "date": "2023-03-15",
+      "time": "15:00",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Kardiologische Praxis München",
+        "address": "Maximilianstraße 35, 80539 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-009",
+        "name": "Dr. med. Robert Müller",
+        "specialty": "Kardiologie"
+      },
+      "chief_complaint": "3-week follow-up post PCI",
+      "clinical_notes": {
+        "subjective": "Patient reports significant improvement. Chest pain resolved. No shortness of breath. Able to walk without symptoms. Very satisfied with treatment.",
+        "objective": "Vital signs: BP 135/80, HR 72. Heart sounds normal. No signs of heart failure. ECG shows normal sinus rhythm.",
+        "assessment": "Excellent recovery post PCI",
+        "plan": "Continue dual antiplatelet therapy. Cardiac rehabilitation program. Follow-up in 3 months."
+      },
+      "diagnosis_codes": ["I25.10", "Z51.11"],
+      "prescriptions": [
+        {
+          "medication": "Clopidogrel",
+          "dosage": "75mg",
+          "frequency": "1x daily",
+          "duration": "90 days"
+        },
+        {
+          "medication": "Aspirin",
+          "dosage": "100mg",
+          "frequency": "1x daily",
+          "duration": "90 days"
+        },
+        {
+          "medication": "Atorvastatin",
+          "dosage": "40mg",
+          "frequency": "1x daily",
+          "duration": "90 days"
+        }
+      ],
+      "referral_to": "Herzzentrum München - cardiac rehabilitation program",
+      "referred_from": null
+    }
+  ],
+  
+  "scans": [
+    {
+      "scan_id": "SCAN-001",
+      "date": "2023-02-20",
+      "time": "10:00",
+      "scan_type": "Echocardiogram",
+      "body_region": "Heart",
+      "facility": {
+        "name": "Kardiologische Praxis München",
+        "address": "Maximilianstraße 35, 80539 München",
+        "type": "private_practice"
+      },
+      "radiologist": {
+        "doctor_id": "DOC-009",
+        "name": "Dr. med. Robert Müller",
+        "specialty": "Kardiologie"
+      },
+      "modality": "Transthoracic Echocardiogram",
+      "sequences": ["2D", "Doppler", "Color Flow"],
+      "contrast": false,
+      "indication": "Chest pain and shortness of breath. Rule out structural heart disease.",
+      "technique": "Standard transthoracic echocardiogram performed.",
+      "findings": [
+        "Normal left ventricular size and function",
+        "Left ventricular ejection fraction: 65%",
+        "No wall motion abnormalities",
+        "Normal right ventricular function",
+        "No valvular abnormalities",
+        "Normal atrial sizes",
+        "No pericardial effusion",
+        "Normal aortic root size"
+      ],
+      "impression": "Normal echocardiogram. No structural heart disease.",
+      "recommendation": "Continue cardiac evaluation with stress test.",
+      "file_reference": "/scans/2023/02/P-2024-008_ECHO_20230220.dcm",
+      "file_size": "45MB",
+      "dicom_series": "1.2.840.113619.2.80.123456789.20230220100030"
+    }
+  ],
+  
+  "doctor_comments": [
+    {
+      "comment_id": "CMT-001",
+      "date": "2023-02-17",
+      "timestamp": "2023-02-17T10:00:00Z",
+      "doctor": {
+        "doctor_id": "DOC-008",
+        "name": "Dr. med. Petra Klein",
+        "specialty": "Laboratoriumsmedizin",
+        "facility": "Labor München"
+      },
+      "related_to_appointment": "APT-003",
+      "related_to_scan": null,
+      "comment_type": "laboratory_results",
+      "priority": "normal",
+      "content": "Cardiac enzymes within normal limits, ruling out acute myocardial infarction. However, lipid profile shows significant hyperlipidemia with elevated total cholesterol, LDL, and triglycerides. This increases cardiovascular risk and supports the need for statin therapy and lifestyle modifications.",
+      "tags": ["cardiac_enzymes", "hyperlipidemia", "cardiovascular_risk"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-002",
+      "date": "2023-02-20",
+      "timestamp": "2023-02-20T12:30:00Z",
+      "doctor": {
+        "doctor_id": "DOC-009",
+        "name": "Dr. med. Robert Müller",
+        "specialty": "Kardiologie",
+        "facility": "Kardiologische Praxis München"
+      },
+      "related_to_appointment": "APT-004",
+      "related_to_scan": "SCAN-001",
+      "comment_type": "cardiac_evaluation",
+      "priority": "normal",
+      "content": "Echocardiogram shows normal cardiac structure and function. However, stress test is positive for myocardial ischemia, indicating coronary artery disease. This is consistent with patient's symptoms and risk factors. Cardiac catheterization recommended for definitive diagnosis and potential intervention.",
+      "tags": ["stress_test", "myocardial_ischemia", "coronary_artery_disease"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-003",
+      "date": "2023-03-15",
+      "timestamp": "2023-03-15T16:00:00Z",
+      "doctor": {
+        "doctor_id": "DOC-009",
+        "name": "Dr. med. Robert Müller",
+        "specialty": "Kardiologie",
+        "facility": "Kardiologische Praxis München"
+      },
+      "related_to_appointment": "APT-006",
+      "related_to_scan": null,
+      "comment_type": "post_pci_followup",
+      "priority": "normal",
+      "content": "Excellent recovery after PCI to LAD. Patient's symptoms completely resolved. This case demonstrates the effectiveness of timely intervention for coronary artery disease. Patient highly motivated for cardiac rehabilitation. Dual antiplatelet therapy essential for stent patency. This case highlights the importance of early diagnosis and intervention in cardiovascular disease.",
+      "tags": ["post_pci", "symptom_resolution", "cardiac_rehabilitation"],
+      "is_critical": false
+    }
+  ]
+}

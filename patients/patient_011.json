@@ -1,0 +1,332 @@
+{
+  "patient_id": "P-2024-011",
+  "personal_info": {
+    "first_name": "Wolfgang",
+    "last_name": "Schulz",
+    "date_of_birth": "1950-02-14",
+    "gender": "male",
+    "insurance_type": "gesetzlich",
+    "insurance_provider": "AOK Bayern"
+  },
+  
+  "appointments": [
+    {
+      "appointment_id": "APT-001",
+      "date": "2023-01-15",
+      "time": "08:30",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Praxis Dr. Weber",
+        "address": "Leopoldstraße 88, 80802 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin"
+      },
+      "chief_complaint": "Multiple health issues: diabetes, hypertension, and lower back pain",
+      "clinical_notes": {
+        "subjective": "73-year-old patient with multiple comorbidities. Reports lower back pain 5/10, constant, worse with standing. Diabetes and hypertension well controlled. No leg pain or numbness. Pain affects daily activities.",
+        "objective": "Vital signs: BP 145/90, HR 78, Weight 95kg, BMI 32. Blood glucose 8.2 mmol/L. Heart sounds normal. Lungs clear. Limited lumbar flexion. No neurological deficits.",
+        "assessment": "Type 2 diabetes, hypertension, chronic lower back pain",
+        "plan": "Continue diabetes and hypertension management. Referral to orthopedist for back pain. Consider imaging if symptoms worsen."
+      },
+      "diagnosis_codes": ["E11.9", "I10", "M54.5"],
+      "prescriptions": [
+        {
+          "medication": "Metformin",
+          "dosage": "1000mg",
+          "frequency": "2x daily",
+          "duration": "90 days"
+        },
+        {
+          "medication": "Lisinopril",
+          "dosage": "10mg",
+          "frequency": "1x daily",
+          "duration": "90 days"
+        },
+        {
+          "medication": "Ibuprofen",
+          "dosage": "600mg",
+          "frequency": "3x daily as needed",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Dr. Braun - Orthopädie",
+      "referred_from": null
+    },
+    
+    {
+      "appointment_id": "APT-002",
+      "date": "2023-01-20",
+      "time": "10:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Orthopädische Praxis am Marienplatz",
+        "address": "Marienplatz 15, 80331 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-002",
+        "name": "Dr. med. Michael Braun",
+        "specialty": "Orthopädie und Unfallchirurgie"
+      },
+      "chief_complaint": "Referred for chronic lower back pain",
+      "clinical_notes": {
+        "subjective": "Chronic lower back pain for 6 months. Pain 5/10, constant, worse with standing and walking. No leg pain or numbness. Patient has diabetes and hypertension. Pain affects daily activities.",
+        "objective": "Limited lumbar flexion. No neurological deficits. No straight leg raise test positive. Muscle tension in lumbar paraspinal muscles. BMI 32.",
+        "assessment": "Chronic mechanical lower back pain, likely degenerative",
+        "plan": "Order lumbar X-ray and MRI. Consider physiotherapy. Pain management with NSAIDs."
+      },
+      "diagnosis_codes": ["M54.5", "M51.9"],
+      "prescriptions": [
+        {
+          "medication": "Diclofenac",
+          "dosage": "75mg",
+          "frequency": "2x daily",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Radiologie am Sendlinger Tor - lumbar imaging",
+      "referred_from": "Dr. med. Andreas Weber"
+    },
+
+    {
+      "appointment_id": "APT-003",
+      "date": "2023-01-25",
+      "time": "14:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Radiologie am Sendlinger Tor",
+        "address": "Sendlinger Straße 45, 80331 München",
+        "type": "imaging_center"
+      },
+      "doctor": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie"
+      },
+      "chief_complaint": "Lumbar X-ray and MRI for chronic back pain",
+      "clinical_notes": {
+        "subjective": "Imaging for chronic lower back pain in elderly patient with multiple comorbidities.",
+        "objective": "Lumbar X-ray shows moderate degenerative changes. MRI shows L4-L5 disc desiccation, mild central canal stenosis, and facet joint arthritis. No disc herniation.",
+        "assessment": "Lumbar degenerative disc disease with mild central canal stenosis",
+        "plan": "Results sent to orthopedist. No acute findings requiring surgery."
+      },
+      "diagnosis_codes": ["M51.9", "M48.06"],
+      "prescriptions": [],
+      "referral_to": "Dr. med. Michael Braun - imaging results",
+      "referred_from": "Dr. med. Michael Braun"
+    },
+
+    {
+      "appointment_id": "APT-004",
+      "date": "2023-02-01",
+      "time": "11:30",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Orthopädische Praxis am Marienplatz",
+        "address": "Marienplatz 15, 80331 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-002",
+        "name": "Dr. med. Michael Braun",
+        "specialty": "Orthopädie und Unfallchirurgie"
+      },
+      "chief_complaint": "Imaging results review and treatment plan",
+      "clinical_notes": {
+        "subjective": "Patient reports continued back pain. Awaiting imaging results discussion.",
+        "objective": "MRI shows lumbar degenerative disc disease with mild central canal stenosis. No disc herniation. No neurological deficits.",
+        "assessment": "Lumbar degenerative disc disease with mild central canal stenosis",
+        "plan": "Conservative treatment with physiotherapy and pain management. No surgery needed. Consider epidural steroid injection if symptoms worsen."
+      },
+      "diagnosis_codes": ["M51.9", "M48.06"],
+      "prescriptions": [
+        {
+          "medication": "Diclofenac",
+          "dosage": "75mg",
+          "frequency": "2x daily",
+          "duration": "60 days"
+        },
+        {
+          "medication": "Pregabalin",
+          "dosage": "75mg",
+          "frequency": "2x daily",
+          "duration": "60 days"
+        }
+      ],
+      "referral_to": "Physiotherapie Schwabing - lumbar therapy",
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-005",
+      "date": "2023-02-08",
+      "time": "16:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Physiotherapie Schwabing",
+        "address": "Belgradstraße 22, 80796 München",
+        "type": "therapy_center"
+      },
+      "doctor": {
+        "doctor_id": "DOC-003",
+        "name": "Julia Schneider",
+        "specialty": "Physiotherapie"
+      },
+      "chief_complaint": "Initial physiotherapy assessment for lumbar degenerative disc disease",
+      "clinical_notes": {
+        "subjective": "Patient reports chronic lower back pain. Has diabetes and hypertension. Motivated for therapy. Pain affects daily activities.",
+        "objective": "Lumbar ROM: Flexion 45° (limited), Extension 20° (limited). Core strength weak. Poor posture. Tight hip flexors and hamstrings.",
+        "assessment": "Lumbar degenerative disc disease with postural dysfunction and muscle imbalance",
+        "plan": "12-week program: manual therapy, postural correction, core strengthening, flexibility exercises. Sessions 2x/week. Consider patient's comorbidities."
+      },
+      "diagnosis_codes": ["M51.9"],
+      "prescriptions": [],
+      "referral_to": null,
+      "referred_from": "Dr. med. Michael Braun"
+    },
+
+    {
+      "appointment_id": "APT-006",
+      "date": "2023-04-15",
+      "time": "14:00",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Praxis Dr. Weber",
+        "address": "Leopoldstraße 88, 80802 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin"
+      },
+      "chief_complaint": "3-month follow-up for multiple conditions",
+      "clinical_notes": {
+        "subjective": "Patient reports good improvement with physiotherapy. Back pain reduced to 3/10. Diabetes and hypertension well controlled. Very satisfied with treatment.",
+        "objective": "Vital signs: BP 140/85, HR 75, Weight 93kg, BMI 31. Blood glucose 7.8 mmol/L. Heart sounds normal. Lungs clear. Improved lumbar ROM.",
+        "assessment": "Type 2 diabetes, hypertension, lumbar degenerative disc disease - all well controlled",
+        "plan": "Continue current management. Annual follow-up. Patient doing very well."
+      },
+      "diagnosis_codes": ["E11.9", "I10", "M51.9"],
+      "prescriptions": [
+        {
+          "medication": "Metformin",
+          "dosage": "1000mg",
+          "frequency": "2x daily",
+          "duration": "90 days"
+        },
+        {
+          "medication": "Lisinopril",
+          "dosage": "10mg",
+          "frequency": "1x daily",
+          "duration": "90 days"
+        }
+      ],
+      "referral_to": null,
+      "referred_from": null
+    }
+  ],
+  
+  "scans": [
+    {
+      "scan_id": "SCAN-001",
+      "date": "2023-01-25",
+      "time": "14:00",
+      "scan_type": "MRI",
+      "body_region": "Lumbar Spine (L1-S1)",
+      "facility": {
+        "name": "Radiologie am Sendlinger Tor",
+        "address": "Sendlinger Straße 45, 80331 München",
+        "type": "imaging_center"
+      },
+      "radiologist": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie"
+      },
+      "modality": "MRI 3.0 Tesla",
+      "sequences": ["T1-weighted", "T2-weighted", "STIR sagittal and axial"],
+      "contrast": false,
+      "indication": "Chronic lower back pain in elderly patient. Rule out disc herniation and spinal stenosis.",
+      "technique": "Multi-sequence MRI of lumbar spine performed without intravenous contrast.",
+      "findings": [
+        "Normal vertebral body height and alignment",
+        "L4-L5: Disc desiccation with mild central canal stenosis",
+        "L5-S1: Mild disc desiccation, no significant herniation",
+        "Facet joint arthritis at L4-L5 and L5-S1",
+        "Mild central canal stenosis at L4-L5",
+        "No disc herniations",
+        "Paraspinal muscles show mild atrophy",
+        "No abnormal bone marrow signal"
+      ],
+      "impression": "Lumbar degenerative disc disease with mild central canal stenosis. No disc herniations. Findings consistent with age-related changes.",
+      "recommendation": "Conservative treatment appropriate. No surgical intervention needed unless symptoms worsen significantly.",
+      "file_reference": "/scans/2023/01/P-2024-011_MRI_lumbar_20230125.dcm",
+      "file_size": "241MB",
+      "dicom_series": "1.2.840.113619.2.80.123456789.20230125140030"
+    }
+  ],
+  
+  "doctor_comments": [
+    {
+      "comment_id": "CMT-001",
+      "date": "2023-01-25",
+      "timestamp": "2023-01-25T15:00:00Z",
+      "doctor": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie",
+        "facility": "Radiologie am Sendlinger Tor"
+      },
+      "related_to_appointment": "APT-003",
+      "related_to_scan": "SCAN-001",
+      "comment_type": "radiology_report_addendum",
+      "priority": "normal",
+      "content": "MRI shows lumbar degenerative disc disease with mild central canal stenosis. No disc herniations. Findings are consistent with age-related changes and not requiring surgical intervention. Conservative treatment appropriate for this patient. Consider patient's multiple comorbidities when planning treatment.",
+      "tags": ["degenerative_disc_disease", "central_canal_stenosis", "age_related_changes"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-002",
+      "date": "2023-02-01",
+      "timestamp": "2023-02-01T12:30:00Z",
+      "doctor": {
+        "doctor_id": "DOC-002",
+        "name": "Dr. med. Michael Braun",
+        "specialty": "Orthopädie und Unfallchirurgie",
+        "facility": "Orthopädische Praxis am Marienplatz"
+      },
+      "related_to_appointment": "APT-004",
+      "related_to_scan": "SCAN-001",
+      "comment_type": "treatment_plan",
+      "priority": "normal",
+      "content": "Patient presents with lumbar degenerative disc disease and mild central canal stenosis. Given patient's age (73) and multiple comorbidities (diabetes, hypertension), conservative treatment is most appropriate. No surgical intervention needed. Physiotherapy and pain management recommended. This case demonstrates the importance of considering patient's overall health status when planning treatment.",
+      "tags": ["degenerative_disc_disease", "conservative_treatment", "comorbidities"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-003",
+      "date": "2023-04-15",
+      "timestamp": "2023-04-15T15:00:00Z",
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin",
+        "facility": "Praxis Dr. Weber"
+      },
+      "related_to_appointment": "APT-006",
+      "related_to_scan": null,
+      "comment_type": "comprehensive_care",
+      "priority": "normal",
+      "content": "Excellent management of multiple comorbidities. Patient's diabetes and hypertension well controlled. Back pain significantly improved with physiotherapy. This case demonstrates the importance of comprehensive care for elderly patients with multiple conditions. Multidisciplinary approach very successful. Patient highly satisfied with overall care.",
+      "tags": ["comprehensive_care", "multiple_comorbidities", "multidisciplinary_approach"],
+      "is_critical": false
+    }
+  ]
+}

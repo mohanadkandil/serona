@@ -1,0 +1,339 @@
+{
+  "patient_id": "P-2024-009",
+  "personal_info": {
+    "first_name": "Peter",
+    "last_name": "Hoffmann",
+    "date_of_birth": "1970-05-30",
+    "gender": "male",
+    "insurance_type": "gesetzlich",
+    "insurance_provider": "DAK Gesundheit"
+  },
+  
+  "appointments": [
+    {
+      "appointment_id": "APT-001",
+      "date": "2023-05-10",
+      "time": "11:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Praxis Dr. Weber",
+        "address": "Leopoldstraße 88, 80802 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin"
+      },
+      "chief_complaint": "Persistent cough and shortness of breath for 3 months",
+      "clinical_notes": {
+        "subjective": "53-year-old patient reports persistent dry cough for 3 months. Shortness of breath with minimal exertion. No fever or chest pain. Smoker for 30 years, 1 pack/day. No recent travel or sick contacts.",
+        "objective": "Vital signs: BP 140/90, HR 88, Weight 75kg, BMI 26. Chest auscultation reveals scattered wheezes. No signs of respiratory distress. Oxygen saturation 94% on room air.",
+        "assessment": "Chronic cough and dyspnea, rule out COPD and lung cancer",
+        "plan": "Referral to pulmonologist. Order chest X-ray and spirometry. Smoking cessation counseling."
+      },
+      "diagnosis_codes": ["R05", "R06.02"],
+      "prescriptions": [
+        {
+          "medication": "Albuterol",
+          "dosage": "90mcg",
+          "frequency": "2 puffs as needed",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Dr. med. Lisa Weber - Pneumologie",
+      "referred_from": null
+    },
+    
+    {
+      "appointment_id": "APT-002",
+      "date": "2023-05-12",
+      "time": "14:30",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Pneumologische Praxis München",
+        "address": "Sendlinger Straße 15, 80331 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-011",
+        "name": "Dr. med. Lisa Weber",
+        "specialty": "Pneumologie"
+      },
+      "chief_complaint": "Referred for chronic cough and shortness of breath",
+      "clinical_notes": {
+        "subjective": "3-month history of persistent dry cough and shortness of breath. Heavy smoker for 30 years. No fever or weight loss. Cough worse in mornings. Shortness of breath with minimal exertion.",
+        "objective": "Vital signs: BP 138/88, HR 85. Chest auscultation reveals scattered wheezes and decreased breath sounds. No signs of respiratory distress. Oxygen saturation 93% on room air.",
+        "assessment": "Chronic cough and dyspnea, likely COPD, rule out lung cancer",
+        "plan": "Order chest X-ray, spirometry, and CT chest. Smoking cessation counseling. Consider bronchodilator therapy."
+      },
+      "diagnosis_codes": ["R05", "R06.02", "Z87.891"],
+      "prescriptions": [
+        {
+          "medication": "Tiotropium",
+          "dosage": "18mcg",
+          "frequency": "1x daily",
+          "duration": "30 days"
+        },
+        {
+          "medication": "Albuterol",
+          "dosage": "90mcg",
+          "frequency": "2 puffs as needed",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Radiologie am Sendlinger Tor - chest X-ray and CT",
+      "referred_from": "Dr. med. Andreas Weber"
+    },
+
+    {
+      "appointment_id": "APT-003",
+      "date": "2023-05-15",
+      "time": "10:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Radiologie am Sendlinger Tor",
+        "address": "Sendlinger Straße 45, 80331 München",
+        "type": "imaging_center"
+      },
+      "doctor": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie"
+      },
+      "chief_complaint": "Chest X-ray and CT for chronic cough",
+      "clinical_notes": {
+        "subjective": "Imaging for chronic cough and shortness of breath in heavy smoker.",
+        "objective": "Chest X-ray shows hyperinflation and flattened diaphragms. CT chest reveals emphysematous changes, no masses or nodules. No pleural effusion.",
+        "assessment": "Emphysema, no evidence of lung cancer",
+        "plan": "Results sent to pulmonologist. No acute findings."
+      },
+      "diagnosis_codes": ["J43.9"],
+      "prescriptions": [],
+      "referral_to": "Dr. med. Lisa Weber - imaging results",
+      "referred_from": "Dr. med. Lisa Weber"
+    },
+
+    {
+      "appointment_id": "APT-004",
+      "date": "2023-05-18",
+      "time": "15:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Pneumologische Praxis München",
+        "address": "Sendlinger Straße 15, 80331 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-011",
+        "name": "Dr. med. Lisa Weber",
+        "specialty": "Pneumologie"
+      },
+      "chief_complaint": "Spirometry and imaging results review",
+      "clinical_notes": {
+        "subjective": "Patient reports continued cough and shortness of breath. Awaiting test results discussion.",
+        "objective": "Spirometry shows FEV1 65% predicted, FVC 78% predicted, FEV1/FVC ratio 0.68. CT shows emphysematous changes. No evidence of lung cancer.",
+        "assessment": "COPD with emphysema, GOLD stage 2",
+        "plan": "Continue bronchodilator therapy. Smoking cessation counseling. Pulmonary rehabilitation program. Follow-up in 3 months."
+      },
+      "diagnosis_codes": ["J44.1", "J43.9"],
+      "prescriptions": [
+        {
+          "medication": "Tiotropium",
+          "dosage": "18mcg",
+          "frequency": "1x daily",
+          "duration": "90 days"
+        },
+        {
+          "medication": "Salmeterol/Fluticasone",
+          "dosage": "50/500mcg",
+          "frequency": "2 puffs 2x daily",
+          "duration": "90 days"
+        }
+      ],
+      "referral_to": "Pneumologische Praxis München - pulmonary rehabilitation",
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-005",
+      "date": "2023-08-20",
+      "time": "16:00",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Pneumologische Praxis München",
+        "address": "Sendlinger Straße 15, 80331 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-011",
+        "name": "Dr. med. Lisa Weber",
+        "specialty": "Pneumologie"
+      },
+      "chief_complaint": "3-month follow-up for COPD",
+      "clinical_notes": {
+        "subjective": "Patient reports good improvement with medication. Cough much less frequent. Shortness of breath improved. Successfully quit smoking 2 months ago. Very motivated for treatment.",
+        "objective": "Vital signs: BP 130/80, HR 80. Chest auscultation shows mild wheezes. Oxygen saturation 96% on room air. Spirometry shows FEV1 72% predicted (improvement).",
+        "assessment": "COPD with good response to treatment and smoking cessation",
+        "plan": "Continue current medication. Continue pulmonary rehabilitation. Annual follow-up. Encourage continued smoking cessation."
+      },
+      "diagnosis_codes": ["J44.1", "Z87.891"],
+      "prescriptions": [
+        {
+          "medication": "Tiotropium",
+          "dosage": "18mcg",
+          "frequency": "1x daily",
+          "duration": "90 days"
+        },
+        {
+          "medication": "Salmeterol/Fluticasone",
+          "dosage": "50/500mcg",
+          "frequency": "2 puffs 2x daily",
+          "duration": "90 days"
+        }
+      ],
+      "referral_to": null,
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-006",
+      "date": "2023-11-25",
+      "time": "14:00",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Pneumologische Praxis München",
+        "address": "Sendlinger Straße 15, 80331 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-011",
+        "name": "Dr. med. Lisa Weber",
+        "specialty": "Pneumologie"
+      },
+      "chief_complaint": "6-month follow-up for COPD",
+      "clinical_notes": {
+        "subjective": "Patient reports excellent improvement. Minimal cough. No shortness of breath with normal activities. Maintained smoking cessation for 6 months. Very satisfied with treatment.",
+        "objective": "Vital signs: BP 125/78, HR 75. Chest auscultation clear. Oxygen saturation 98% on room air. Spirometry shows FEV1 78% predicted (significant improvement).",
+        "assessment": "COPD with excellent response to treatment and smoking cessation",
+        "plan": "Continue current medication. Annual follow-up. Continue smoking cessation. Patient doing very well."
+      },
+      "diagnosis_codes": ["J44.1", "Z87.891"],
+      "prescriptions": [
+        {
+          "medication": "Tiotropium",
+          "dosage": "18mcg",
+          "frequency": "1x daily",
+          "duration": "90 days"
+        },
+        {
+          "medication": "Salmeterol/Fluticasone",
+          "dosage": "50/500mcg",
+          "frequency": "2 puffs 2x daily",
+          "duration": "90 days"
+        }
+      ],
+      "referral_to": null,
+      "referred_from": null
+    }
+  ],
+  
+  "scans": [
+    {
+      "scan_id": "SCAN-001",
+      "date": "2023-05-15",
+      "time": "10:00",
+      "scan_type": "CT",
+      "body_region": "Chest",
+      "facility": {
+        "name": "Radiologie am Sendlinger Tor",
+        "address": "Sendlinger Straße 45, 80331 München",
+        "type": "imaging_center"
+      },
+      "radiologist": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie"
+      },
+      "modality": "CT Chest",
+      "sequences": ["Axial", "Coronal", "Sagittal"],
+      "contrast": false,
+      "indication": "Chronic cough and shortness of breath in heavy smoker. Rule out lung cancer and assess for COPD.",
+      "technique": "CT chest performed without intravenous contrast.",
+      "findings": [
+        "Bilateral emphysematous changes",
+        "Hyperinflation of lungs",
+        "Flattened diaphragms",
+        "No pulmonary nodules or masses",
+        "No pleural effusion",
+        "No mediastinal lymphadenopathy",
+        "No evidence of lung cancer",
+        "Mild bronchiectasis in lower lobes"
+      ],
+      "impression": "Emphysema with no evidence of lung cancer. Findings consistent with COPD.",
+      "recommendation": "Continue pulmonary evaluation and treatment. No further imaging needed unless symptoms change.",
+      "file_reference": "/scans/2023/05/P-2024-009_CT_chest_20230515.dcm",
+      "file_size": "156MB",
+      "dicom_series": "1.2.840.113619.2.80.123456789.20230515100030"
+    }
+  ],
+  
+  "doctor_comments": [
+    {
+      "comment_id": "CMT-001",
+      "date": "2023-05-15",
+      "timestamp": "2023-05-15T11:00:00Z",
+      "doctor": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie",
+        "facility": "Radiologie am Sendlinger Tor"
+      },
+      "related_to_appointment": "APT-003",
+      "related_to_scan": "SCAN-001",
+      "comment_type": "radiology_report_addendum",
+      "priority": "normal",
+      "content": "CT chest shows emphysematous changes consistent with COPD. No evidence of lung cancer or other concerning findings. This is reassuring given patient's smoking history. Findings support the diagnosis of COPD with emphysema. No further imaging needed unless symptoms change.",
+      "tags": ["emphysema", "copd", "no_lung_cancer"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-002",
+      "date": "2023-05-18",
+      "timestamp": "2023-05-18T16:00:00Z",
+      "doctor": {
+        "doctor_id": "DOC-011",
+        "name": "Dr. med. Lisa Weber",
+        "specialty": "Pneumologie",
+        "facility": "Pneumologische Praxis München"
+      },
+      "related_to_appointment": "APT-004",
+      "related_to_scan": "SCAN-001",
+      "comment_type": "diagnosis_confirmation",
+      "priority": "normal",
+      "content": "Spirometry and imaging confirm COPD with emphysema, GOLD stage 2. Patient shows good response to bronchodilator therapy. Smoking cessation counseling provided. This case demonstrates the importance of early diagnosis and treatment of COPD. Patient motivated for treatment and smoking cessation.",
+      "tags": ["copd_diagnosis", "gold_stage_2", "smoking_cessation"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-003",
+      "date": "2023-11-25",
+      "timestamp": "2023-11-25T15:00:00Z",
+      "doctor": {
+        "doctor_id": "DOC-011",
+        "name": "Dr. med. Lisa Weber",
+        "specialty": "Pneumologie",
+        "facility": "Pneumologische Praxis München"
+      },
+      "related_to_appointment": "APT-006",
+      "related_to_scan": null,
+      "comment_type": "treatment_success",
+      "priority": "normal",
+      "content": "Outstanding improvement in COPD management. Patient's FEV1 improved from 65% to 78% predicted. Successful smoking cessation for 6 months. This case demonstrates the dramatic improvement possible with appropriate treatment and smoking cessation in COPD. Patient serves as an excellent example of successful COPD management.",
+      "tags": ["copd_improvement", "smoking_cessation_success", "lung_function_improvement"],
+      "is_critical": false
+    }
+  ]
+}

@@ -1,0 +1,317 @@
+{
+  "patient_id": "P-2024-010",
+  "personal_info": {
+    "first_name": "Erika",
+    "last_name": "Müller",
+    "date_of_birth": "1960-11-05",
+    "gender": "female",
+    "insurance_type": "gesetzlich",
+    "insurance_provider": "Techniker Krankenkasse"
+  },
+  
+  "appointments": [
+    {
+      "appointment_id": "APT-001",
+      "date": "2023-06-08",
+      "time": "13:30",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Praxis Dr. Weber",
+        "address": "Leopoldstraße 88, 80802 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin"
+      },
+      "chief_complaint": "Tremors and difficulty with fine motor tasks for 6 months",
+      "clinical_notes": {
+        "subjective": "63-year-old patient reports tremors in both hands for 6 months. Difficulty with fine motor tasks like buttoning clothes and writing. Tremors worse with stress and fatigue. No family history of neurological disorders. No other neurological symptoms.",
+        "objective": "Vital signs: BP 135/85, HR 78, Weight 70kg, BMI 24. Resting tremor in both hands. Mild bradykinesia. Normal gait. No other neurological deficits. Cranial nerves intact.",
+        "assessment": "Tremors, rule out Parkinson's disease and essential tremor",
+        "plan": "Referral to neurologist for evaluation. Consider dopamine transporter scan. Symptomatic treatment with tremor medication."
+      },
+      "diagnosis_codes": ["G25.1", "R25.1"],
+      "prescriptions": [
+        {
+          "medication": "Propranolol",
+          "dosage": "40mg",
+          "frequency": "2x daily",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Dr. med. Christine Müller - Neurologie",
+      "referred_from": null
+    },
+    
+    {
+      "appointment_id": "APT-002",
+      "date": "2023-06-15",
+      "time": "09:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Neurologische Gemeinschaftspraxis Bogenhausen",
+        "address": "Prinzregentenstraße 71, 81675 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-004",
+        "name": "Dr. med. Christine Müller",
+        "specialty": "Neurologie"
+      },
+      "chief_complaint": "Referred for tremors and motor difficulties",
+      "clinical_notes": {
+        "subjective": "6-month history of tremors in both hands. Difficulty with fine motor tasks. Tremors worse with stress and fatigue. No family history of neurological disorders. No other neurological symptoms.",
+        "objective": "Neurological examination: Cranial nerves intact. Resting tremor in both hands. Mild bradykinesia. Normal gait. No rigidity. No other neurological deficits. UPDRS score: 12.",
+        "assessment": "Parkinsonism, rule out Parkinson's disease",
+        "plan": "Order dopamine transporter scan and MRI brain. Consider levodopa challenge test. Symptomatic treatment with tremor medication."
+      },
+      "diagnosis_codes": ["G25.1", "G20"],
+      "prescriptions": [
+        {
+          "medication": "Levodopa/Carbidopa",
+          "dosage": "100/25mg",
+          "frequency": "3x daily",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Radiologie am Sendlinger Tor - dopamine transporter scan",
+      "referred_from": "Dr. med. Andreas Weber"
+    },
+
+    {
+      "appointment_id": "APT-003",
+      "date": "2023-06-20",
+      "time": "14:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Radiologie am Sendlinger Tor",
+        "address": "Sendlinger Straße 45, 80331 München",
+        "type": "imaging_center"
+      },
+      "doctor": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie"
+      },
+      "chief_complaint": "Dopamine transporter scan for parkinsonism",
+      "clinical_notes": {
+        "subjective": "Nuclear medicine scan for evaluation of parkinsonism.",
+        "objective": "Dopamine transporter scan shows reduced uptake in both putamen, more pronounced on the right side. No evidence of normal aging pattern.",
+        "assessment": "Abnormal dopamine transporter scan consistent with Parkinson's disease",
+        "plan": "Results sent to neurologist. Scan supports diagnosis of Parkinson's disease."
+      },
+      "diagnosis_codes": ["G20"],
+      "prescriptions": [],
+      "referral_to": "Dr. med. Christine Müller - scan results",
+      "referred_from": "Dr. med. Christine Müller"
+    },
+
+    {
+      "appointment_id": "APT-004",
+      "date": "2023-06-22",
+      "time": "10:30",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Neurologische Gemeinschaftspraxis Bogenhausen",
+        "address": "Prinzregentenstraße 71, 81675 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-004",
+        "name": "Dr. med. Christine Müller",
+        "specialty": "Neurologie"
+      },
+      "chief_complaint": "Scan results review and treatment plan",
+      "clinical_notes": {
+        "subjective": "Patient reports some improvement with levodopa. Tremors less frequent. Awaiting scan results discussion.",
+        "objective": "Dopamine transporter scan confirms Parkinson's disease. Neurological examination shows mild improvement with levodopa. UPDRS score: 8 (improvement).",
+        "assessment": "Parkinson's disease, early stage, good response to levodopa",
+        "plan": "Continue levodopa therapy. Add dopamine agonist. Physical therapy for motor symptoms. Follow-up in 3 months."
+      },
+      "diagnosis_codes": ["G20"],
+      "prescriptions": [
+        {
+          "medication": "Levodopa/Carbidopa",
+          "dosage": "100/25mg",
+          "frequency": "3x daily",
+          "duration": "90 days"
+        },
+        {
+          "medication": "Pramipexole",
+          "dosage": "0.25mg",
+          "frequency": "3x daily",
+          "duration": "90 days"
+        }
+      ],
+      "referral_to": "Physiotherapie Schwabing - Parkinson's therapy",
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-005",
+      "date": "2023-06-29",
+      "time": "16:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Physiotherapie Schwabing",
+        "address": "Belgradstraße 22, 80796 München",
+        "type": "therapy_center"
+      },
+      "doctor": {
+        "doctor_id": "DOC-003",
+        "name": "Julia Schneider",
+        "specialty": "Physiotherapie"
+      },
+      "chief_complaint": "Initial physiotherapy assessment for Parkinson's disease",
+      "clinical_notes": {
+        "subjective": "Patient reports tremors and difficulty with fine motor tasks. Motivated for therapy. Some improvement with medication.",
+        "objective": "Mild bradykinesia. Resting tremor in both hands. Normal gait. Good balance. Core strength adequate.",
+        "assessment": "Parkinson's disease with mild motor symptoms",
+        "plan": "12-week program: balance training, gait training, fine motor exercises, voice therapy. Sessions 2x/week."
+      },
+      "diagnosis_codes": ["G20"],
+      "prescriptions": [],
+      "referral_to": null,
+      "referred_from": "Dr. med. Christine Müller"
+    },
+
+    {
+      "appointment_id": "APT-006",
+      "date": "2023-09-28",
+      "time": "11:00",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Neurologische Gemeinschaftspraxis Bogenhausen",
+        "address": "Prinzregentenstraße 71, 81675 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-004",
+        "name": "Dr. med. Christine Müller",
+        "specialty": "Neurologie"
+      },
+      "chief_complaint": "3-month follow-up for Parkinson's disease",
+      "clinical_notes": {
+        "subjective": "Patient reports good improvement with medication and therapy. Tremors much less frequent. Fine motor tasks easier. Very satisfied with treatment.",
+        "objective": "Neurological examination shows significant improvement. Tremors minimal. Normal gait. Good balance. UPDRS score: 4 (significant improvement).",
+        "assessment": "Parkinson's disease with excellent response to treatment",
+        "plan": "Continue current medication. Continue physical therapy. Follow-up in 6 months. Patient doing very well."
+      },
+      "diagnosis_codes": ["G20"],
+      "prescriptions": [
+        {
+          "medication": "Levodopa/Carbidopa",
+          "dosage": "100/25mg",
+          "frequency": "3x daily",
+          "duration": "180 days"
+        },
+        {
+          "medication": "Pramipexole",
+          "dosage": "0.25mg",
+          "frequency": "3x daily",
+          "duration": "180 days"
+        }
+      ],
+      "referral_to": null,
+      "referred_from": null
+    }
+  ],
+  
+  "scans": [
+    {
+      "scan_id": "SCAN-001",
+      "date": "2023-06-20",
+      "time": "14:00",
+      "scan_type": "DaTscan",
+      "body_region": "Brain",
+      "facility": {
+        "name": "Radiologie am Sendlinger Tor",
+        "address": "Sendlinger Straße 45, 80331 München",
+        "type": "imaging_center"
+      },
+      "radiologist": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie"
+      },
+      "modality": "DaTscan (Dopamine Transporter Scan)",
+      "sequences": ["SPECT"],
+      "contrast": true,
+      "indication": "Parkinsonism evaluation. Rule out Parkinson's disease.",
+      "technique": "DaTscan performed with I-123 ioflupane tracer.",
+      "findings": [
+        "Reduced dopamine transporter uptake in both putamen",
+        "More pronounced reduction on the right side",
+        "No evidence of normal aging pattern",
+        "Findings consistent with Parkinson's disease",
+        "No evidence of essential tremor pattern"
+      ],
+      "impression": "Abnormal dopamine transporter scan consistent with Parkinson's disease. Reduced uptake in both putamen, more pronounced on the right.",
+      "recommendation": "Clinical correlation recommended. Scan supports diagnosis of Parkinson's disease.",
+      "file_reference": "/scans/2023/06/P-2024-010_DaTscan_20230620.dcm",
+      "file_size": "89MB",
+      "dicom_series": "1.2.840.113619.2.80.123456789.20230620140030"
+    }
+  ],
+  
+  "doctor_comments": [
+    {
+      "comment_id": "CMT-001",
+      "date": "2023-06-20",
+      "timestamp": "2023-06-20T15:00:00Z",
+      "doctor": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie",
+        "facility": "Radiologie am Sendlinger Tor"
+      },
+      "related_to_appointment": "APT-003",
+      "related_to_scan": "SCAN-001",
+      "comment_type": "nuclear_medicine_report",
+      "priority": "normal",
+      "content": "DaTscan shows reduced dopamine transporter uptake in both putamen, more pronounced on the right side. This is consistent with Parkinson's disease and not essential tremor. The scan provides objective evidence supporting the clinical diagnosis. This is a valuable tool for differentiating Parkinson's disease from other movement disorders.",
+      "tags": ["datscan", "parkinsons_disease", "dopamine_transporter"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-002",
+      "date": "2023-06-22",
+      "timestamp": "2023-06-22T11:30:00Z",
+      "doctor": {
+        "doctor_id": "DOC-004",
+        "name": "Dr. med. Christine Müller",
+        "specialty": "Neurologie",
+        "facility": "Neurologische Gemeinschaftspraxis Bogenhausen"
+      },
+      "related_to_appointment": "APT-004",
+      "related_to_scan": "SCAN-001",
+      "comment_type": "diagnosis_confirmation",
+      "priority": "normal",
+      "content": "DaTscan confirms the diagnosis of Parkinson's disease. Patient shows good response to levodopa therapy. This case demonstrates the importance of objective testing in movement disorders. Patient is in early stage of disease and should respond well to treatment. Multidisciplinary approach with medication and physical therapy recommended.",
+      "tags": ["parkinsons_diagnosis", "levodopa_response", "multidisciplinary_approach"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-003",
+      "date": "2023-09-28",
+      "timestamp": "2023-09-28T12:00:00Z",
+      "doctor": {
+        "doctor_id": "DOC-004",
+        "name": "Dr. med. Christine Müller",
+        "specialty": "Neurologie",
+        "facility": "Neurologische Gemeinschaftspraxis Bogenhausen"
+      },
+      "related_to_appointment": "APT-006",
+      "related_to_scan": null,
+      "comment_type": "treatment_success",
+      "priority": "normal",
+      "content": "Excellent response to Parkinson's disease treatment. Patient's UPDRS score improved from 12 to 4. Tremors significantly reduced. Fine motor function improved. This case demonstrates the effectiveness of early diagnosis and treatment in Parkinson's disease. Patient highly motivated and compliant with treatment. Multidisciplinary approach with medication and physical therapy very successful.",
+      "tags": ["treatment_success", "updrs_improvement", "early_diagnosis"],
+      "is_critical": false
+    }
+  ]
+}
