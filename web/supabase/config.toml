@@ -1,0 +1,10 @@
+project_id = "ibkflfovgoeqthybhylt"
+
+[functions.transcribe-audio]
+verify_jwt = false
+
+[functions.analyze-clinics]
+verify_jwt = false
+
+[functions.analyze-insights]
+verify_jwt = false

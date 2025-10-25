@@ -1,0 +1,601 @@
+{
+  "patient_id": "P-2024-001",
+  "personal_info": {
+    "first_name": "Marcus",
+    "last_name": "Hoffmann",
+    "date_of_birth": "1978-08-22",
+    "gender": "male",
+    "insurance_type": "gesetzlich",
+    "insurance_provider": "Techniker Krankenkasse"
+  },
+  
+  "appointments": [
+    {
+      "appointment_id": "APT-001",
+      "date": "2023-04-15",
+      "time": "09:15",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Praxis Dr. Weber",
+        "address": "Leopoldstraße 88, 80802 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin"
+      },
+      "chief_complaint": "Lower back pain radiating to left leg, ongoing for 3 weeks",
+      "clinical_notes": {
+        "subjective": "Patient reports constant dull pain in lower back, 6/10 severity, worsens with sitting. Occasional shooting pain down left leg. No trauma recalled. Pain affects sleep and work.",
+        "objective": "Limited lumbar flexion. Positive straight leg raise test on left at 45°. No motor weakness. Reflexes intact. BMI 28.",
+        "assessment": "Lumbar radiculopathy, suspected disc pathology",
+        "plan": "Prescribe Ibuprofen 600mg TID, muscle relaxant. Advise rest and heat therapy. Referral to orthopedist if no improvement in 2 weeks."
+      },
+      "diagnosis_codes": ["M54.16", "M54.5"],
+      "prescriptions": [
+        {
+          "medication": "Ibuprofen",
+          "dosage": "600mg",
+          "frequency": "3x daily with food",
+          "duration": "14 days"
+        },
+        {
+          "medication": "Methocarbamol",
+          "dosage": "750mg",
+          "frequency": "3x daily",
+          "duration": "7 days"
+        }
+      ],
+      "referral_to": "Orthopedics - if symptoms persist",
+      "referred_from": null
+    },
+    
+    {
+      "appointment_id": "APT-002",
+      "date": "2023-05-02",
+      "time": "14:30",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Praxis Dr. Weber",
+        "address": "Leopoldstraße 88, 80802 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin"
+      },
+      "chief_complaint": "Follow-up for lower back pain - minimal improvement",
+      "clinical_notes": {
+        "subjective": "Patient reports only slight improvement. Pain still 5/10. Leg pain persists, especially when standing for long periods. Ibuprofen provides temporary relief only.",
+        "objective": "Still limited ROM in lumbar spine. Positive SLR left side. No neurological deficits.",
+        "assessment": "Persistent lumbar radiculopathy, inadequate response to conservative treatment",
+        "plan": "Referral to orthopedic specialist. Continue pain management. Consider imaging."
+      },
+      "diagnosis_codes": ["M54.16"],
+      "prescriptions": [
+        {
+          "medication": "Diclofenac",
+          "dosage": "75mg",
+          "frequency": "2x daily",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Dr. Braun - Orthopädie",
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-003",
+      "date": "2023-05-18",
+      "time": "11:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Orthopädische Praxis am Marienplatz",
+        "address": "Marienplatz 15, 80331 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-002",
+        "name": "Dr. med. Michael Braun",
+        "specialty": "Orthopädie und Unfallchirurgie"
+      },
+      "chief_complaint": "Referred for persistent lower back and left leg pain",
+      "clinical_notes": {
+        "subjective": "6-week history of lower back pain with left leg radiculopathy. Conservative treatment with NSAIDs and muscle relaxants minimally effective. Pain impacts daily activities and work as IT consultant.",
+        "objective": "Antalgic gait noted. Positive Lasègue sign left at 40°. Reduced sensation L5 dermatome. Motor strength 4+/5 in left foot dorsiflexion. Lumbar paraspinal muscle spasm present.",
+        "assessment": "Clinical presentation consistent with L4-L5 or L5-S1 disc herniation with nerve root involvement",
+        "plan": "Order MRI lumbar spine. Consider physiotherapy. Discuss surgical options if imaging confirms significant herniation."
+      },
+      "diagnosis_codes": ["M51.16", "M54.16"],
+      "prescriptions": [],
+      "referral_to": "Radiologie am Sendlinger Tor - MRI lumbar spine",
+      "referred_from": "Dr. med. Andreas Weber"
+    },
+
+    {
+      "appointment_id": "APT-004",
+      "date": "2023-06-08",
+      "time": "10:45",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Orthopädische Praxis am Marienplatz",
+        "address": "Marienplatz 15, 80331 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-002",
+        "name": "Dr. med. Michael Braun",
+        "specialty": "Orthopädie und Unfallchirurgie"
+      },
+      "chief_complaint": "MRI results review",
+      "clinical_notes": {
+        "subjective": "Patient reports continued pain, awaiting MRI results discussion. Concerned about diagnosis and treatment options.",
+        "objective": "MRI shows L4-L5 disc protrusion with moderate left foraminal stenosis and L5 nerve root compression. No signs of cauda equina syndrome.",
+        "assessment": "Confirmed L4-L5 disc herniation with radiculopathy",
+        "plan": "Conservative approach: intensive physiotherapy 3x/week for 6 weeks, continue NSAIDs, add pregabalin for neuropathic pain. Re-evaluate in 6 weeks. Epidural steroid injection if inadequate response. Surgery remains option if conservative fails."
+      },
+      "diagnosis_codes": ["M51.16", "M54.16", "M99.53"],
+      "prescriptions": [
+        {
+          "medication": "Pregabalin",
+          "dosage": "75mg",
+          "frequency": "2x daily, increase to 150mg after 1 week",
+          "duration": "30 days"
+        },
+        {
+          "medication": "Diclofenac",
+          "dosage": "75mg",
+          "frequency": "2x daily",
+          "duration": "30 days"
+        }
+      ],
+      "referral_to": "Physiotherapie Schwabing",
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-005",
+      "date": "2023-06-15",
+      "time": "16:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Physiotherapie Schwabing",
+        "address": "Belgradstraße 22, 80796 München",
+        "type": "therapy_center"
+      },
+      "doctor": {
+        "doctor_id": "DOC-003",
+        "name": "Julia Schneider",
+        "specialty": "Physiotherapie"
+      },
+      "chief_complaint": "Initial physiotherapy assessment for L4-L5 disc herniation",
+      "clinical_notes": {
+        "subjective": "Patient motivated for therapy. Reports pain 5-6/10, worse in mornings and after prolonged sitting. Currently working from home to manage symptoms.",
+        "objective": "Lumbar ROM: Flexion 40° (limited), Extension 15° (limited). Core strength weak. Poor posture noted. Tight hamstrings bilaterally. Left leg pain with flexion movements.",
+        "assessment": "Lumbar disc herniation with radiculopathy, poor core stability, postural dysfunction",
+        "plan": "6-week program: manual therapy, McKenzie exercises, core strengthening, posture correction, nerve gliding exercises. Sessions 3x/week initially, reduce to 2x/week after 3 weeks if progressing."
+      },
+      "diagnosis_codes": ["M51.16"],
+      "prescriptions": [],
+      "referral_to": null,
+      "referred_from": "Dr. med. Michael Braun"
+    },
+
+    {
+      "appointment_id": "APT-006",
+      "date": "2023-06-29",
+      "time": "16:00",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Physiotherapie Schwabing",
+        "address": "Belgradstraße 22, 80796 München",
+        "type": "therapy_center"
+      },
+      "doctor": {
+        "doctor_id": "DOC-003",
+        "name": "Julia Schneider",
+        "specialty": "Physiotherapie"
+      },
+      "chief_complaint": "Physiotherapy progress check - session 6 of 18",
+      "clinical_notes": {
+        "subjective": "Patient reports modest improvement. Pain reduced to 4/10 on average. Leg pain less frequent. Sleeping better. Able to sit for longer periods at desk.",
+        "objective": "Improved lumbar flexion to 55°. Core strength improving. Better posture awareness. SLR improved to 60° on left.",
+        "assessment": "Positive response to physiotherapy, continue current approach",
+        "plan": "Continue with program. Introduce stabilization exercises. Home exercise program compliance good."
+      },
+      "diagnosis_codes": ["M51.16"],
+      "prescriptions": [],
+      "referral_to": null,
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-007",
+      "date": "2023-07-20",
+      "time": "11:30",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Orthopädische Praxis am Marienplatz",
+        "address": "Marienplatz 15, 80331 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-002",
+        "name": "Dr. med. Michael Braun",
+        "specialty": "Orthopädie und Unfallchirurgie"
+      },
+      "chief_complaint": "6-week follow-up post physiotherapy initiation",
+      "clinical_notes": {
+        "subjective": "Patient reports significant improvement with physiotherapy. Pain now 3/10, mainly after long workdays. Leg pain much less frequent. Able to resume light exercise (swimming).",
+        "objective": "Improved lumbar ROM. Negative SLR bilaterally. Normal gait. No neurological deficits. Good compliance with therapy.",
+        "assessment": "Excellent response to conservative treatment. Disc herniation stabilizing.",
+        "plan": "Continue physiotherapy for 3 more weeks then transition to maintenance home program. Continue pregabalin taper off over 2 weeks. Reduce NSAID use as tolerated. Return in 3 months or PRN if symptoms worsen."
+      },
+      "diagnosis_codes": ["M51.16"],
+      "prescriptions": [
+        {
+          "medication": "Pregabalin",
+          "dosage": "75mg",
+          "frequency": "2x daily for 1 week, then 1x daily for 1 week, then stop",
+          "duration": "14 days"
+        }
+      ],
+      "referral_to": null,
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-008",
+      "date": "2023-08-14",
+      "time": "09:00",
+      "type": "Ersttermin",
+      "facility": {
+        "name": "Neurologische Gemeinschaftspraxis Bogenhausen",
+        "address": "Prinzregentenstraße 71, 81675 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-004",
+        "name": "Dr. med. Christine Müller",
+        "specialty": "Neurologie"
+      },
+      "chief_complaint": "Referral for persistent intermittent left leg paresthesias despite improvement",
+      "clinical_notes": {
+        "subjective": "Patient doing much better overall with back pain, but continues to experience occasional tingling and numbness in left lateral calf and foot, especially after prolonged standing or end of workday. No weakness.",
+        "objective": "Neurological examination: Cranial nerves intact. Motor strength 5/5 all extremities. Reduced light touch sensation in L5 distribution left foot. Reflexes 2+ and symmetric. Normal coordination and gait.",
+        "assessment": "Residual L5 radiculopathy, likely related to previous disc herniation. Symptoms improving but incomplete resolution.",
+        "plan": "EMG/NCS not indicated at this time given clinical improvement. Continue home exercises. Advise on activity modification. Follow-up PRN if symptoms worsen. If sensory symptoms persist beyond 3 months, consider repeat imaging."
+      },
+      "diagnosis_codes": ["G57.32", "M51.16"],
+      "prescriptions": [],
+      "referral_to": null,
+      "referred_from": "Dr. med. Michael Braun"
+    },
+
+    {
+      "appointment_id": "APT-009",
+      "date": "2023-10-25",
+      "time": "10:00",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Orthopädische Praxis am Marienplatz",
+        "address": "Marienplatz 15, 80331 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-002",
+        "name": "Dr. med. Michael Braun",
+        "specialty": "Orthopädie und Unfallchirurgie"
+      },
+      "chief_complaint": "3-month follow-up, symptom assessment",
+      "clinical_notes": {
+        "subjective": "Patient reports continued improvement. Back pain now 1-2/10, only with heavy lifting or poor posture. Leg symptoms nearly resolved, occasional minor tingling after very long days. Back to full work duties. Exercising regularly (swimming, cycling). Very satisfied with outcome.",
+        "objective": "Full lumbar ROM. No pain with movement. Normal neurological exam. Good posture and body mechanics demonstrated.",
+        "assessment": "Successful conservative management of L4-L5 disc herniation. Near-complete resolution of symptoms.",
+        "plan": "Discharge from active orthopedic care. Continue home exercise program for core strength and flexibility. Ergonomic awareness at work. Return PRN if symptoms recur. Annual check-up recommended."
+      },
+      "diagnosis_codes": ["M51.16"],
+      "prescriptions": [],
+      "referral_to": null,
+      "referred_from": null
+    },
+
+    {
+      "appointment_id": "APT-010",
+      "date": "2024-01-12",
+      "time": "09:30",
+      "type": "Kontrolltermin",
+      "facility": {
+        "name": "Praxis Dr. Weber",
+        "address": "Leopoldstraße 88, 80802 München",
+        "type": "private_practice"
+      },
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin"
+      },
+      "chief_complaint": "Routine check-up, long-term follow-up on previous back issues",
+      "clinical_notes": {
+        "subjective": "Patient doing very well. Back completely pain-free for past 2 months. Maintaining regular exercise routine. No medications needed. Here for routine annual physical.",
+        "objective": "Vital signs normal. Weight stable. Full lumbar ROM, no tenderness. No neurological deficits. Overall health excellent.",
+        "assessment": "Complete recovery from previous L4-L5 disc herniation. Patient successfully managed conservatively.",
+        "plan": "Continue current activity level and exercise program. Maintain good ergonomics. No further orthopedic follow-up needed unless symptoms return. Next routine check-up in 12 months."
+      },
+      "diagnosis_codes": ["Z00.00"],
+      "prescriptions": [],
+      "referral_to": null,
+      "referred_from": null
+    }
+  ],
+  
+  "scans": [
+    {
+      "scan_id": "SCAN-001",
+      "date": "2023-05-28",
+      "time": "14:30",
+      "scan_type": "MRI",
+      "body_region": "Lumbar Spine (L1-S1)",
+      "facility": {
+        "name": "Radiologie am Sendlinger Tor",
+        "address": "Sendlinger Straße 45, 80331 München",
+        "type": "imaging_center"
+      },
+      "radiologist": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie"
+      },
+      "modality": "MRI 3.0 Tesla",
+      "sequences": ["T1-weighted", "T2-weighted", "STIR sagittal and axial"],
+      "contrast": false,
+      "indication": "Persistent lower back pain with left leg radiculopathy. Rule out disc herniation or spinal stenosis.",
+      "technique": "Multi-sequence MRI of lumbar spine performed without intravenous contrast.",
+      "findings": [
+        "Normal vertebral body height and alignment",
+        "L4-L5: Posterior disc protrusion measuring approximately 5mm with moderate left foraminal stenosis. Left L5 nerve root compression evident.",
+        "L5-S1: Mild disc desiccation, no significant herniation",
+        "No spinal canal stenosis",
+        "Facet joints show mild degenerative changes at L4-L5 and L5-S1",
+        "Paraspinal muscles show mild fatty infiltration",
+        "No abnormal bone marrow signal",
+        "Conus medullaris terminates normally at L1-L2"
+      ],
+      "impression": "L4-L5 disc protrusion with left foraminal stenosis and L5 nerve root impingement. Mild degenerative changes. No central canal stenosis.",
+      "recommendation": "Clinical correlation recommended. Consider conservative management initially. Follow-up imaging in 3-6 months if symptoms persist or worsen.",
+      "file_reference": "/scans/2023/05/P-2024-001_MRI_lumbar_20230528.dcm",
+      "file_size": "245MB",
+      "dicom_series": "1.2.840.113619.2.80.123456789.20230528143045"
+    },
+    
+    {
+      "scan_id": "SCAN-002",
+      "date": "2023-05-28",
+      "time": "14:50",
+      "scan_type": "X-Ray",
+      "body_region": "Lumbar Spine (AP and Lateral)",
+      "facility": {
+        "name": "Radiologie am Sendlinger Tor",
+        "address": "Sendlinger Straße 45, 80331 München",
+        "type": "imaging_center"
+      },
+      "radiologist": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie"
+      },
+      "modality": "Digital Radiography",
+      "sequences": ["AP view", "Lateral view"],
+      "contrast": false,
+      "indication": "Lumbar spine evaluation prior to MRI. Assess for alignment and bone pathology.",
+      "technique": "Standard two-view lumbar spine radiographs obtained.",
+      "findings": [
+        "Normal vertebral alignment, no spondylolisthesis",
+        "Preserved disc spaces, mild narrowing at L4-L5",
+        "No acute fracture or dislocation",
+        "Mild osteophyte formation at L4-L5 and L5-S1",
+        "Normal pedicles and posterior elements",
+        "No destructive bone lesions"
+      ],
+      "impression": "Mild degenerative changes at L4-L5 and L5-S1. No acute bony abnormality. MRI more sensitive for soft tissue and disc pathology.",
+      "recommendation": "Proceed with MRI as planned for detailed soft tissue evaluation.",
+      "file_reference": "/scans/2023/05/P-2024-001_XRAY_lumbar_20230528.dcm",
+      "file_size": "8MB",
+      "dicom_series": "1.2.840.113619.2.80.123456789.20230528145030"
+    },
+    
+    {
+      "scan_id": "SCAN-003",
+      "date": "2023-11-08",
+      "time": "10:15",
+      "scan_type": "MRI",
+      "body_region": "Lumbar Spine (L3-S1) - Follow-up",
+      "facility": {
+        "name": "Diagnostikzentrum Haidhausen",
+        "address": "Rosenheimer Straße 145, 81671 München",
+        "type": "imaging_center"
+      },
+      "radiologist": {
+        "doctor_id": "DOC-006",
+        "name": "PD Dr. med. Thomas Bergmann",
+        "specialty": "Radiologie"
+      },
+      "modality": "MRI 3.0 Tesla",
+      "sequences": ["T1-weighted", "T2-weighted", "STIR sagittal and axial"],
+      "contrast": false,
+      "indication": "Follow-up MRI after 5 months of conservative treatment for L4-L5 disc herniation. Clinical improvement noted, assess for structural changes.",
+      "technique": "Multi-sequence MRI of lumbar spine performed without intravenous contrast. Comparison made with prior MRI from 2023-05-28.",
+      "findings": [
+        "Comparison with MRI dated 2023-05-28:",
+        "L4-L5: Previously noted 5mm posterior disc protrusion has reduced to approximately 3mm. Left foraminal stenosis improved from moderate to mild. Less mass effect on L5 nerve root.",
+        "L5-S1: Unchanged mild disc desiccation, no herniation",
+        "No new disc herniations",
+        "Degenerative facet changes stable",
+        "Paraspinal musculature appears improved, less edema",
+        "No spinal canal stenosis",
+        "No abnormal enhancement or masses"
+      ],
+      "impression": "Significant interval improvement. L4-L5 disc protrusion has decreased in size with improved foraminal stenosis and reduced nerve root compression. Findings correlate well with clinical improvement.",
+      "recommendation": "Continue current conservative management. Further imaging not required unless clinical deterioration occurs.",
+      "file_reference": "/scans/2023/11/P-2024-001_MRI_lumbar_followup_20231108.dcm",
+      "file_size": "238MB",
+      "dicom_series": "1.2.840.113619.2.80.123456789.20231108101530"
+    }
+  ],
+  
+  "doctor_comments": [
+    {
+      "comment_id": "CMT-001",
+      "date": "2023-05-28",
+      "timestamp": "2023-05-28T16:45:00Z",
+      "doctor": {
+        "doctor_id": "DOC-005",
+        "name": "Dr. med. Sabine Hoffmann",
+        "specialty": "Radiologie",
+        "facility": "Radiologie am Sendlinger Tor"
+      },
+      "related_to_appointment": null,
+      "related_to_scan": "SCAN-001",
+      "comment_type": "radiology_report_addendum",
+      "priority": "normal",
+      "content": "MRI findings discussed with referring orthopedist Dr. Braun by phone. Confirmed L4-L5 disc protrusion with nerve root compression. Conservative management appropriate at this stage. Recommended physiotherapy and pain management. Advised follow-up imaging in 3-6 months only if no clinical improvement or worsening symptoms. Patient tolerated procedure well, no complications.",
+      "tags": ["disc_herniation", "nerve_compression", "conservative_treatment"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-002",
+      "date": "2023-06-08",
+      "timestamp": "2023-06-08T11:30:00Z",
+      "doctor": {
+        "doctor_id": "DOC-002",
+        "name": "Dr. med. Michael Braun",
+        "specialty": "Orthopädie und Unfallchirurgie",
+        "facility": "Orthopädische Praxis am Marienplatz"
+      },
+      "related_to_appointment": "APT-004",
+      "related_to_scan": "SCAN-001",
+      "comment_type": "treatment_plan",
+      "priority": "normal",
+      "content": "Patient shows high motivation for recovery and good understanding of condition. MRI confirms clinical suspicion of L4-L5 herniation. Given patient's age (45), good overall health, and nature of work (sedentary IT job with ergonomic adjustments possible), conservative approach strongly favored. Patient wishes to avoid surgery if possible. Plan: 6-week intensive PT program, neuropathic pain management with pregabalin, NSAIDs PRN. Will reassess after PT course. Patient aware that surgical consultation remains option if conservative fails, but success rate with PT for this type of herniation is approximately 70-80%. Discussed red flag symptoms requiring immediate attention (cauda equina signs).",
+      "tags": ["treatment_plan", "conservative_management", "patient_education"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-003",
+      "date": "2023-06-15",
+      "timestamp": "2023-06-15T16:45:00Z",
+      "doctor": {
+        "doctor_id": "DOC-003",
+        "name": "Julia Schneider",
+        "specialty": "Physiotherapie",
+        "facility": "Physiotherapie Schwabing"
+      },
+      "related_to_appointment": "APT-005",
+      "related_to_scan": "SCAN-001",
+      "comment_type": "therapy_notes",
+      "priority": "normal",
+      "content": "Initial PT assessment completed. Patient demonstrates poor core stability and postural awareness - likely contributing factors to disc pathology. Tight hip flexors and hamstrings reducing lumbar mobility. Patient works long hours at computer with suboptimal ergonomic setup. Treatment focus: 1) Manual therapy for pain relief and mobility, 2) McKenzie protocol for disc centralization, 3) Core strengthening (especially multifidus and transversus abdominis), 4) Nerve gliding exercises for L5 nerve, 5) Ergonomic education. Patient very compliant and motivated. Home exercise program provided. Plan 3x/week for 3 weeks, then reassess frequency. Patient responds well to manual therapy - pain reduced from 6/10 to 4/10 immediately post-treatment.",
+      "tags": ["physiotherapy", "initial_assessment", "treatment_approach"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-004",
+      "date": "2023-07-10",
+      "timestamp": "2023-07-10T14:20:00Z",
+      "doctor": {
+        "doctor_id": "DOC-003",
+        "name": "Julia Schneider",
+        "specialty": "Physiotherapie",
+        "facility": "Physiotherapie Schwabing"
+      },
+      "related_to_appointment": "APT-006",
+      "related_to_scan": null,
+      "comment_type": "progress_note",
+      "priority": "normal",
+      "content": "Excellent progress after 12 PT sessions. Patient pain reduced from initial 6/10 to current 3/10. Leg symptoms significantly improved - paresthesias now only occasional and mild. Core strength has improved substantially, patient can perform dead bug and bird dog exercises with good form. Lumbar ROM nearly normalized. Patient has made excellent ergonomic changes at workspace (standing desk, better chair, regular breaks). Home exercise compliance is outstanding. Will continue 2x/week for 3 more weeks then transition to maintenance program. Patient should be able to self-manage long-term with periodic check-ins. Communicated progress to Dr. Braun.",
+      "tags": ["progress_note", "positive_outcome", "compliance"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-005",
+      "date": "2023-08-14",
+      "timestamp": "2023-08-14T10:15:00Z",
+      "doctor": {
+        "doctor_id": "DOC-004",
+        "name": "Dr. med. Christine Müller",
+        "specialty": "Neurologie",
+        "facility": "Neurologische Gemeinschaftspraxis Bogenhausen"
+      },
+      "related_to_appointment": "APT-008",
+      "related_to_scan": "SCAN-001",
+      "comment_type": "specialist_consultation",
+      "priority": "normal",
+      "content": "Neurology consult for persistent L5 sensory symptoms despite overall clinical improvement. Examination reveals isolated reduced sensation in L5 dermatome (lateral calf and dorsum of foot) without motor weakness or reflex changes. This is consistent with residual L5 radiculopathy from previous disc herniation. Given the significant overall improvement in pain and function, and the stability of neurological findings, I do not believe EMG/NCS is warranted at this time. These sensory symptoms often take 6-12 months to fully resolve even with successful treatment. No concerning features suggestive of alternative pathology. Recommend continued observation. Patient reassured. Will follow PRN. Advised Dr. Braun that repeat MRI only necessary if symptoms worsen or fail to improve over next 3 months.",
+      "tags": ["neurology_consult", "radiculopathy", "sensory_symptoms"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-006",
+      "date": "2023-11-08",
+      "timestamp": "2023-11-08T15:30:00Z",
+      "doctor": {
+        "doctor_id": "DOC-006",
+        "name": "PD Dr. med. Thomas Bergmann",
+        "specialty": "Radiologie",
+        "facility": "Diagnostikzentrum Haidhausen"
+      },
+      "related_to_appointment": null,
+      "related_to_scan": "SCAN-003",
+      "comment_type": "radiology_report_addendum",
+      "priority": "normal",
+      "content": "Follow-up MRI demonstrates excellent structural improvement correlating with clinical recovery. The L4-L5 disc protrusion has significantly regressed from 5mm to 3mm over 5-month interval. This is an excellent example of successful conservative management of lumbar disc herniation. Foraminal stenosis improved from moderate to mild, explaining resolution of radicular symptoms. No evidence of new pathology. Further imaging not indicated unless clinical relapse occurs. Case demonstrates that many disc herniations can resorb over time with appropriate conservative treatment, avoiding need for surgical intervention. Results communicated to Dr. Braun.",
+      "tags": ["follow_up_imaging", "disc_regression", "conservative_success"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-007",
+      "date": "2023-11-15",
+      "timestamp": "2023-11-15T09:45:00Z",
+      "doctor": {
+        "doctor_id": "DOC-002",
+        "name": "Dr. med. Michael Braun",
+        "specialty": "Orthopädie und Unfallchirurgie",
+        "facility": "Orthopädische Praxis am Marienplatz"
+      },
+      "related_to_appointment": "APT-009",
+      "related_to_scan": "SCAN-003",
+      "comment_type": "case_summary",
+      "priority": "normal",
+      "content": "Case summary for Marcus Hoffmann: Excellent outcome with conservative management of L4-L5 disc herniation with radiculopathy. Patient presented May 2023 with 6-week history of back and leg pain. MRI confirmed disc protrusion with nerve compression. Treated with medication (NSAIDs, pregabalin), intensive physiotherapy program (18 sessions over 10 weeks), and activity modification. Patient highly compliant with treatment. Follow-up MRI November 2023 shows significant disc regression and improved foraminal stenosis. Clinically near-complete resolution of symptoms. Patient discharged from active care October 2023. This case demonstrates the importance of: 1) Appropriate patient selection for conservative care, 2) Multidisciplinary approach (ortho, PT, neurology), 3) Patient education and engagement, 4) Adequate time for natural healing process. Patient to continue self-management with home exercise program. Annual follow-up recommended. Return PRN if symptoms recur.",
+      "tags": ["case_summary", "treatment_success", "conservative_management", "multidisciplinary"],
+      "is_critical": false
+    },
+    
+    {
+      "comment_id": "CMT-008",
+      "date": "2024-01-12",
+      "timestamp": "2024-01-12T10:00:00Z",
+      "doctor": {
+        "doctor_id": "DOC-001",
+        "name": "Dr. med. Andreas Weber",
+        "specialty": "Allgemeinmedizin",
+        "facility": "Praxis Dr. Weber"
+      },
+      "related_to_appointment": "APT-010",
+      "related_to_scan": null,
+      "comment_type": "follow_up",
+      "priority": "normal",
+      "content": "Patient returns for routine check-up, 8 months post-acute disc herniation episode. Complete clinical recovery achieved. Patient symptom-free, maintaining regular exercise (swimming 2x/week, cycling on weekends), ergonomic workspace optimized, continuing home core strengthening exercises. No medications required. Weight stable at 86kg (BMI 28 - discussed healthy weight maintenance). Patient very satisfied with conservative treatment outcome and grateful avoided surgery. Reviewed warning signs for recurrence. Encouraged continued activity and core exercise. Will monitor annually. This case reinforces value of conservative approach for appropriate disc herniation cases and importance of patient engagement in recovery process.",
+      "tags": ["annual_checkup", "complete_recovery", "long_term_followup"],
+      "is_critical": false
+    }
+  ]
+}
