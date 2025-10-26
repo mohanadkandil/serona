@@ -4,6 +4,9 @@
 import { createOpenAI } from '@ai-sdk/openai';
 import { generateObject, generateText } from 'ai';
 import { z } from 'zod';
+import { createPatientHistoryTool, formatToolResultForUI } from './patientHistoryTool';
+// Use REST API client instead of Weaviate client (React Native compatible)
+import { getPatientContextWithSessions } from './weaviateRESTClient';
 
 const OPENAI_API_KEY = process.env.EXPO_PUBLIC_OPENAI_API_KEY || process.env.OPENAI_API_KEY || '';
 
@@ -20,6 +23,8 @@ export type AgentEventHandlers = {
   onClassification?: (data: ClassificationData) => void;
   onPatientInsights?: (data: { text: string }) => void;
   onMedicalAnalysis?: (data: { text: string }) => void;
+  onPatientHistory?: (data: { sessions: any[] }) => void;
+  onToolCall?: (data: { toolName: string; args: any; result?: any }) => void;
   onDone?: () => void;
   onError?: (error: { message: string }) => void;
 };
@@ -30,7 +35,10 @@ export type AgentEventHandlers = {
  */
 export async function runMedicalAnalysis(
   transcription: string,
-  handlers: AgentEventHandlers
+  handlers: AgentEventHandlers,
+  options?: {
+    patientId?: string;
+  }
 ): Promise<void> {
   if (!OPENAI_API_KEY) {
     handlers.onError?.({ message: 'OpenAI API key not found' });
@@ -44,6 +52,41 @@ export async function runMedicalAnalysis(
     });
 
     handlers.onProgress?.({ step: '🏥 Initializing Clinical Analysis System' });
+
+    // ============================================================================
+    // AUTOMATIC PATIENT HISTORY RETRIEVAL
+    // ============================================================================
+    let patientHistoryContext = '';
+
+    if (options?.patientId) {
+      try {
+        handlers.onProgress?.({ step: '🔍 Retrieving relevant patient medical history...' });
+
+        // Get top 5 most relevant sessions based on current transcript
+        // Using REST API client (React Native compatible)
+        const { context, sessions } = await getPatientContextWithSessions(
+          options.patientId,
+          transcription,
+          5 // top 5 relevant sessions
+        );
+
+        patientHistoryContext = context;
+
+        // Send sessions to UI for display
+        if (sessions.length > 0) {
+          handlers.onPatientHistory?.({ sessions });
+        }
+
+        handlers.onProgress?.({
+          step: `✅ Retrieved ${sessions.length} relevant session(s) from patient history`
+        });
+
+        console.log(`📚 Patient history context loaded (${sessions.length} sessions)`);
+      } catch (error) {
+        console.error('Error retrieving patient history:', error);
+        handlers.onProgress?.({ step: '⚠️  Could not retrieve patient history - continuing without context' });
+      }
+    }
 
     // ============================================================================
     // AGENT 1: TRIAGE & CLASSIFICATION AGENT
@@ -116,20 +159,27 @@ Your role is to:
 4. Note any social determinants of health
 5. Identify potential barriers to care
 
+${patientHistoryContext ? `You have access to the patient's medical history below. Use this to identify patterns in communication, track changes in emotional state over time, and provide context-aware insights.` : ''}
+
 Provide insights that help doctors understand the whole patient, not just symptoms.`,
-        prompt: `Analyze the patient communication patterns and psychosocial factors from this medical transcript:
+        prompt: `${patientHistoryContext ? `PATIENT MEDICAL HISTORY:
+${patientHistoryContext}
+
+---
+
+` : ''}Analyze the patient communication patterns and psychosocial factors from this medical transcript:
 
 "${transcription.slice(0, 1000)}${transcription.length > 1000 ? '...' : ''}"
 
 Focus on:
-- How the patient describes their condition
+- How the patient describes their condition${patientHistoryContext ? ' (compare to past communication patterns)' : ''}
 - Emotional state and concerns
 - Understanding of their health
 - Social and environmental factors
-- Communication effectiveness`,
+- Communication effectiveness${patientHistoryContext ? '\n- Changes or patterns over time based on medical history' : ''}`,
       }),
 
-      // Agent 3: Medical Analysis
+      // Agent 3: Medical Analysis (with patient history context)
       generateText({
         model: openai('gpt-4o'),
         system: `You are an expert medical analysis AI with broad clinical knowledge.
@@ -140,17 +190,31 @@ Your role is to:
 4. Recommend treatment approaches
 5. Flag red flags or concerning features
 
-Provide thorough, evidence-based clinical analysis.`,
-        prompt: `Provide a comprehensive medical analysis of this case:
+${patientHistoryContext ? `IMPORTANT: You have been provided with the patient's relevant medical history.
+Use this historical context to:
+- Compare current presentation with past similar episodes
+- Identify patterns or recurring issues
+- Note what treatments worked or didn't work before
+- Consider progression or resolution of previous conditions
+- Provide more personalized recommendations based on patient's history
 
+Incorporate historical context throughout your analysis.` : ''}
+
+Provide thorough, evidence-based clinical analysis.`,
+        prompt: `${patientHistoryContext ? `PATIENT MEDICAL HISTORY (Most Relevant Sessions):
+${patientHistoryContext}
+
+═══════════════════════════════════════════
+
+` : ''}CURRENT SESSION TRANSCRIPT:
 "${transcription.slice(0, 1000)}${transcription.length > 1000 ? '...' : ''}"
 
-Include:
+Provide a comprehensive medical analysis including:
 - Key clinical findings
-- Differential diagnoses (most likely first)
-- Recommended investigations
-- Suggested management approach
-- Red flags or urgent considerations`,
+- Differential diagnoses (most likely first)${patientHistoryContext ? '\n- How current symptoms compare to past presentations' : ''}
+- Recommended investigations${patientHistoryContext ? ' (considering what has been done before)' : ''}
+- Suggested management approach${patientHistoryContext ? ' (considering past treatment responses)' : ''}
+- Red flags or urgent considerations${patientHistoryContext ? '\n- Relevant patterns from medical history' : ''}`,
       }),
     ]);
 

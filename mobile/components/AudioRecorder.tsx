@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ActivityIndicator, ScrollView } from 'react-native';
-import { useAudioRecorder, RecordingPresets, useAudioRecorderState, setAudioModeAsync, requestRecordingPermissionsAsync } from 'expo-audio';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ActivityIndicator,
+  ScrollView,
+  Animated,
+} from 'react-native';
+import { Audio } from 'expo-av';
+import { MaterialCommunityIcons, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import { transcribeAudio } from '../services/deepgram';
-import { streamMedicalAnalysis, ClassificationData } from '../services/agent';
+import { runMedicalAnalysis, ClassificationData } from '../services/agentNative';
 
-export default function AudioRecorder() {
-  const recorder = useAudioRecorder(RecordingPresets.HIGH_QUALITY);
-  const state = useAudioRecorderState(recorder);
+export default function AudioRecorderClean() {
+  const [recording, setRecording] = useState<Audio.Recording | null>(null);
+  const [isRecording, setIsRecording] = useState(false);
   const [transcript, setTranscript] = useState<string>('');
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [error, setError] = useState<string>('');
+  const [recordingTime, setRecordingTime] = useState(0);
 
   // AI Analysis States
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -17,25 +26,193 @@ export default function AudioRecorder() {
   const [classification, setClassification] = useState<ClassificationData | null>(null);
   const [patientInsights, setPatientInsights] = useState<string>('');
   const [medicalAnalysis, setMedicalAnalysis] = useState<string>('');
-  const [researchData, setResearchData] = useState<string>('');
-  const [enhancedAnalysis, setEnhancedAnalysis] = useState<string>('');
+  const [patientHistory, setPatientHistory] = useState<
+    Array<{
+      sessionType: string;
+      date: string;
+      doctorName: string;
+      doctorSpecialty: string;
+      chiefComplaint?: string;
+      content: string;
+    }>
+  >([]);
 
-  // Development mode flag
-  const [devMode, setDevMode] = useState(false);
+  // Pulse animations for multiple circles
+  const pulse1 = useState(new Animated.Value(1))[0];
+  const pulse2 = useState(new Animated.Value(1))[0];
+  const pulse3 = useState(new Animated.Value(1))[0];
+  const opacity1 = useState(new Animated.Value(0.3))[0];
+  const opacity2 = useState(new Animated.Value(0.25))[0];
+  const opacity3 = useState(new Animated.Value(0.2))[0];
 
-  // Set audio mode on component mount
+  // Button animation
+  const buttonScale = useState(new Animated.Value(1))[0];
+  const buttonGlow = useState(new Animated.Value(0))[0];
+
+  // Idle breathing animation
+  const idleBreath = useState(new Animated.Value(1))[0];
+  const idleOpacity = useState(new Animated.Value(0.5))[0];
+
+  // Card animations
+  const cardScale = useState(new Animated.Value(0))[0];
+  const cardOpacity = useState(new Animated.Value(0))[0];
+
+  // Idle breathing effect
   useEffect(() => {
-    setAudioModeAsync({
-      allowsRecording: true,
-      playsInSilentMode: true,
-    });
+    if (!isRecording && !transcript) {
+      Animated.loop(
+        Animated.sequence([
+          Animated.parallel([
+            Animated.timing(idleBreath, {
+              toValue: 1.15,
+              duration: 2000,
+              useNativeDriver: true,
+            }),
+            Animated.timing(idleOpacity, {
+              toValue: 0.8,
+              duration: 2000,
+              useNativeDriver: true,
+            }),
+          ]),
+          Animated.parallel([
+            Animated.timing(idleBreath, {
+              toValue: 1,
+              duration: 2000,
+              useNativeDriver: true,
+            }),
+            Animated.timing(idleOpacity, {
+              toValue: 0.5,
+              duration: 2000,
+              useNativeDriver: true,
+            }),
+          ]),
+        ])
+      ).start();
+    }
+  }, [isRecording, transcript]);
+
+  useEffect(() => {
+    if (isRecording) {
+      // Start pulse animations with different timings
+      Animated.loop(
+        Animated.sequence([
+          Animated.timing(pulse1, {
+            toValue: 1.4,
+            duration: 2000,
+            useNativeDriver: true,
+          }),
+          Animated.timing(pulse1, {
+            toValue: 1,
+            duration: 2000,
+            useNativeDriver: true,
+          }),
+        ])
+      ).start();
+
+      Animated.loop(
+        Animated.sequence([
+          Animated.timing(pulse2, {
+            toValue: 1.5,
+            duration: 2500,
+            useNativeDriver: true,
+          }),
+          Animated.timing(pulse2, {
+            toValue: 1,
+            duration: 2500,
+            useNativeDriver: true,
+          }),
+        ])
+      ).start();
+
+      Animated.loop(
+        Animated.sequence([
+          Animated.timing(pulse3, {
+            toValue: 1.6,
+            duration: 3000,
+            useNativeDriver: true,
+          }),
+          Animated.timing(pulse3, {
+            toValue: 1,
+            duration: 3000,
+            useNativeDriver: true,
+          }),
+        ])
+      ).start();
+
+      // Fade animations
+      Animated.loop(
+        Animated.sequence([
+          Animated.timing(opacity1, {
+            toValue: 0.1,
+            duration: 2000,
+            useNativeDriver: true,
+          }),
+          Animated.timing(opacity1, {
+            toValue: 0.3,
+            duration: 2000,
+            useNativeDriver: true,
+          }),
+        ])
+      ).start();
+
+      // Start timer
+      const interval = setInterval(() => {
+        setRecordingTime((prev) => prev + 1);
+      }, 1000);
+
+      return () => clearInterval(interval);
+    } else {
+      pulse1.setValue(1);
+      pulse2.setValue(1);
+      pulse3.setValue(1);
+      opacity1.setValue(0.3);
+      opacity2.setValue(0.25);
+      opacity3.setValue(0.2);
+      setRecordingTime(0);
+    }
+  }, [isRecording]);
+
+  // Button pulse effect
+  useEffect(() => {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(buttonGlow, {
+          toValue: 1,
+          duration: 1500,
+          useNativeDriver: true,
+        }),
+        Animated.timing(buttonGlow, {
+          toValue: 0,
+          duration: 1500,
+          useNativeDriver: true,
+        }),
+      ])
+    ).start();
   }, []);
 
-  // Test function with sample transcript
-  const useSampleTranscript = () => {
-    const sampleTranscript = "Patient presents with severe headache for the past 3 days, accompanied by nausea and sensitivity to light. Pain is throbbing, located on the right side of the head. Patient reports this is similar to previous migraine episodes but more intense. Has tried over-the-counter pain relievers with minimal relief. No fever, no recent head trauma. Patient is concerned about frequency of episodes increasing over past 2 months.";
-    setTranscript(sampleTranscript);
-    setDevMode(true);
+  // Animate cards when transcript appears
+  useEffect(() => {
+    if (transcript) {
+      cardScale.setValue(0);
+      cardOpacity.setValue(0);
+      Animated.spring(cardScale, {
+        toValue: 1,
+        tension: 50,
+        friction: 7,
+        useNativeDriver: true,
+      }).start();
+      Animated.timing(cardOpacity, {
+        toValue: 1,
+        duration: 400,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [transcript]);
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
   const startRecording = async () => {
@@ -43,31 +220,23 @@ export default function AudioRecorder() {
       setError('');
       setTranscript('');
 
-      // Request permissions using expo-audio
-      const { granted } = await requestRecordingPermissionsAsync();
-
-      if (!granted) {
-        setError('Microphone permission is required to record audio');
+      const { status } = await Audio.requestPermissionsAsync();
+      if (status !== 'granted') {
+        setError('Microphone permission is required');
         return;
       }
 
-      // Try to start recording
-      try {
-        await recorder.record();
-      } catch (recordError: any) {
-        // If recording fails (e.g., iOS simulator), show helpful error
-        if (recordError.message?.includes('Recording not allowed') ||
-            recordError.message?.includes('recorder not prepared')) {
-          setError(
-            '⚠️ iOS Simulator doesn\'t support audio recording. Please test on:\n' +
-            '• A real iPhone device\n' +
-            '• Android emulator\n\n' +
-            'The code is correct and will work on real devices.'
-          );
-        } else {
-          throw recordError;
-        }
-      }
+      await Audio.setAudioModeAsync({
+        allowsRecordingIOS: true,
+        playsInSilentModeIOS: true,
+      });
+
+      const { recording: newRecording } = await Audio.Recording.createAsync(
+        Audio.RecordingOptionsPresets.HIGH_QUALITY
+      );
+
+      setRecording(newRecording);
+      setIsRecording(true);
     } catch (err) {
       setError(
         `Failed to start recording: ${err instanceof Error ? err.message : 'Unknown error'}`
@@ -76,17 +245,25 @@ export default function AudioRecorder() {
   };
 
   const stopRecording = async () => {
-    try {
-      await recorder.stop();
+    if (!recording) return;
 
-      if (recorder.uri) {
+    try {
+      setIsRecording(false);
+      await recording.stopAndUnloadAsync();
+      const uri = recording.getURI();
+
+      if (uri) {
         setIsTranscribing(true);
         setError('');
 
-        const result = await transcribeAudio(recorder.uri);
+        const result = await transcribeAudio(uri);
         setTranscript(result);
         setIsTranscribing(false);
+      } else {
+        setError('Failed to get recording');
       }
+
+      setRecording(null);
     } catch (err) {
       setIsTranscribing(false);
       setError(`Failed to transcribe: ${err instanceof Error ? err.message : 'Unknown error'}`);
@@ -96,6 +273,20 @@ export default function AudioRecorder() {
   const analyzeMedical = async () => {
     if (!transcript) return;
 
+    // Button press animation
+    Animated.sequence([
+      Animated.timing(buttonScale, {
+        toValue: 0.95,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.timing(buttonScale, {
+        toValue: 1,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+    ]).start();
+
     try {
       setIsAnalyzing(true);
       setError('');
@@ -103,241 +294,519 @@ export default function AudioRecorder() {
       setClassification(null);
       setPatientInsights('');
       setMedicalAnalysis('');
-      setResearchData('');
-      setEnhancedAnalysis('');
+      setPatientHistory([]);
 
-      await streamMedicalAnalysis(transcript, {
-        onProgress: (data) => {
-          setResearchSteps((prev) => [...prev, data.step]);
+      console.log('Starting medical analysis...');
+
+      await runMedicalAnalysis(
+        transcript,
+        {
+          onProgress: (data) => {
+            console.log('Progress:', data.step);
+            setResearchSteps((prev) => [...prev, data.step]);
+          },
+          onClassification: (data) => {
+            console.log('Classification:', data);
+            setClassification(data);
+          },
+          onPatientInsights: (data) => {
+            console.log('Patient insights received');
+            setPatientInsights(data.text);
+          },
+          onMedicalAnalysis: (data) => {
+            console.log('Medical analysis received');
+            setMedicalAnalysis(data.text);
+          },
+          onPatientHistory: (data) => {
+            console.log('Patient history received:', data.sessions.length, 'sessions');
+            setPatientHistory(data.sessions);
+          },
+          onToolCall: (data) => {
+            console.log('Tool call:', data);
+            // Tool usage is already shown via onProgress
+          },
+          onDone: () => {
+            console.log('Analysis complete');
+            setIsAnalyzing(false);
+          },
+          onError: (error) => {
+            console.error('Analysis error:', error);
+            setError(`Analysis failed: ${error.message}`);
+            setIsAnalyzing(false);
+          },
         },
-        onClassification: (data) => {
-          setClassification(data);
-        },
-        onPatientInsights: (data) => {
-          setPatientInsights(data.text);
-        },
-        onMedicalAnalysis: (data) => {
-          setMedicalAnalysis(data.text);
-        },
-        onResearchData: (data) => {
-          setResearchData(data.report);
-        },
-        onEnhancedAnalysis: (data) => {
-          setEnhancedAnalysis(data.text);
-        },
-        onDone: () => {
-          setIsAnalyzing(false);
-        },
-        onError: (error) => {
-          setError(`Analysis failed: ${error.message}`);
-          setIsAnalyzing(false);
-        },
-      });
+        {
+          // Hardcoded patient ID for now
+          patientId: 'P-2024-001',
+        }
+      );
     } catch (err) {
-      setError(`Failed to analyze: ${err instanceof Error ? err.message : 'Unknown error'}`);
+      console.error('Fatal error in analyzeMedical:', err);
+      const errorMsg = err instanceof Error ? err.message : 'Unknown error';
+      setError(`Failed to analyze: ${errorMsg}`);
       setIsAnalyzing(false);
     }
   };
 
-  const formatDuration = (milliseconds: number) => {
-    const seconds = Math.floor(milliseconds / 1000);
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
-  };
-
   return (
-    <View className="flex-1 bg-white p-6">
-      <View className="mb-8 items-center">
-        <Text className="mb-2 text-3xl font-bold text-gray-800">Audio Recorder</Text>
-        <Text className="text-gray-600">Record and transcribe with Deepgram</Text>
-      </View>
-
-      <View className="mb-8 items-center">
-        {state.isRecording && (
-          <View className="mb-4 items-center">
-            <View className="mb-2 h-16 w-16 animate-pulse items-center justify-center rounded-full bg-red-500">
-              <View className="h-4 w-4 rounded-full bg-white" />
-            </View>
-            <Text className="font-mono text-2xl text-gray-800">
-              {formatDuration(state.durationMillis)}
-            </Text>
-          </View>
-        )}
-
-        {!state.isRecording && !isTranscribing && (
-          <TouchableOpacity
-            onPress={startRecording}
-            className="h-20 w-20 items-center justify-center rounded-full bg-blue-500 shadow-lg active:bg-blue-600">
-            <Text className="text-4xl text-white">🎙️</Text>
-          </TouchableOpacity>
-        )}
-
-        {state.isRecording && (
-          <TouchableOpacity
-            onPress={stopRecording}
-            className="rounded-full bg-red-500 px-8 py-4 shadow-lg active:bg-red-600">
-            <Text className="text-lg font-bold text-white">Stop Recording</Text>
-          </TouchableOpacity>
-        )}
-
-        {isTranscribing && (
-          <View className="items-center">
-            <ActivityIndicator size="large" color="#3b82f6" />
-            <Text className="mt-2 text-gray-600">Transcribing with Deepgram...</Text>
-          </View>
-        )}
-      </View>
-
-      {error ? (
-        <View className="mb-4 rounded-lg border border-red-200 bg-red-50 p-4">
-          <Text className="font-semibold text-red-800">Error:</Text>
-          <Text className="mt-1 text-red-700">{error}</Text>
-        </View>
-      ) : null}
-
-      {transcript ? (
-        <ScrollView className="flex-1">
-          <View className="mb-4 rounded-lg border border-gray-200 bg-gray-50 p-4">
-            <Text className="mb-2 text-lg font-bold text-gray-800">Transcript:</Text>
-            <Text className="text-base leading-6 text-gray-700">{transcript}</Text>
-          </View>
-
-          {/* AI Analysis Button */}
-          {!isAnalyzing && !medicalAnalysis && (
-            <TouchableOpacity
-              onPress={analyzeMedical}
-              className="mb-4 rounded-lg bg-green-500 px-6 py-4 active:bg-green-600">
-              <Text className="text-center text-lg font-bold text-white">
-                🏥 Analyze Clinical Data
-              </Text>
-            </TouchableOpacity>
-          )}
-
-          {/* Progress Steps */}
-          {isAnalyzing && researchSteps.length > 0 && (
-            <View className="mb-4 rounded-lg border border-green-200 bg-white p-4">
-              <View className="mb-3 flex-row items-center justify-between">
-                <Text className="text-lg font-bold text-gray-800">
-                  Clinical Analysis in Progress
-                </Text>
-                <Text className="text-sm text-gray-600">
-                  {researchSteps.filter((s) => s.includes('✅')).length}/{researchSteps.length}{' '}
-                  steps
+    <View className="flex-1 bg-white">
+      <ScrollView className="flex-1" contentContainerStyle={{ flexGrow: 1 }}>
+        {/* Recording Interface */}
+        {!transcript && !isTranscribing && (
+          <View className="flex-1 items-center justify-center px-6">
+            {/* Header - Only show when not recording */}
+            {!isRecording && (
+              <View className="absolute top-20 items-center">
+                <Text
+                  className="text-5xl font-thin tracking-wide text-gray-800"
+                  style={{ fontWeight: '200' }}>
+                  Hey Dr. Bene
                 </Text>
               </View>
-              <ScrollView className="max-h-60">
-                {researchSteps.map((step, index) => {
-                  const isComplete = step.includes('✅');
-                  return (
+            )}
+
+            <View className="items-center">
+              {/* Timer - Positioned absolutely to not affect layout */}
+              {isRecording && (
+                <View className="absolute top-0 items-center" style={{ top: -180 }}>
+                  <Text className="text-7xl font-extralight tracking-tight text-gray-900">
+                    {formatTime(recordingTime)}
+                  </Text>
+                  <Text
+                    className="mt-4 text-sm font-medium tracking-widest text-purple-600"
+                    style={{ letterSpacing: 3 }}>
+                    RECORDING
+                  </Text>
+                </View>
+              )}
+
+              {/* Pulse Circle */}
+              <View className="relative items-center justify-center">
+                {isRecording && (
+                  <>
+                    {/* Outermost pulse - Teal */}
+                    <Animated.View
+                      style={{
+                        position: 'absolute',
+                        width: 340,
+                        height: 340,
+                        borderRadius: 170,
+                        backgroundColor: 'rgba(20, 184, 166, 0.1)',
+                        transform: [{ scale: pulse3 }],
+                        opacity: opacity3,
+                      }}
+                    />
+                    {/* Middle pulse - Purple */}
+                    <Animated.View
+                      style={{
+                        position: 'absolute',
+                        width: 280,
+                        height: 280,
+                        borderRadius: 140,
+                        backgroundColor: 'rgba(139, 92, 246, 0.13)',
+                        transform: [{ scale: pulse2 }],
+                        opacity: opacity2,
+                      }}
+                    />
+                    {/* Inner pulse - Indigo */}
+                    <Animated.View
+                      style={{
+                        position: 'absolute',
+                        width: 220,
+                        height: 220,
+                        borderRadius: 110,
+                        backgroundColor: 'rgba(99, 102, 241, 0.18)',
+                        transform: [{ scale: pulse1 }],
+                        opacity: opacity1,
+                      }}
+                    />
+                  </>
+                )}
+
+                {!isRecording && (
+                  <>
+                    {/* Breathing ambient glow for idle state */}
+                    <Animated.View
+                      style={{
+                        position: 'absolute',
+                        width: 260,
+                        height: 260,
+                        borderRadius: 130,
+                        backgroundColor: 'rgba(139, 92, 246, 0.08)',
+                        transform: [{ scale: idleBreath }],
+                        opacity: idleOpacity,
+                      }}
+                    />
+                    <Animated.View
+                      style={{
+                        position: 'absolute',
+                        width: 200,
+                        height: 200,
+                        borderRadius: 100,
+                        backgroundColor: 'rgba(139, 92, 246, 0.12)',
+                        transform: [{ scale: idleBreath }],
+                        opacity: idleOpacity,
+                      }}
+                    />
+                  </>
+                )}
+
+                {/* Record Button */}
+                <TouchableOpacity
+                  onPress={isRecording ? stopRecording : startRecording}
+                  activeOpacity={0.85}
+                  className="items-center justify-center rounded-full"
+                  style={{
+                    width: 140,
+                    height: 140,
+                    backgroundColor: isRecording ? '#8b5cf6' : '#faf5ff',
+                    shadowColor: '#8b5cf6',
+                    shadowOffset: { width: 0, height: 12 },
+                    shadowOpacity: isRecording ? 0.4 : 0.2,
+                    shadowRadius: 20,
+                    elevation: 10,
+                  }}>
+                  {isRecording ? (
+                    <View className="rounded-xl bg-white" style={{ width: 44, height: 44 }} />
+                  ) : (
                     <View
-                      key={index}
-                      className="mb-2 flex-row items-start gap-3 rounded-lg border border-gray-200 p-3">
-                      {isComplete ? (
-                        <Text className="text-lg text-green-600">✅</Text>
-                      ) : (
-                        <ActivityIndicator size="small" color="#10b981" />
-                      )}
-                      <Text
-                        className={`flex-1 text-sm ${isComplete ? 'text-gray-700' : 'font-medium text-gray-900'}`}>
-                        {step}
+                      className="rounded-full"
+                      style={{
+                        width: 70,
+                        height: 70,
+                        backgroundColor: '#8b5cf6',
+                      }}
+                    />
+                  )}
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        )}
+
+        {/* Transcribing State */}
+        {isTranscribing && (
+          <View className="items-center px-6 pt-20">
+            <ActivityIndicator size="large" color="#8b5cf6" />
+            <Text className="mt-4 text-base text-gray-600">Transcribing your note...</Text>
+          </View>
+        )}
+
+        {/* Error Display */}
+        {error ? (
+          <View className="mx-6 mb-4 rounded-xl bg-red-50 p-4">
+            <Text className="text-sm font-medium text-red-900">Error</Text>
+            <Text className="mt-1 text-sm text-red-700">{error}</Text>
+          </View>
+        ) : null}
+
+        {/* Transcript & Analysis */}
+        {transcript && (
+          <View className="px-6 pt-6">
+            {/* Transcript */}
+            <Animated.View
+              style={{
+                transform: [{ scale: cardScale }],
+                opacity: cardOpacity,
+              }}>
+              <View
+                className="mb-5 overflow-hidden rounded-2xl border p-5"
+                style={{
+                  backgroundColor: '#ffffff',
+                  borderWidth: 1,
+                  borderColor: '#e5e7eb',
+                  shadowColor: '#000',
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.06,
+                  shadowRadius: 8,
+                  elevation: 3,
+                }}>
+                <View className="mb-4 flex-row items-center border-b border-gray-100 pb-3">
+                  <MaterialCommunityIcons name="file-document-outline" size={22} color="#8b5cf6" />
+                  <Text className="ml-3 text-base font-semibold text-gray-900">
+                    Session Transcript
+                  </Text>
+                </View>
+                <Text className="text-[15px] leading-6 text-gray-700" style={{ lineHeight: 22 }}>
+                  {transcript}
+                </Text>
+              </View>
+            </Animated.View>
+
+            {/* Analyze Button */}
+            {!isAnalyzing && !medicalAnalysis && (
+              <Animated.View
+                style={{
+                  transform: [{ scale: buttonScale }],
+                  opacity: buttonGlow.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [0.9, 1],
+                  }),
+                }}>
+                <TouchableOpacity
+                  onPress={analyzeMedical}
+                  activeOpacity={0.8}
+                  className="mb-6 w-full rounded-2xl px-8 py-5"
+                  style={{
+                    backgroundColor: '#8b5cf6',
+                    shadowColor: '#8b5cf6',
+                    shadowOffset: { width: 0, height: 8 },
+                    shadowOpacity: 0.4,
+                    shadowRadius: 16,
+                    elevation: 8,
+                  }}>
+                  <Text className="text-center text-base font-semibold text-white">
+                    Analyze Clinical Data
+                  </Text>
+                </TouchableOpacity>
+              </Animated.View>
+            )}
+
+            {/* Progress */}
+            {researchSteps.length > 0 && (
+              <View
+                className="mb-5 overflow-hidden rounded-2xl border p-5"
+                style={{
+                  backgroundColor: '#ffffff',
+                  borderWidth: 1,
+                  borderColor: '#e5e7eb',
+                  shadowColor: '#000',
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.06,
+                  shadowRadius: 8,
+                  elevation: 3,
+                }}>
+                <View className="mb-4 flex-row items-center justify-between border-b border-gray-100 pb-3">
+                  <View className="flex-row items-center">
+                    <MaterialCommunityIcons name="chart-line" size={22} color="#8b5cf6" />
+                    <Text className="ml-3 text-base font-semibold text-gray-900">
+                      Analysis Progress
+                    </Text>
+                  </View>
+                  <View className="rounded-md px-2.5 py-1" style={{ backgroundColor: isAnalyzing ? '#f3f4f6' : '#dcfce7' }}>
+                    <Text className="text-xs font-medium" style={{ color: isAnalyzing ? '#4b5563' : '#16a34a' }}>
+                      {isAnalyzing ? `${researchSteps.filter((s) => s.includes('✅')).length}/${researchSteps.length}` : 'Complete'}
+                    </Text>
+                  </View>
+                </View>
+                {researchSteps.map((step, index) => (
+                  <View key={index} className="mb-3 flex-row items-start gap-3 last:mb-0">
+                    {step.includes('✅') ? (
+                      <View
+                        className="mt-0.5 h-5 w-5 items-center justify-center rounded-md"
+                        style={{ backgroundColor: '#8b5cf6' }}>
+                        <MaterialCommunityIcons name="check" size={14} color="#fff" />
+                      </View>
+                    ) : step.includes('⚠️') ? (
+                      <View
+                        className="mt-0.5 h-5 w-5 items-center justify-center rounded-md"
+                        style={{ backgroundColor: '#f59e0b' }}>
+                        <MaterialCommunityIcons name="alert" size={14} color="#fff" />
+                      </View>
+                    ) : (
+                      <View className="mt-0.5">
+                        <ActivityIndicator size="small" color="#8b5cf6" />
+                      </View>
+                    )}
+                    <Text className="flex-1 text-[15px] leading-5 text-gray-700">
+                      {step.replace(/[✅🏥📋🔄💭🔍⚠️]/g, '').trim()}
+                    </Text>
+                  </View>
+                ))}
+              </View>
+            )}
+
+            {/* Classification */}
+            {classification && (
+              <View
+                className="mb-5 overflow-hidden rounded-2xl border p-5"
+                style={{
+                  backgroundColor: '#ffffff',
+                  borderWidth: 1,
+                  borderColor: '#e5e7eb',
+                  shadowColor: '#000',
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.06,
+                  shadowRadius: 8,
+                  elevation: 3,
+                }}>
+                <View className="mb-4 flex-row items-center border-b border-gray-100 pb-3">
+                  <FontAwesome5 name="hospital" size={20} color="#14b8a6" />
+                  <Text className="ml-3 text-base font-semibold text-gray-900">
+                    Case Classification
+                  </Text>
+                </View>
+                <View>
+                  <View
+                    className="mb-4 flex-row items-start border-l-2 pl-3"
+                    style={{ borderLeftColor: '#14b8a6' }}>
+                    <View className="flex-1">
+                      <Text className="mb-1 text-xs font-medium uppercase tracking-wider text-gray-500">
+                        Complexity
+                      </Text>
+                      <Text className="text-[15px] font-medium text-gray-900">
+                        {classification.complexity === 'complex' ? 'Complex Case' : 'Routine Case'}
                       </Text>
                     </View>
-                  );
-                })}
-              </ScrollView>
-            </View>
-          )}
-
-          {/* Classification Card */}
-          {classification && (
-            <View className="mb-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
-              <Text className="mb-2 text-lg font-bold text-gray-800">📋 Case Classification</Text>
-              <View className="space-y-2">
-                <View className="mb-1 flex-row items-center gap-2">
-                  <Text className="font-semibold text-gray-700">Type:</Text>
-                  <Text className="text-gray-600">
-                    {classification.type === 'RESEARCH_AGENT'
-                      ? 'Requires Evidence-Based Research'
-                      : 'Standard Clinical Analysis'}
-                  </Text>
-                </View>
-                <View className="mb-1 flex-row items-center gap-2">
-                  <Text className="font-semibold text-gray-700">Complexity:</Text>
-                  <Text className="text-gray-600">
-                    {classification.complexity === 'complex' ? 'Complex Case' : 'Routine Case'}
-                  </Text>
-                </View>
-                <View className="mb-1 flex-row items-center gap-2">
-                  <Text className="font-semibold text-gray-700">Urgency:</Text>
-                  <Text className="text-gray-600">
-                    {classification.urgency === 'critical'
-                      ? 'Critical Priority'
-                      : classification.urgency === 'urgent'
-                        ? 'Urgent Priority'
-                        : 'Routine Priority'}
-                  </Text>
-                </View>
-                <View className="mb-1">
-                  <Text className="mb-1 font-semibold text-gray-700">Primary Concern:</Text>
-                  <Text className="text-gray-600">{classification.primaryConcern}</Text>
+                  </View>
+                  <View
+                    className="mb-4 flex-row items-start border-l-2 pl-3"
+                    style={{ borderLeftColor: '#8b5cf6' }}>
+                    <View className="flex-1">
+                      <Text className="mb-1 text-xs font-medium uppercase tracking-wider text-gray-500">
+                        Urgency
+                      </Text>
+                      <Text className="text-[15px] font-medium text-gray-900">
+                        {classification.urgency === 'critical'
+                          ? 'Critical Priority'
+                          : classification.urgency === 'urgent'
+                            ? 'Urgent Priority'
+                            : 'Routine Priority'}
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    className="flex-row items-start border-l-2 pl-3"
+                    style={{ borderLeftColor: '#6366f1' }}>
+                    <View className="flex-1">
+                      <Text className="mb-1 text-xs font-medium uppercase tracking-wider text-gray-500">
+                        Primary Concern
+                      </Text>
+                      <Text className="text-[15px] font-medium text-gray-900">
+                        {classification.primaryConcern}
+                      </Text>
+                    </View>
+                  </View>
                 </View>
               </View>
-            </View>
-          )}
+            )}
 
-          {/* Patient Communication Insights */}
-          {patientInsights && (
-            <View className="mb-4 rounded-lg border border-purple-200 bg-purple-50 p-4">
-              <Text className="mb-2 text-lg font-bold text-gray-800">
-                💭 Patient Communication Insights
-              </Text>
-              <Text className="text-base leading-6 text-gray-700">{patientInsights}</Text>
-            </View>
-          )}
+            {/* Similar Cases (Patient History) */}
+            {patientHistory.length > 0 && (
+              <View
+                className="mb-5 overflow-hidden rounded-2xl border p-5"
+                style={{
+                  backgroundColor: '#ffffff',
+                  borderWidth: 1,
+                  borderColor: '#e5e7eb',
+                  shadowColor: '#000',
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.06,
+                  shadowRadius: 8,
+                  elevation: 3,
+                }}>
+                <View className="mb-4 flex-row items-center border-b border-gray-100 pb-3">
+                  <MaterialCommunityIcons name="history" size={22} color="#14b8a6" />
+                  <Text className="ml-3 text-base font-semibold text-gray-900">
+                    Similar Cases
+                  </Text>
+                  <View className="ml-auto rounded-full bg-teal-50 px-2.5 py-0.5">
+                    <Text className="text-xs font-semibold text-teal-700">
+                      {patientHistory.length} {patientHistory.length === 1 ? 'session' : 'sessions'}
+                    </Text>
+                  </View>
+                </View>
 
-          {/* Medical Analysis */}
-          {medicalAnalysis && (
-            <View className="mb-4 rounded-lg border border-green-200 bg-green-50 p-4">
-              <Text className="mb-2 text-lg font-bold text-gray-800">🔍 Clinical Assessment</Text>
-              <Text className="text-base leading-6 text-gray-700">{medicalAnalysis}</Text>
-            </View>
-          )}
+                <View>
+                  {patientHistory.map((session, index) => (
+                    <View
+                      key={index}
+                      className="mb-3 rounded-xl border border-gray-100 p-3"
+                      style={{
+                        backgroundColor: '#f9fafb',
+                      }}>
+                      <View className="mb-2 flex-row items-center justify-between">
+                        <View className="flex-row items-center">
+                          <View className="rounded-full bg-teal-100 px-2 py-0.5">
+                            <Text className="text-xs font-medium text-teal-700">
+                              {session.sessionType.toUpperCase()}
+                            </Text>
+                          </View>
+                          <Text className="ml-2 text-xs font-medium text-gray-500">
+                            {session.date}
+                          </Text>
+                        </View>
+                      </View>
 
-          {/* Research Data */}
-          {researchData && (
-            <View className="mb-4 rounded-lg border border-yellow-200 bg-yellow-50 p-4">
-              <Text className="mb-2 text-lg font-bold text-gray-800">
-                🔬 Evidence-Based Research
-              </Text>
-              <Text className="text-base leading-6 text-gray-700">{researchData}</Text>
-            </View>
-          )}
+                      <Text className="mb-1 text-sm font-medium text-gray-900">
+                        Dr. {session.doctorName}
+                      </Text>
+                      <Text className="mb-2 text-xs text-gray-500">
+                        {session.doctorSpecialty}
+                      </Text>
 
-          {/* Enhanced Analysis */}
-          {enhancedAnalysis && (
-            <View className="mb-4 rounded-lg border border-indigo-200 bg-indigo-50 p-4">
-              <Text className="mb-2 text-lg font-bold text-gray-800">
-                📚 Research-Enhanced Analysis
-              </Text>
-              <Text className="text-base leading-6 text-gray-700">{enhancedAnalysis}</Text>
-            </View>
-          )}
-        </ScrollView>
-      ) : null}
+                      {session.chiefComplaint && (
+                        <Text className="mb-2 text-sm font-medium text-gray-700">
+                          {session.chiefComplaint}
+                        </Text>
+                      )}
 
-      {!state.isRecording && !transcript && !isTranscribing && (
-        <View className="mt-8 items-center">
-          <Text className="text-center text-gray-400 mb-4">Tap the microphone to start recording</Text>
+                      <Text
+                        className="text-xs leading-5 text-gray-600"
+                        numberOfLines={3}
+                        style={{ lineHeight: 18 }}>
+                        {session.content.substring(0, 150)}...
+                      </Text>
+                    </View>
+                  ))}
+                </View>
+              </View>
+            )}
 
-          {/* Development Mode Button */}
-          <TouchableOpacity
-            onPress={useSampleTranscript}
-            className="bg-purple-500 px-6 py-3 rounded-lg active:bg-purple-600">
-            <Text className="text-white font-bold">🧪 Use Sample Transcript (Testing)</Text>
-          </TouchableOpacity>
-        </View>
-      )}
+            {/* Patient Insights */}
+            {patientInsights && (
+              <View
+                className="mb-5 overflow-hidden rounded-2xl border p-5"
+                style={{
+                  backgroundColor: '#ffffff',
+                  borderWidth: 1,
+                  borderColor: '#e5e7eb',
+                  shadowColor: '#000',
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.06,
+                  shadowRadius: 8,
+                  elevation: 3,
+                }}>
+                <View className="mb-4 flex-row items-center border-b border-gray-100 pb-3">
+                  <Ionicons name="chatbubbles-outline" size={22} color="#a855f7" />
+                  <Text className="ml-3 text-base font-semibold text-gray-900">
+                    Patient Communication Insights
+                  </Text>
+                </View>
+                <Text className="text-[15px] leading-6 text-gray-700" style={{ lineHeight: 22 }}>
+                  {patientInsights}
+                </Text>
+              </View>
+            )}
+
+            {/* Medical Analysis */}
+            {medicalAnalysis && (
+              <View
+                className="mb-5 overflow-hidden rounded-2xl border p-5"
+                style={{
+                  backgroundColor: '#ffffff',
+                  borderWidth: 1,
+                  borderColor: '#e5e7eb',
+                  shadowColor: '#000',
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.06,
+                  shadowRadius: 8,
+                  elevation: 3,
+                }}>
+                <View className="mb-4 flex-row items-center border-b border-gray-100 pb-3">
+                  <FontAwesome5 name="stethoscope" size={20} color="#6366f1" />
+                  <Text className="ml-3 text-base font-semibold text-gray-900">
+                    Clinical Assessment
+                  </Text>
+                </View>
+                <Text className="text-[15px] leading-6 text-gray-700" style={{ lineHeight: 22 }}>
+                  {medicalAnalysis}
+                </Text>
+              </View>
+            )}
+          </View>
+        )}
+      </ScrollView>
     </View>
   );
 }
