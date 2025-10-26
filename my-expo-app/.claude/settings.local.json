@@ -1,11 +1,23 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx create-next-app@latest:*)",
-      "Bash(npm install:*)",
-      "Bash(npm run dev:*)",
-      "Bash(lsof:*)",
-      "Bash(xargs kill:*)"
+      "Read(//var/folders/5z/2023j7y13hs2s0tzn051n19r0000gn/T/TemporaryItems/NSIRD_screencaptureui_1x5X8g/**)",
+      "Bash(watchman watch-del-all:*)",
+      "WebFetch(domain:stackoverflow.com)",
+      "Read(//var/folders/5z/2023j7y13hs2s0tzn051n19r0000gn/T/TemporaryItems/NSIRD_screencaptureui_9tkF9C/**)",
+      "WebFetch(domain:github.com)",
+      "Bash(npx expo-doctor)",
+      "Read(//var/folders/5z/2023j7y13hs2s0tzn051n19r0000gn/T/TemporaryItems/NSIRD_screencaptureui_8EWyI7/**)",
+      "Read(//var/folders/5z/2023j7y13hs2s0tzn051n19r0000gn/T/TemporaryItems/NSIRD_screencaptureui_0AZi6s/**)",
+      "Read(//var/folders/5z/2023j7y13hs2s0tzn051n19r0000gn/T/TemporaryItems/NSIRD_screencaptureui_4gyKL0/**)",
+      "Bash(cat:*)",
+      "WebFetch(domain:denieler.com)",
+      "Read(//var/folders/5z/2023j7y13hs2s0tzn051n19r0000gn/T/TemporaryItems/NSIRD_screencaptureui_pBG1FA/**)",
+      "Read(//var/folders/5z/2023j7y13hs2s0tzn051n19r0000gn/T/TemporaryItems/NSIRD_screencaptureui_oriuz5/**)",
+      "Bash(awk:*)",
+      "Bash(curl:*)",
+      "Read(//var/folders/5z/2023j7y13hs2s0tzn051n19r0000gn/T/TemporaryItems/NSIRD_screencaptureui_1zk4x7/**)",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": []

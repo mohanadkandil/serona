@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, ActivityIndicator, ScrollView } from 'react-native';
-import { useAudioRecorder, RecordingPresets, useAudioRecorderState, setAudioModeAsync, requestRecordingPermissionsAsync } from 'expo-audio';
+import { Audio } from 'expo-av';
 import { transcribeAudio } from '../services/deepgram';
-import { streamMedicalAnalysis, ClassificationData } from '../services/agent';
+import { runMedicalAnalysis, ClassificationData } from '../services/agentNative';
 
-export default function AudioRecorder() {
-  const recorder = useAudioRecorder(RecordingPresets.HIGH_QUALITY);
-  const state = useAudioRecorderState(recorder);
+export default function AudioRecorderSimple() {
+  const [recording, setRecording] = useState<Audio.Recording | null>(null);
+  const [isRecording, setIsRecording] = useState(false);
   const [transcript, setTranscript] = useState<string>('');
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [error, setError] = useState<string>('');
@@ -20,22 +20,10 @@ export default function AudioRecorder() {
   const [researchData, setResearchData] = useState<string>('');
   const [enhancedAnalysis, setEnhancedAnalysis] = useState<string>('');
 
-  // Development mode flag
-  const [devMode, setDevMode] = useState(false);
-
-  // Set audio mode on component mount
-  useEffect(() => {
-    setAudioModeAsync({
-      allowsRecording: true,
-      playsInSilentMode: true,
-    });
-  }, []);
-
   // Test function with sample transcript
   const useSampleTranscript = () => {
     const sampleTranscript = "Patient presents with severe headache for the past 3 days, accompanied by nausea and sensitivity to light. Pain is throbbing, located on the right side of the head. Patient reports this is similar to previous migraine episodes but more intense. Has tried over-the-counter pain relievers with minimal relief. No fever, no recent head trauma. Patient is concerned about frequency of episodes increasing over past 2 months.";
     setTranscript(sampleTranscript);
-    setDevMode(true);
   };
 
   const startRecording = async () => {
@@ -43,51 +31,58 @@ export default function AudioRecorder() {
       setError('');
       setTranscript('');
 
-      // Request permissions using expo-audio
-      const { granted } = await requestRecordingPermissionsAsync();
-
-      if (!granted) {
+      // Request permissions
+      const { status } = await Audio.requestPermissionsAsync();
+      if (status !== 'granted') {
         setError('Microphone permission is required to record audio');
         return;
       }
 
-      // Try to start recording
-      try {
-        await recorder.record();
-      } catch (recordError: any) {
-        // If recording fails (e.g., iOS simulator), show helpful error
-        if (recordError.message?.includes('Recording not allowed') ||
-            recordError.message?.includes('recorder not prepared')) {
-          setError(
-            '⚠️ iOS Simulator doesn\'t support audio recording. Please test on:\n' +
-            '• A real iPhone device\n' +
-            '• Android emulator\n\n' +
-            'The code is correct and will work on real devices.'
-          );
-        } else {
-          throw recordError;
-        }
-      }
-    } catch (err) {
-      setError(
-        `Failed to start recording: ${err instanceof Error ? err.message : 'Unknown error'}`
+      // Set audio mode
+      await Audio.setAudioModeAsync({
+        allowsRecordingIOS: true,
+        playsInSilentModeIOS: true,
+      });
+
+      // Start recording
+      const { recording: newRecording } = await Audio.Recording.createAsync(
+        Audio.RecordingOptionsPresets.HIGH_QUALITY
       );
+
+      setRecording(newRecording);
+      setIsRecording(true);
+    } catch (err) {
+      setError(`Failed to start recording: ${err instanceof Error ? err.message : 'Unknown error'}`);
     }
   };
 
   const stopRecording = async () => {
-    try {
-      await recorder.stop();
+    if (!recording) return;
 
-      if (recorder.uri) {
+    try {
+      setIsRecording(false);
+      console.log('Stopping recording...');
+      await recording.stopAndUnloadAsync();
+      const uri = recording.getURI();
+      console.log('Recording URI:', uri);
+
+      if (uri) {
         setIsTranscribing(true);
         setError('');
+        console.log('Starting transcription...');
 
-        const result = await transcribeAudio(recorder.uri);
+        const result = await transcribeAudio(uri);
+        console.log('Transcription result:', result);
         setTranscript(result);
         setIsTranscribing(false);
+      } else {
+        console.log('No URI found');
+        setError('Failed to get recording URI');
       }
+
+      setRecording(null);
     } catch (err) {
+      console.error('Stop recording error:', err);
       setIsTranscribing(false);
       setError(`Failed to transcribe: ${err instanceof Error ? err.message : 'Unknown error'}`);
     }
@@ -106,7 +101,8 @@ export default function AudioRecorder() {
       setResearchData('');
       setEnhancedAnalysis('');
 
-      await streamMedicalAnalysis(transcript, {
+      // Run AI analysis natively in the app - no HTTP calls needed!
+      await runMedicalAnalysis(transcript, {
         onProgress: (data) => {
           setResearchSteps((prev) => [...prev, data.step]);
         },
@@ -118,12 +114,6 @@ export default function AudioRecorder() {
         },
         onMedicalAnalysis: (data) => {
           setMedicalAnalysis(data.text);
-        },
-        onResearchData: (data) => {
-          setResearchData(data.report);
-        },
-        onEnhancedAnalysis: (data) => {
-          setEnhancedAnalysis(data.text);
         },
         onDone: () => {
           setIsAnalyzing(false);
@@ -139,13 +129,6 @@ export default function AudioRecorder() {
     }
   };
 
-  const formatDuration = (milliseconds: number) => {
-    const seconds = Math.floor(milliseconds / 1000);
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
-  };
-
   return (
     <View className="flex-1 bg-white p-6">
       <View className="mb-8 items-center">
@@ -154,18 +137,16 @@ export default function AudioRecorder() {
       </View>
 
       <View className="mb-8 items-center">
-        {state.isRecording && (
+        {isRecording && (
           <View className="mb-4 items-center">
             <View className="mb-2 h-16 w-16 animate-pulse items-center justify-center rounded-full bg-red-500">
               <View className="h-4 w-4 rounded-full bg-white" />
             </View>
-            <Text className="font-mono text-2xl text-gray-800">
-              {formatDuration(state.durationMillis)}
-            </Text>
+            <Text className="font-mono text-2xl text-gray-800">Recording...</Text>
           </View>
         )}
 
-        {!state.isRecording && !isTranscribing && (
+        {!isRecording && !isTranscribing && (
           <TouchableOpacity
             onPress={startRecording}
             className="h-20 w-20 items-center justify-center rounded-full bg-blue-500 shadow-lg active:bg-blue-600">
@@ -173,7 +154,7 @@ export default function AudioRecorder() {
           </TouchableOpacity>
         )}
 
-        {state.isRecording && (
+        {isRecording && (
           <TouchableOpacity
             onPress={stopRecording}
             className="rounded-full bg-red-500 px-8 py-4 shadow-lg active:bg-red-600">
@@ -326,7 +307,7 @@ export default function AudioRecorder() {
         </ScrollView>
       ) : null}
 
-      {!state.isRecording && !transcript && !isTranscribing && (
+      {!isRecording && !transcript && !isTranscribing && (
         <View className="mt-8 items-center">
           <Text className="text-center text-gray-400 mb-4">Tap the microphone to start recording</Text>
 

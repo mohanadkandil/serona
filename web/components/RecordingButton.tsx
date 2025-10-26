@@ -2,12 +2,14 @@
 
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Mic, Square, Sparkles, FlaskConical, FileText, Heart } from "lucide-react";
+import { Mic, Square, Sparkles, FlaskConical, FileText, Heart, Search, BookOpen, Loader, CheckCircle2, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface RecordingButtonProps {
   onRecordingComplete: (transcription: string) => void;
@@ -22,8 +24,11 @@ const RecordingButton = ({ onRecordingComplete }: RecordingButtonProps) => {
   const [classification, setClassification] = useState<any>(null);
   const [researchIncluded, setResearchIncluded] = useState(false);
   const [researchData, setResearchData] = useState<string>("");
+  const [researchMetadata, setResearchMetadata] = useState<any>(null);
   const [isResearching, setIsResearching] = useState(false);
+  const [researchSteps, setResearchSteps] = useState<string[]>([]);
   const [patientInsights, setPatientInsights] = useState<string>("");
+  const [enhancedAnalysis, setEnhancedAnalysis] = useState<string>("");
   const [manualMode, setManualMode] = useState(false);
   const [manualText, setManualText] = useState("");
 
@@ -216,10 +221,18 @@ const RecordingButton = ({ onRecordingComplete }: RecordingButtonProps) => {
       onRecordingComplete(manualText);
       toast.success("Processing manual transcription...");
 
-      // Step 2: Analyze with AI
+      // Reset states
       setIsAnalyzing(true);
+      setClassification(null);
+      setPatientInsights("");
+      setAiAnalysis("");
+      setResearchData("");
+      setResearchSteps([]);
+      setEnhancedAnalysis("");
+      setResearchIncluded(false);
 
-      const aiResponse = await fetch("/api/agent/chat", {
+      // Use streaming endpoint with Server-Sent Events
+      const response = await fetch("/api/agent/stream", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -227,47 +240,78 @@ const RecordingButton = ({ onRecordingComplete }: RecordingButtonProps) => {
         body: JSON.stringify({ transcription: manualText }),
       });
 
-      if (!aiResponse.ok) {
-        const errorData = await aiResponse
-          .json()
-          .catch(() => ({ error: "Unknown error" }));
-        console.error("AI API Error:", errorData);
-        throw new Error(errorData.error || "Failed to analyze transcription");
+      if (!response.ok) {
+        throw new Error("Failed to start analysis");
       }
 
-      const data = await aiResponse.json();
-      console.log("🚀 AI analysis received:", data);
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
 
-      // Set classification first (shows immediately)
-      setClassification(data.classification);
-
-      // If research was included, show it
-      if (data.researchIncluded) {
-        setIsResearching(false);
-        setResearchIncluded(true);
-        setResearchData(data.researchData || "");
+      if (!reader) {
+        throw new Error("No response body");
       }
 
-      // Set patient insights if available
-      if (data.patientInsights) {
-        setPatientInsights(data.patientInsights);
+      let buffer = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+
+        for (const line of lines) {
+          if (line.startsWith('event:')) {
+            const event = line.substring(6).trim();
+            const nextLine = lines[lines.indexOf(line) + 1];
+            if (nextLine && nextLine.startsWith('data:')) {
+              const data = JSON.parse(nextLine.substring(5).trim());
+
+              switch (event) {
+                case 'progress':
+                  setResearchSteps(prev => [...prev, data.step]);
+                  break;
+                case 'classification':
+                  setClassification(data);
+                  if (data.type === 'RESEARCH_AGENT') {
+                    setIsResearching(true);
+                  }
+                  break;
+                case 'patientInsights':
+                  setPatientInsights(data.text);
+                  break;
+                case 'medicalAnalysis':
+                  setAiAnalysis(data.text);
+                  break;
+                case 'researchData':
+                  setResearchData(data.report);
+                  setResearchMetadata(data.metadata);
+                  setResearchIncluded(true);
+                  setIsResearching(false);
+                  break;
+                case 'enhancedAnalysis':
+                  setEnhancedAnalysis(data.text);
+                  break;
+                case 'done':
+                  setIsAnalyzing(false);
+                  toast.success("AI analysis complete!");
+                  break;
+                case 'error':
+                  throw new Error(data.message);
+              }
+            }
+          }
+        }
       }
 
-      // Finally set the analysis
-      setAiAnalysis(data.response);
-      setIsAnalyzing(false);
-
-      if (data.researchIncluded) {
-        toast.success("AI analysis complete with research insights!");
-      } else {
-        toast.success("AI analysis complete!");
-      }
     } catch (error) {
       console.error("Error processing manual text:", error);
       toast.error(
         error instanceof Error ? error.message : "Failed to process text"
       );
       setIsAnalyzing(false);
+      setIsResearching(false);
     }
   };
 
@@ -400,50 +444,153 @@ const RecordingButton = ({ onRecordingComplete }: RecordingButtonProps) => {
                 <Badge variant={classification.complexity === 'complex' ? 'destructive' : 'outline'}>
                   {classification.complexity}
                 </Badge>
+                {classification.urgency && (
+                  <Badge variant={
+                    classification.urgency === 'critical' ? 'destructive' :
+                    classification.urgency === 'urgent' ? 'default' :
+                    'secondary'
+                  }>
+                    {classification.urgency}
+                  </Badge>
+                )}
               </div>
             </div>
           </CardHeader>
-          <CardContent>
-            <p className="text-sm leading-relaxed">
+          <CardContent className="space-y-3">
+            {classification.primaryConcern && (
+              <div className="text-sm">
+                <strong>Primary Concern:</strong> {classification.primaryConcern}
+              </div>
+            )}
+            <div className="text-sm leading-relaxed">
               <strong>Reasoning:</strong> {classification.reasoning}
-            </p>
+            </div>
           </CardContent>
         </Card>
       )}
 
-      {/* Research Data Display - Shows Second (when research is done) */}
-      {(researchData || isResearching) && (
+      {/* Research Progress Display - Shows during research */}
+      {isResearching && !researchData && (
+        <Card className="border-green-600/20 bg-green-50/50 dark:bg-green-950/20">
+          <CardHeader>
+            <CardTitle className="text-lg flex items-center gap-2">
+              <FlaskConical className="h-5 w-5 text-green-600 animate-pulse" />
+              Clinical Analysis in Progress
+              <Badge variant="default" className="bg-green-600 animate-pulse">
+                Live
+              </Badge>
+            </CardTitle>
+            <p className="text-sm text-muted-foreground mt-2">
+              AI-powered medical analysis with evidence-based insights
+            </p>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {/* Research Steps Timeline */}
+            <div className="space-y-2">
+              {researchSteps.length === 0 ? (
+                <div className="flex items-center gap-3 p-3 bg-white dark:bg-gray-900 rounded-lg border border-green-200 dark:border-green-800">
+                  <Loader className="h-5 w-5 text-green-600 animate-spin" />
+                  <div>
+                    <p className="text-sm font-medium">Initializing Clinical Analysis...</p>
+                    <p className="text-xs text-muted-foreground">Preparing AI-powered medical assessment</p>
+                  </div>
+                </div>
+              ) : (
+                researchSteps.map((step, index) => {
+                  const isSearching = step.includes('🔬') || step.includes('Searching');
+                  const isGenerating = step.includes('🔍') || step.includes('Generating');
+                  const isAnalyzing = step.includes('📚') || step.includes('analyzing');
+                  const isDiving = step.includes('🧬') || step.includes('Diving');
+                  const isComplete = step.includes('✅');
+
+                  return (
+                    <div
+                      key={index}
+                      className={cn(
+                        "flex items-start gap-3 p-3 rounded-lg border transition-all duration-300",
+                        isComplete
+                          ? "bg-green-50 dark:bg-green-950/30 border-green-300 dark:border-green-800"
+                          : "bg-white dark:bg-gray-900 border-green-200 dark:border-green-800 animate-pulse"
+                      )}
+                    >
+                      <div className="mt-0.5">
+                        {isComplete ? (
+                          <CheckCircle2 className="h-5 w-5 text-green-600" />
+                        ) : isSearching ? (
+                          <Search className="h-5 w-5 text-blue-600 animate-pulse" />
+                        ) : isGenerating ? (
+                          <Sparkles className="h-5 w-5 text-purple-600 animate-pulse" />
+                        ) : isAnalyzing ? (
+                          <BookOpen className="h-5 w-5 text-orange-600 animate-pulse" />
+                        ) : isDiving ? (
+                          <ArrowRight className="h-5 w-5 text-indigo-600 animate-pulse" />
+                        ) : (
+                          <Loader className="h-5 w-5 text-green-600 animate-spin" />
+                        )}
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-sm font-medium leading-relaxed">{step}</p>
+                        {!isComplete && (
+                          <div className="mt-2 h-1 w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                            <div className="h-full bg-green-600 animate-progress" style={{ width: '100%' }}></div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })
+              )}
+            </div>
+
+            {/* Summary Stats */}
+            {researchSteps.length > 0 && (
+              <div className="flex gap-2 pt-2">
+                <Badge variant="outline" className="text-xs">
+                  {researchSteps.filter(s => s.includes('✅')).length} / {researchSteps.length} steps completed
+                </Badge>
+                <Badge variant="outline" className="text-xs">
+                  {researchSteps.filter(s => s.includes('Searching')).length} searches
+                </Badge>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Research Results Display - Shows when done */}
+      {researchData && (
         <Card className="border-green-600/20 bg-green-50/50 dark:bg-green-950/20">
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
               <FlaskConical className="h-5 w-5 text-green-600" />
-              Exa Research Findings
-              {isResearching && (
-                <span className="text-sm font-normal text-muted-foreground">
-                  (Researching...)
-                </span>
-              )}
-              {researchData && (
-                <Badge variant="default" className="bg-green-600">
-                  Evidence-Based
-                </Badge>
-              )}
+              Deep Medical Research Report
+              <Badge variant="default" className="bg-green-600">
+                Evidence-Based
+              </Badge>
             </CardTitle>
             <p className="text-sm text-muted-foreground mt-2">
-              Latest medical literature and clinical guidelines from web research
+              Recursive deep research with latest medical literature and clinical guidelines
             </p>
-          </CardHeader>
-          <CardContent>
-            {researchData ? (
-              <div className="text-sm leading-relaxed whitespace-pre-wrap bg-white dark:bg-gray-900 p-4 rounded-md border">
-                {researchData}
-              </div>
-            ) : (
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <div className="h-4 w-4 animate-spin rounded-full border-2 border-green-600 border-t-transparent"></div>
-                <span>Conducting medical research...</span>
+            {researchMetadata && (
+              <div className="flex gap-3 mt-3 text-xs">
+                <Badge variant="outline">
+                  {researchMetadata.uniqueSources} Sources
+                </Badge>
+                <Badge variant="outline">
+                  {researchMetadata.clinicalLearnings} Learnings
+                </Badge>
+                <Badge variant="outline">
+                  {researchMetadata.questionsExplored} Questions Explored
+                </Badge>
               </div>
             )}
+          </CardHeader>
+          <CardContent>
+            <div className="prose prose-sm dark:prose-invert max-w-none bg-white dark:bg-gray-900 p-4 rounded-md border">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {researchData}
+              </ReactMarkdown>
+            </div>
           </CardContent>
         </Card>
       )}
@@ -464,8 +611,10 @@ const RecordingButton = ({ onRecordingComplete }: RecordingButtonProps) => {
             </p>
           </CardHeader>
           <CardContent>
-            <div className="text-sm leading-relaxed whitespace-pre-wrap bg-white dark:bg-gray-900 p-4 rounded-md border">
-              {patientInsights}
+            <div className="prose prose-sm dark:prose-invert max-w-none bg-white dark:bg-gray-900 p-4 rounded-md border">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {patientInsights}
+              </ReactMarkdown>
             </div>
           </CardContent>
         </Card>
@@ -512,8 +661,10 @@ const RecordingButton = ({ onRecordingComplete }: RecordingButtonProps) => {
           </CardHeader>
           <CardContent>
             {aiAnalysis ? (
-              <div className="text-sm leading-relaxed whitespace-pre-wrap">
-                {aiAnalysis}
+              <div className="prose prose-sm dark:prose-invert max-w-none">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {aiAnalysis}
+                </ReactMarkdown>
               </div>
             ) : (
               <div className="flex items-center gap-2 text-muted-foreground">
@@ -525,6 +676,31 @@ const RecordingButton = ({ onRecordingComplete }: RecordingButtonProps) => {
                 </span>
               </div>
             )}
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Enhanced Analysis with Research (if available) */}
+      {enhancedAnalysis && (
+        <Card className="border-purple-600/20 bg-purple-50/50 dark:bg-purple-950/20">
+          <CardHeader>
+            <CardTitle className="text-lg flex items-center gap-2">
+              <FlaskConical className="h-5 w-5 text-purple-600" />
+              Research-Enhanced Analysis
+              <Badge variant="default" className="bg-purple-600">
+                Evidence-Based
+              </Badge>
+            </CardTitle>
+            <p className="text-sm text-muted-foreground mt-2">
+              Clinical insights backed by latest medical research and guidelines
+            </p>
+          </CardHeader>
+          <CardContent>
+            <div className="prose prose-sm dark:prose-invert max-w-none bg-white dark:bg-gray-900 p-4 rounded-md border">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {enhancedAnalysis}
+              </ReactMarkdown>
+            </div>
           </CardContent>
         </Card>
       )}

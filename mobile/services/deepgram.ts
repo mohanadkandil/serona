@@ -1,5 +1,3 @@
-import * as FileSystem from 'expo-file-system';
-
 const DEEPGRAM_API_KEY = process.env.EXPO_PUBLIC_DEEPGRAM_API_KEY || '';
 
 export async function transcribeAudio(audioUri: string): Promise<string> {
@@ -10,21 +8,23 @@ export async function transcribeAudio(audioUri: string): Promise<string> {
   }
 
   try {
-    // Read the audio file as base64
-    const audioBase64 = await FileSystem.readAsStringAsync(audioUri, {
-      encoding: FileSystem.EncodingType.Base64,
-    });
+    // Create FormData and append the audio file
+    const formData = new FormData();
+    formData.append('file', {
+      uri: audioUri,
+      type: 'audio/wav',
+      name: 'audio.wav',
+    } as any);
 
-    // Convert base64 to binary for upload
+    // Send to Deepgram API
     const response = await fetch(
       'https://api.deepgram.com/v1/listen?model=nova-2&smart_format=true',
       {
         method: 'POST',
         headers: {
           'Authorization': `Token ${DEEPGRAM_API_KEY}`,
-          'Content-Type': 'audio/wav',
         },
-        body: base64ToBlob(audioBase64, 'audio/wav'),
+        body: formData,
       }
     );
 
@@ -47,17 +47,4 @@ export async function transcribeAudio(audioUri: string): Promise<string> {
     console.error('Transcription error:', error);
     throw error;
   }
-}
-
-// Helper function to convert base64 to Blob
-function base64ToBlob(base64: string, mimeType: string): Blob {
-  const byteCharacters = atob(base64);
-  const byteNumbers = new Array(byteCharacters.length);
-
-  for (let i = 0; i < byteCharacters.length; i++) {
-    byteNumbers[i] = byteCharacters.charCodeAt(i);
-  }
-
-  const byteArray = new Uint8Array(byteNumbers);
-  return new Blob([byteArray], { type: mimeType });
 }
