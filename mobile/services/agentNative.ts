@@ -64,24 +64,31 @@ export async function runMedicalAnalysis(
 
         // Get top 5 most relevant sessions based on current transcript
         // Using REST API client (React Native compatible)
-        const { context, sessions } = await getPatientContextWithSessions(
+        const sessions = await getPatientContextWithSessions(
           options.patientId,
           transcription,
           5 // top 5 relevant sessions
         );
 
-        patientHistoryContext = context;
+        // Format sessions as context string
+        if (sessions && sessions.length > 0) {
+          patientHistoryContext = sessions.map((s, idx) =>
+            `Session ${idx + 1} (${s.date}):\n${s.content}`
+          ).join('\n\n');
 
-        // Send sessions to UI for display
-        if (sessions.length > 0) {
+          // Send sessions to UI for display
           handlers.onPatientHistory?.({ sessions });
+
+          handlers.onProgress?.({
+            step: `✅ Retrieved ${sessions.length} relevant session(s) from patient history`
+          });
+
+          console.log(`📚 Patient history context loaded (${sessions.length} sessions)`);
+        } else {
+          handlers.onProgress?.({
+            step: `ℹ️  No previous sessions found for this patient`
+          });
         }
-
-        handlers.onProgress?.({
-          step: `✅ Retrieved ${sessions.length} relevant session(s) from patient history`
-        });
-
-        console.log(`📚 Patient history context loaded (${sessions.length} sessions)`);
       } catch (error) {
         console.error('Error retrieving patient history:', error);
         handlers.onProgress?.({ step: '⚠️  Could not retrieve patient history - continuing without context' });

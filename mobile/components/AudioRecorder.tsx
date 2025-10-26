@@ -6,19 +6,101 @@ import {
   ActivityIndicator,
   ScrollView,
   Animated,
+  TextInput,
 } from 'react-native';
 import { Audio } from 'expo-av';
 import { MaterialCommunityIcons, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import { transcribeAudio } from '../services/deepgram';
 import { runMedicalAnalysis, ClassificationData } from '../services/agentNative';
+import { initDatabase, saveSessionReport } from '../services/database';
+import PastReports from './PastReports';
+import RealtimeSession from './RealtimeSession';
+import { OpenAIRealtimeWebSocketSession } from '../services/openaiRealtimeWebSocket';
 
 export default function AudioRecorderClean() {
+  // Initialize database on component mount
+  useEffect(() => {
+    initDatabase().catch(console.error);
+  }, []);
   const [recording, setRecording] = useState<Audio.Recording | null>(null);
   const [isRecording, setIsRecording] = useState(false);
   const [transcript, setTranscript] = useState<string>('');
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [error, setError] = useState<string>('');
   const [recordingTime, setRecordingTime] = useState(0);
+  const [showPastReports, setShowPastReports] = useState(false);
+  const [showSaveDialog, setShowSaveDialog] = useState(false);
+  const [pendingSessionData, setPendingSessionData] = useState<any>(null);
+  const [isEditingTranscript, setIsEditingTranscript] = useState(false);
+  const [mode, setMode] = useState<'recording' | 'realtime'>('recording');
+
+  // Animated question states
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const questionOpacity = useState(new Animated.Value(1))[0];
+  const questionScale = useState(new Animated.Value(1))[0];
+  const questionTranslateY = useState(new Animated.Value(0))[0];
+
+  const questions = [
+    "What is this session about?",
+    "What brings the patient in today?",
+    "Ready to document the consultation?",
+    "Start recording when ready...",
+  ];
+
+  // Rotate questions with slide + scale animation
+  useEffect(() => {
+    if (!isRecording && !transcript) {
+      const interval = setInterval(() => {
+        // Slide up and fade out
+        Animated.parallel([
+          Animated.timing(questionOpacity, {
+            toValue: 0,
+            duration: 500,
+            useNativeDriver: true,
+          }),
+          Animated.timing(questionTranslateY, {
+            toValue: -30,
+            duration: 500,
+            useNativeDriver: true,
+          }),
+          Animated.timing(questionScale, {
+            toValue: 0.9,
+            duration: 500,
+            useNativeDriver: true,
+          }),
+        ]).start(() => {
+          // Change question
+          setCurrentQuestionIndex((prev) => (prev + 1) % questions.length);
+
+          // Reset position below
+          questionTranslateY.setValue(30);
+
+          // Slide in from below with scale
+          Animated.parallel([
+            Animated.timing(questionOpacity, {
+              toValue: 1,
+              duration: 600,
+              useNativeDriver: true,
+            }),
+            Animated.spring(questionTranslateY, {
+              toValue: 0,
+              friction: 8,
+              tension: 40,
+              useNativeDriver: true,
+            }),
+            Animated.spring(questionScale, {
+              toValue: 1,
+              friction: 8,
+              tension: 40,
+              useNativeDriver: true,
+            }),
+          ]).start();
+        });
+      }, 3500); // Change every 3.5 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [isRecording, transcript]);
 
   // AI Analysis States
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -270,6 +352,26 @@ export default function AudioRecorderClean() {
     }
   };
 
+  const handleSaveSession = async () => {
+    if (!pendingSessionData) return;
+
+    try {
+      const sessionId = await saveSessionReport(pendingSessionData);
+      console.log('✅ Session saved to database, ID:', sessionId);
+      setShowSaveDialog(false);
+      setPendingSessionData(null);
+    } catch (err) {
+      console.error('❌ Failed to save session to database:', err);
+      setError('Failed to save session');
+    }
+  };
+
+  const handleDontSave = () => {
+    console.log('ℹ️  Session not saved (user declined)');
+    setShowSaveDialog(false);
+    setPendingSessionData(null);
+  };
+
   const analyzeMedical = async () => {
     if (!transcript) return;
 
@@ -298,36 +400,78 @@ export default function AudioRecorderClean() {
 
       console.log('Starting medical analysis...');
 
+      // Variables to capture data as it comes in from the agent
+      let capturedClassification: ClassificationData | null = null;
+      let capturedPatientInsights = '';
+      let capturedMedicalAnalysis = '';
+      let capturedResearchSteps: string[] = [];
+      let capturedPatientHistory: any[] = [];
+
       await runMedicalAnalysis(
         transcript,
         {
           onProgress: (data) => {
             console.log('Progress:', data.step);
             setResearchSteps((prev) => [...prev, data.step]);
+            capturedResearchSteps.push(data.step);
           },
           onClassification: (data) => {
             console.log('Classification:', data);
             setClassification(data);
+            capturedClassification = data;
           },
           onPatientInsights: (data) => {
             console.log('Patient insights received');
             setPatientInsights(data.text);
+            capturedPatientInsights = data.text;
           },
           onMedicalAnalysis: (data) => {
             console.log('Medical analysis received');
             setMedicalAnalysis(data.text);
+            capturedMedicalAnalysis = data.text;
           },
           onPatientHistory: (data) => {
             console.log('Patient history received:', data.sessions.length, 'sessions');
             setPatientHistory(data.sessions);
+            capturedPatientHistory = data.sessions;
           },
           onToolCall: (data) => {
             console.log('Tool call:', data);
             // Tool usage is already shown via onProgress
           },
-          onDone: () => {
+          onDone: async () => {
             console.log('Analysis complete');
             setIsAnalyzing(false);
+
+            // Prepare session data and show save dialog using captured values
+            const sessionData = {
+              date: new Date().toLocaleDateString(),
+              transcript,
+              classification: capturedClassification?.type || '',
+              severity: capturedClassification?.urgency || '',
+              chiefComplaint: capturedClassification?.primaryConcern || '',
+              medicalAnalysis: capturedMedicalAnalysis,
+              patientInsights: capturedPatientInsights,
+              researchSteps: JSON.stringify(capturedResearchSteps),
+              patientHistory: JSON.stringify(capturedPatientHistory),
+              createdAt: new Date().toISOString(),
+            };
+
+            console.log('📊 Session data prepared:', {
+              hasTranscript: !!sessionData.transcript,
+              classification: sessionData.classification,
+              severity: sessionData.severity,
+              chiefComplaint: sessionData.chiefComplaint,
+              hasMedicalAnalysis: !!sessionData.medicalAnalysis,
+              hasPatientInsights: !!sessionData.patientInsights,
+              researchStepsCount: capturedResearchSteps.length,
+              historyCount: capturedPatientHistory.length,
+            });
+
+            setPendingSessionData(sessionData);
+
+            // Show save confirmation dialog
+            setShowSaveDialog(true);
           },
           onError: (error) => {
             console.error('Analysis error:', error);
@@ -350,19 +494,92 @@ export default function AudioRecorderClean() {
 
   return (
     <View className="flex-1 bg-white">
-      <ScrollView className="flex-1" contentContainerStyle={{ flexGrow: 1 }}>
-        {/* Recording Interface */}
-        {!transcript && !isTranscribing && (
+      {/* Mode Toggle - Fixed at top */}
+      <View className="border-b border-gray-200 bg-white px-6 pb-4 pt-12">
+        <View className="flex-row rounded-xl bg-gray-100 p-1">
+          <TouchableOpacity
+            onPress={() => setMode('recording')}
+            className={`flex-1 rounded-lg py-3 ${
+              mode === 'recording' ? 'bg-purple-600' : 'bg-transparent'
+            }`}
+            style={{
+              shadowColor: mode === 'recording' ? '#8b5cf6' : 'transparent',
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.2,
+              shadowRadius: 4,
+              elevation: mode === 'recording' ? 2 : 0,
+            }}>
+            <View className="flex-row items-center justify-center">
+              <MaterialCommunityIcons
+                name="microphone"
+                size={18}
+                color={mode === 'recording' ? 'white' : '#6b7280'}
+              />
+              <Text
+                className={`ml-2 text-sm font-semibold ${
+                  mode === 'recording' ? 'text-white' : 'text-gray-600'
+                }`}>
+                Recording
+              </Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => setMode('realtime')}
+            className={`flex-1 rounded-lg py-3 ${
+              mode === 'realtime' ? 'bg-purple-600' : 'bg-transparent'
+            }`}
+            style={{
+              shadowColor: mode === 'realtime' ? '#8b5cf6' : 'transparent',
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.2,
+              shadowRadius: 4,
+              elevation: mode === 'realtime' ? 2 : 0,
+            }}>
+            <View className="flex-row items-center justify-center">
+              <MaterialCommunityIcons
+                name="radio-tower"
+                size={18}
+                color={mode === 'realtime' ? 'white' : '#6b7280'}
+              />
+              <Text
+                className={`ml-2 text-sm font-semibold ${
+                  mode === 'realtime' ? 'text-white' : 'text-gray-600'
+                }`}>
+                Real-Time
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/* Conditional rendering based on mode */}
+      {mode === 'realtime' ? (
+        <RealtimeSession />
+      ) : (
+        <ScrollView className="flex-1" contentContainerStyle={{ flexGrow: 1 }}>
+          {/* Recording Interface */}
+          {!transcript && !isTranscribing && (
           <View className="flex-1 items-center justify-center px-6">
-            {/* Header - Only show when not recording */}
+            {/* Animated Question - Only show when not recording */}
             {!isRecording && (
-              <View className="absolute top-20 items-center">
+              <Animated.View
+                className="absolute items-center px-10"
+                style={{
+                  top: 100,
+                  opacity: questionOpacity,
+                  transform: [
+                    { translateY: questionTranslateY },
+                    { scale: questionScale },
+                  ],
+                }}
+              >
                 <Text
-                  className="text-5xl font-thin tracking-wide text-gray-800"
-                  style={{ fontWeight: '200' }}>
-                  Hey Dr. Bene
+                  className="text-center text-[28px] font-normal tracking-tight text-gray-800"
+                  style={{ fontWeight: '400', lineHeight: 38 }}>
+                  {questions[currentQuestionIndex]}
                 </Text>
-              </View>
+              </Animated.View>
             )}
 
             <View className="items-center">
@@ -486,9 +703,50 @@ export default function AudioRecorderClean() {
 
         {/* Transcribing State */}
         {isTranscribing && (
-          <View className="items-center px-6 pt-20">
-            <ActivityIndicator size="large" color="#8b5cf6" />
-            <Text className="mt-4 text-base text-gray-600">Transcribing your note...</Text>
+          <View className="items-center justify-center px-6" style={{ marginTop: 120 }}>
+            {/* Animated pulse circle */}
+            <View className="relative items-center justify-center">
+              <Animated.View
+                style={{
+                  width: 120,
+                  height: 120,
+                  borderRadius: 60,
+                  backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                  position: 'absolute',
+                  transform: [{ scale: pulse1 }],
+                  opacity: opacity1,
+                }}
+              />
+              <Animated.View
+                style={{
+                  width: 90,
+                  height: 90,
+                  borderRadius: 45,
+                  backgroundColor: 'rgba(139, 92, 246, 0.15)',
+                  position: 'absolute',
+                  transform: [{ scale: pulse2 }],
+                  opacity: opacity2,
+                }}
+              />
+              <View
+                className="items-center justify-center rounded-full bg-purple-100"
+                style={{ width: 70, height: 70 }}>
+                <MaterialCommunityIcons name="text-recognition" size={32} color="#8b5cf6" />
+              </View>
+            </View>
+
+            <Text className="mt-8 text-xl font-semibold text-gray-900">
+              Processing Audio...
+            </Text>
+            <Text className="mt-2 text-center text-sm text-gray-500">
+              Converting your recording to text
+            </Text>
+
+            <View className="mt-6 flex-row items-center">
+              <View className="h-1 w-1 rounded-full bg-purple-400" />
+              <View className="mx-1 h-1 w-1 rounded-full bg-purple-400" />
+              <View className="h-1 w-1 rounded-full bg-purple-400" />
+            </View>
           </View>
         )}
 
@@ -521,15 +779,35 @@ export default function AudioRecorderClean() {
                   shadowRadius: 8,
                   elevation: 3,
                 }}>
-                <View className="mb-4 flex-row items-center border-b border-gray-100 pb-3">
-                  <MaterialCommunityIcons name="file-document-outline" size={22} color="#8b5cf6" />
-                  <Text className="ml-3 text-base font-semibold text-gray-900">
-                    Session Transcript
-                  </Text>
+                <View className="mb-4 flex-row items-center justify-between border-b border-gray-100 pb-3">
+                  <View className="flex-row items-center">
+                    <MaterialCommunityIcons name="file-document-outline" size={22} color="#8b5cf6" />
+                    <Text className="ml-3 text-base font-semibold text-gray-900">
+                      Session Transcript
+                    </Text>
+                  </View>
+                  <TouchableOpacity onPress={() => setIsEditingTranscript(!isEditingTranscript)}>
+                    <MaterialCommunityIcons
+                      name={isEditingTranscript ? 'check-circle' : 'pencil'}
+                      size={20}
+                      color={isEditingTranscript ? '#10b981' : '#8b5cf6'}
+                    />
+                  </TouchableOpacity>
                 </View>
-                <Text className="text-[15px] leading-6 text-gray-700" style={{ lineHeight: 22 }}>
-                  {transcript}
-                </Text>
+                {isEditingTranscript ? (
+                  <TextInput
+                    value={transcript}
+                    onChangeText={setTranscript}
+                    multiline
+                    className="rounded-lg border border-purple-200 bg-purple-50 p-3 text-[15px] leading-6 text-gray-900"
+                    style={{ minHeight: 100, lineHeight: 22 }}
+                    placeholder="Edit your transcript here..."
+                  />
+                ) : (
+                  <Text className="text-[15px] leading-6 text-gray-700" style={{ lineHeight: 22 }}>
+                    {transcript}
+                  </Text>
+                )}
               </View>
             </Animated.View>
 
@@ -804,9 +1082,121 @@ export default function AudioRecorderClean() {
                 </Text>
               </View>
             )}
+
+            {/* Save Session Confirmation Box */}
+            {showSaveDialog && pendingSessionData && (
+              <View
+                className="mb-5 overflow-hidden rounded-2xl border p-5"
+                style={{
+                  backgroundColor: '#faf5ff',
+                  borderWidth: 1,
+                  borderColor: '#e9d5ff',
+                  shadowColor: '#9333EA',
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.08,
+                  shadowRadius: 8,
+                  elevation: 3,
+                }}>
+                {/* Header */}
+                <View className="mb-4 flex-row items-center border-b border-purple-100 pb-3">
+                  <MaterialCommunityIcons name="content-save-outline" size={20} color="#9333EA" />
+                  <Text className="ml-3 text-base font-semibold text-gray-900">
+                    Save Session Report?
+                  </Text>
+                </View>
+
+                <Text className="mb-4 text-sm leading-5 text-gray-600">
+                  Would you like to save this session analysis to your past reports?
+                </Text>
+
+                {/* Session Details Preview */}
+                {pendingSessionData.chiefComplaint && (
+                  <View className="mb-4 rounded-xl bg-white p-3">
+                    <Text className="mb-1 text-xs font-semibold uppercase tracking-wide text-gray-500">
+                      Chief Complaint
+                    </Text>
+                    <Text className="text-sm font-medium text-gray-900">
+                      {pendingSessionData.chiefComplaint}
+                    </Text>
+                  </View>
+                )}
+
+                {/* Classification & Severity Badges */}
+                <View className="mb-5 flex-row items-center">
+                  {pendingSessionData.classification && (
+                    <View className="mr-2 rounded-full bg-purple-200 px-3 py-1">
+                      <Text className="text-xs font-medium text-purple-800">
+                        {pendingSessionData.classification}
+                      </Text>
+                    </View>
+                  )}
+                  {pendingSessionData.severity && (
+                    <View className="rounded-full bg-orange-200 px-3 py-1">
+                      <Text className="text-xs font-medium text-orange-800">
+                        {pendingSessionData.severity}
+                      </Text>
+                    </View>
+                  )}
+                </View>
+
+                {/* Action Buttons */}
+                <View className="flex-row">
+                  <TouchableOpacity
+                    onPress={handleDontSave}
+                    className="mr-2 flex-1 rounded-xl border border-gray-300 bg-white px-6 py-3"
+                    style={{
+                      shadowColor: '#000',
+                      shadowOffset: { width: 0, height: 1 },
+                      shadowOpacity: 0.05,
+                      shadowRadius: 2,
+                      elevation: 1,
+                    }}>
+                    <Text className="text-center text-sm font-semibold text-gray-700">
+                      Don't Save
+                    </Text>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity
+                    onPress={handleSaveSession}
+                    className="ml-2 flex-1 rounded-xl px-6 py-3"
+                    style={{
+                      backgroundColor: '#9333EA',
+                      shadowColor: '#9333EA',
+                      shadowOffset: { width: 0, height: 4 },
+                      shadowOpacity: 0.3,
+                      shadowRadius: 8,
+                      elevation: 4,
+                    }}>
+                    <Text className="text-center text-sm font-semibold text-white">
+                      Save Report
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            )}
           </View>
         )}
-      </ScrollView>
+        </ScrollView>
+      )}
+
+      {/* Past Reports Button - Fixed at bottom - Only show in recording mode */}
+      {mode === 'recording' && !isRecording && !isTranscribing && (
+        <View className="bg-white px-6 pb-8 pt-2">
+          <TouchableOpacity
+            onPress={() => setShowPastReports(true)}
+            className="flex-row items-center justify-center py-3">
+            <MaterialCommunityIcons
+              name="clipboard-text-clock-outline"
+              size={18}
+              color="#9CA3AF"
+            />
+            <Text className="ml-2 text-sm font-medium text-gray-500">Past Reports</Text>
+          </TouchableOpacity>
+        </View>
+      )}
+
+      {/* Past Reports Modal */}
+      <PastReports visible={showPastReports} onClose={() => setShowPastReports(false)} />
     </View>
   );
 }
